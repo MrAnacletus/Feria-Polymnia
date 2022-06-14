@@ -6,7 +6,6 @@
 ### Distribución
 - my-app(debería cambiarle el nombre a esto, pero no se si al hacerlo rompo algo)
     - backendPython -> posición auxiliar del próximo backend en **Python**, nuestra amiga la pitón, aquí todo lo que tenga que ver con **IA**
-    - node_modules -> modulos de node para el frontend/backend en node.js
     - public -> parte html del frontend
     - root(temporal) -> podría servir como carpeta raiz de todo lo que debamos guardar en el server/github, llamese canciones etc.
     - src -> carpeta raiz de todo lo que tiene que ver con frontend/backend con **JavaScript**
