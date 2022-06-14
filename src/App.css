@@ -55,7 +55,9 @@
   height: inherit;
   overflow-x: hidden;
   overflow-y: auto;
-  background: rgba(41, 39, 39, 0.753);
+  /* background: rgba(41, 39, 39, 0.753); */
+  background: #e9f2fb;
+
 }
 
 .Footer {

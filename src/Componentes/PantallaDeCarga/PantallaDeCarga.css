@@ -1,0 +1,31 @@
+@import "../../variables.css";
+
+.tituloCarga{
+    color:black;
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.containerTitulo{
+    margin-top: 30px;
+    margin-right: 30px;
+    flex: center;
+    background-color: rgba(255,255,255,255);
+	box-shadow: 0px 0px 10px 5px #deebf9;
+	border-radius: 10px;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.PantallaDeCarga{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: center;
+    background-color: #e9f2fb;
+}

@@ -4,6 +4,7 @@
     display: flex;
     font-size: 1.2rem;
     background-color: var(--color-7);
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -21,6 +22,7 @@
     border-top: 4px solid #ffffff;
     border-radius: 0;
     transition: all 0.2s ease-out;
+    font-family: 'Roboto', sans-serif;
 }
 .navbar-logo {
     color: white;
@@ -51,6 +53,7 @@
     padding: 0;
     margin: 0;
     height: inherit;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navLi {
@@ -98,6 +101,7 @@
     font-size: 28px;
     font-weight: bold;
     padding-right: 60px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .SPA:hover{

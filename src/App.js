@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Menu from './Componentes/Menu/Menu';
 import Navbar from "./Componentes/Navbar/Navbar";
+import PantallaDeCarga from './Componentes/PantallaDeCarga/PantallaDeCarga';
 import logoFooter from "./logos/logos.png"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
@@ -16,10 +17,13 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <Menu></Menu>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
-				render = <Menu></Menu>;
+				render = <Menu sendData={this.changePage}></Menu>;
+			}
+			if (this.state.toRender === "PantallaDeCarga"){
+				render = <PantallaDeCarga></PantallaDeCarga>;
 			}
 		}
 		return render;
