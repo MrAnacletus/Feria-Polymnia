@@ -1,0 +1,114 @@
+@import "./variables.css";
+
+.App {
+  text-align: center;
+  font-family: 'MuliRegular';
+   font-weight: normal;
+   font-style: normal; 
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.RenderContainer {
+  height: 815px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--color-4);
+  background-size: 100%;
+ 
+}
+
+.colorBg{
+  height: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(41, 39, 39, 0.753);
+}
+
+.Footer {
+	color:#FFFFFF; 
+	font-size:1.5em;
+	text-align: center;
+	line-height:100px;
+
+	background: var(--color-7);
+  overflow-y: hidden;
+}
+
+.logoFooter {
+	width: 324px;
+	float: left;
+	margin-left: 10px;
+}
+
+.Redes {
+	float: right;
+	padding-right: 15px;
+}
+
+.fb {
+	width: 32px;
+	margin-right: 5px;
+}
+.twt {
+	width: 32px;
+	overflow: hidden;
+	margin-right: 5px;
+}
+.ig {
+	width: 32px;
+	overflow: hidden;
+}
+
+ /* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+} 

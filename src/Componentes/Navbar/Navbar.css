@@ -1,0 +1,108 @@
+@import "../../variables.css";
+.NavbarItems {
+    height: 54px;
+    display: flex;
+    font-size: 1.2rem;
+    background-color: var(--color-7);
+
+}
+
+.nav-links-clicado{
+    color: #2c2c54;
+    padding: 15px;
+    padding-top: 0;
+    margin: 0;
+    width: auto;
+    height: inherit;
+
+    text-decoration: none;
+    display: block;
+    color: #f7f1e3;
+    border-top: 4px solid #ffffff;
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+}
+.navbar-logo {
+    color: white;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.nav-menu {
+    overflow: hidden;
+    display: flex;
+    justify-content: right;
+    list-style: none;
+    width: 100%;
+    padding:0%;
+    height: 100%;
+    float: right;
+    
+}
+
+.nav-links {
+    display: block;
+    color: #f7f1e3;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+
+    padding: 0;
+    margin: 0;
+    height: inherit;
+}
+
+.navLi {
+    color: #2c2c54;
+    padding: 15px;
+    padding-top: 0;
+    margin: 0;
+    width: auto;
+    height: inherit;
+}
+
+.navLi:hover {
+    display: block;
+    color: #f7f1e3;
+    border-top: 4px solid #ffffff;
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+}
+
+.menu-icon {
+    display: none;
+    
+}
+
+.nav-menuSPA{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+}
+
+.SPA {
+    
+    list-style: none;
+    color: #f7f1e3;
+    line-height: 50px;
+    text-decoration: none;
+    
+    float: right;
+    padding-left: 25px;
+    padding-bottom: 0;
+    height: inherit;
+
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 60px;
+}
+
+.SPA:hover{
+    display: block;
+    color: #f7f1e3;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
