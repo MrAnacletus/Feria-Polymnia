@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Menu from './Componentes/Menu/Menu';
 import Navbar from "./Componentes/Navbar/Navbar";
 import PantallaDeCarga from './Componentes/PantallaDeCarga/PantallaDeCarga';
+import ExportarPartitura from './Componentes/ExportarPartitura/ExportarPartitura';
 import logoFooter from "./logos/logos.png"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
@@ -23,7 +24,10 @@ class App extends Component{
 				render = <Menu sendData={this.changePage}></Menu>;
 			}
 			if (this.state.toRender === "PantallaDeCarga"){
-				render = <PantallaDeCarga></PantallaDeCarga>;
+				render = <PantallaDeCarga sendData={this.changePage}></PantallaDeCarga>;
+			}
+			if (this.state.toRender === "ExportarPartitura"){
+				render = <ExportarPartitura sendData={this.changePage}></ExportarPartitura>;
 			}
 		}
 		return render;
