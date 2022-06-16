@@ -193,10 +193,6 @@
 }
 
 .tituloMenu{
-	margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 30px;
-    margin-right: 30px;
 	text-align: center;
 	font-size: 50px;
 	color: black;
@@ -204,19 +200,18 @@
 }
 
 .containerMenu{
-	margin-top: 30px;
+	margin-top: 60px;
 	margin-bottom: 30px;
-	margin-right: auto;
 	margin-left: auto;
+	margin-right: auto;
 	width: 100%;
+	height: 100%;
 	max-width: var(--bs-content-width,768px);
 	height: 100%;
-	padding-right: var(--bs-gutter-x,.75rem);
-	padding-left: var(--bs-gutter-x,.75rem);
 	background-color: rgba(255,255,255,255);
 	box-shadow: 0px 0px 10px 5px #deebf9;
 	border-radius: 10px;
-	font-family: 'Roboto', sans-serif;
+	padding: 20px;
 }
 
 .text{

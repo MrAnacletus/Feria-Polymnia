@@ -1,7 +1,7 @@
 export const MenuItems = [
     {
         title:'Sube tu archivo',
-        url: 'Subetuarchivo',
+        url: 'Menu',
         cName: 'nav-links',
         clicado: 'nav-links-clicado'
     },

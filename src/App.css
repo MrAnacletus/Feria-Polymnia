@@ -3,8 +3,10 @@
 .App {
   text-align: center;
   font-family: 'MuliRegular';
-   font-weight: normal;
-   font-style: normal; 
+  font-weight: normal;
+  font-style: normal; 
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -43,12 +45,12 @@
 }
 
 .RenderContainer {
-  height: 815px;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   color: var(--color-4);
   background-size: 100%;
- 
 }
 
 .colorBg{
@@ -65,7 +67,9 @@
 	font-size:1.5em;
 	text-align: center;
 	line-height:100px;
-
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 	background: var(--color-7);
   overflow-y: hidden;
 }
