@@ -1,7 +1,7 @@
 {
-  "main.css": "/Feria-Polymnia/static/css/main.b111042e.chunk.css",
-  "main.js": "/Feria-Polymnia/static/js/main.fcb84444.chunk.js",
-  "main.js.map": "/Feria-Polymnia/static/js/main.fcb84444.chunk.js.map",
+  "main.css": "/Feria-Polymnia/static/css/main.a288c5a6.chunk.css",
+  "main.js": "/Feria-Polymnia/static/js/main.3c0e4f4f.chunk.js",
+  "main.js.map": "/Feria-Polymnia/static/js/main.3c0e4f4f.chunk.js.map",
   "static/js/1.14b060c7.chunk.js": "/Feria-Polymnia/static/js/1.14b060c7.chunk.js",
   "static/js/1.14b060c7.chunk.js.map": "/Feria-Polymnia/static/js/1.14b060c7.chunk.js.map",
   "static/css/2.2f268314.chunk.css": "/Feria-Polymnia/static/css/2.2f268314.chunk.css",
@@ -13,9 +13,9 @@
   "static/media/fb.png": "/Feria-Polymnia/static/media/fb.693dd490.png",
   "static/media/ig.png": "/Feria-Polymnia/static/media/ig.8e9a4979.png",
   "static/media/twt.png": "/Feria-Polymnia/static/media/twt.546381d7.png",
+  "static/css/main.a288c5a6.chunk.css.map": "/Feria-Polymnia/static/css/main.a288c5a6.chunk.css.map",
   "static/css/2.2f268314.chunk.css.map": "/Feria-Polymnia/static/css/2.2f268314.chunk.css.map",
-  "static/css/main.b111042e.chunk.css.map": "/Feria-Polymnia/static/css/main.b111042e.chunk.css.map",
   "index.html": "/Feria-Polymnia/index.html",
-  "precache-manifest.49f9d33d41e15ba5a62d2731045b06db.js": "/Feria-Polymnia/precache-manifest.49f9d33d41e15ba5a62d2731045b06db.js",
+  "precache-manifest.5bc636de86cee551439a61f3a83f0e99.js": "/Feria-Polymnia/precache-manifest.5bc636de86cee551439a61f3a83f0e99.js",
   "service-worker.js": "/Feria-Polymnia/service-worker.js"
 }
