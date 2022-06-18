@@ -57,7 +57,7 @@
 }
 
 .navLi {
-    color: #2c2c54;
+    color: var(--color-hover);
     padding: 15px;
     padding-top: 0;
     margin: 0;

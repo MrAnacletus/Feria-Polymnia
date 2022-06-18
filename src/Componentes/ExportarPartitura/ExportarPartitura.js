@@ -17,9 +17,7 @@ class ExportarPartitura extends Component {
                 <div className="containerTitulo">
                     <h2 className="tituloExportar">Exportar Partitura</h2>
                 </div>
-                <div className="containerBoton">
-                    <button className="btnExportar" onClick={() => this.props.sendData("Menu")}>Descargar PDF</button>
-                </div>
+                <button className="btnExportar" onClick={() => this.props.sendData("Menu")}>Descargar PDF</button>
             </div>
         );
     }

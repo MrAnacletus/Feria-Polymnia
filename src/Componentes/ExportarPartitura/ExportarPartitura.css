@@ -35,14 +35,19 @@
 }
 
 .btnExportar{
+	height: 250px;
+    width: 800px;
 	color: black;
 	font-size: 35px;
 	font-family: 'Roboto', sans-serif;
-	background-color: var(--background);
+	background-color: white;
 	border-radius: 10px;
 	padding: 20px;
+	transition: border 2s, background-color 2s;
+	margin-top: 210px;
+	margin-bottom: 210px;
 }
-.btnExportar::hover{
+.btnExportar:hover{
 	background-color: var(--color-hover);
     border: 2px solid var(--color-hover);
 }
