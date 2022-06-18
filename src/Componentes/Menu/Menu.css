@@ -166,8 +166,8 @@
 }
 
 .SubirBoton:hover{
-    background-color: #9b3712;
-    border: 2px solid #9b3712;
+    background-color: var(--color-hover);
+    border: 2px solid var(--color-hover);
 }
 
 .auxTLC{

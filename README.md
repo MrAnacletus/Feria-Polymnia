@@ -13,3 +13,9 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
         Todos los componentes inician su nombre con ***MAYUSCULAS***, ¿Por qué?, porque yo quise :D (y ya inicié así porfavor mantengamoslo así)
         - logos -> Imagenes y logos que deban ser usados por uno o mas componentes de React
         - backendJS -> posición **auxiliar** del backend que conecta directamente frontend **React.js** con **BackendPython**
+## Versión de las cosas que estamos usando
+
+- Para Node.js estamos utilizando la versión v16.15.1
+- Para node package manager (npm) estamos usando la versión 8.11.0
+- Desarrollado en WSL1
+- Distribución de Ubuntu 20.04 LTS

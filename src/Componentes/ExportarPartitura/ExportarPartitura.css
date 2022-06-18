@@ -42,3 +42,7 @@
 	border-radius: 10px;
 	padding: 20px;
 }
+.btnExportar::hover{
+	background-color: var(--color-hover);
+    border: 2px solid var(--color-hover);
+}

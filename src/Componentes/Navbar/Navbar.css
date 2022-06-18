@@ -68,7 +68,7 @@
 .navLi:hover {
     display: block;
     color: #f7f1e3;
-    border-top: 4px solid #ffffff;
+    border-top: 4px solid var(--color-hover);
     border-radius: 0;
     transition: all 0.2s ease-out;
 }
