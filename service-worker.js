@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Feria-Polymnia/precache-manifest.5bc636de86cee551439a61f3a83f0e99.js"
+  "/Feria-Polymnia/precache-manifest.b6021abca5c24a3e70acc4a5a43a0f8a.js"
 );
 
 workbox.clientsClaim();
