@@ -1,4 +1,4 @@
-# Instrucciones para nosotros Polimnia
+# Instrucciones para nosotros Polymnia
 
 ## Distribución de archivos v1.0.0
 Para una correcta organización de los archivos propongo la siguiente organización, esta se basará en lo conversado por nosotros en la reuniones y será actualizada conforme sea necesario
