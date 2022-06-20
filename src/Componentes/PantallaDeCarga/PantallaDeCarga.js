@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './PantallaDeCarga.css';
+import carga from "./carga.gif"
 
 class PantalladeCarga extends Component {
     constructor(){
@@ -25,6 +26,7 @@ class PantalladeCarga extends Component {
             <div className="PantallaDeCarga">
                 <div className="containerTitulo">
                     <h2 className="tituloCarga">Cargando, porfavor espere</h2>
+                    <img className="cat" src={carga}></img>
                 </div>
             </div>
         )

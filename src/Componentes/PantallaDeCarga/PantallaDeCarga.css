@@ -23,3 +23,13 @@
     flex: center;
     background-color: #e9f2fb;
 }
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.cat{
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+}
