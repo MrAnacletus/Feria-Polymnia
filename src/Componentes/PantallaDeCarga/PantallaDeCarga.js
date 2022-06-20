@@ -24,7 +24,7 @@ class PantalladeCarga extends Component {
     render(){
         return (
             <div className="PantallaDeCarga">
-                <div className="containerTitulo">
+                <div className="containerTituloCarga">
                     <h2 className="tituloCarga">Cargando, porfavor espere</h2>
                     <img className="cat" src={carga}></img>
                 </div>

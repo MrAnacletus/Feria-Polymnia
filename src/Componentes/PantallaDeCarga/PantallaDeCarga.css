@@ -5,10 +5,10 @@
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
 }
-.containerTitulo{
+.containerTituloCarga{
     margin-top: 20px;
-    margin-bottom: 745px;
     margin-left: 350px;
+    margin-bottom: 545px;
     margin-right: 350px;
     background-color: rgba(255,255,255,255);
 	box-shadow: 0px 0px 10px 5px #deebf9;

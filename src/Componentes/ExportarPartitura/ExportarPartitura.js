@@ -14,7 +14,7 @@ class ExportarPartitura extends Component {
     render() {
         return (
             <div className="containerExportar">
-                <div className="containerTitulo">
+                <div className="containerTituloExportar">
                     <h2 className="tituloExportar">Exportar Partitura</h2>
                 </div>
                 <button className="btnExportar" onClick={() => this.props.sendData("Menu")}>Descargar PDF</button>
