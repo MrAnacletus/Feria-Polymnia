@@ -6,7 +6,9 @@
   font-weight: normal;
   font-style: normal; 
   height: 100%;
+  min-height: 100vh;
   width: 100%;
+  position: relative;
 }
 
 .App-logo {
@@ -45,16 +47,13 @@
 }
 
 .RenderContainer {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
   overflow-y: auto;
   color: var(--color-4);
   background-size: 100%;
+  bottom: 0;
 }
 
 .colorBg{
-  height: inherit;
   overflow-x: hidden;
   overflow-y: auto;
   /* background: rgba(41, 39, 39, 0.753); */
@@ -67,12 +66,17 @@
 	font-size:1.5em;
 	text-align: center;
 	line-height:100px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
 	background: var(--color-7);
-  overflow-y: hidden;
+  height: 100px;
+  position: relative;
+  clear: both;
 }
+/* color:#FFFFFF; 
+font-size:1.5em;
+text-align: center;
+line-height:100px;
+background: var(--color-7);
+*/
 
 .logoFooter {
 	width: 324px;

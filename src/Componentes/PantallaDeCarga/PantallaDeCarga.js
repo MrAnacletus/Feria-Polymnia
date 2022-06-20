@@ -17,7 +17,7 @@ class PantalladeCarga extends Component {
     }
 
     handleTime(val){
-        setTimeout(() => {this.changePage(val)}, 1000);
+        setTimeout(() => {this.changePage(val)}, 3000);
     }
 
     render(){
