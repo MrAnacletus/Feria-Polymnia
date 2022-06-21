@@ -10,8 +10,20 @@ class PantalladeCarga extends Component {
     }
 
     componentDidMount(){
-        this.handleTime("ExportarPartitura");
+        this.callBackendAPI()
+        .then(res => this.setState({ data: res.express }))
+        .catch(err => console.log(err));
     }
+
+    callBackendAPI = async () => {
+        const response = await fetch('/express_backend');
+        const body = await response.json();
+    
+        if (response.status !== 200) {
+          throw Error(body.message) 
+        }
+        return body;
+      };
 
     changePage(val){
         this.props.sendData(val);

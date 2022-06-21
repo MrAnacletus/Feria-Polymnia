@@ -1,0 +1,30 @@
+@import "../../../variables.css";
+
+.ConteinerFormulario{
+    width: 400px;
+    height: 200px;
+    color: black;
+}
+
+.inputArchivo::placeholder{
+    color: gray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.inputArchivo{
+    transition: border 2s, background-color 2s;
+    height: 50px;
+    width: 100%;
+}
+
+.botonSubir{
+    background-color: white;
+    color: black;
+    transition: border 2s, background-color 2s;
+	font-family: 'Roboto', sans-serif;
+}
+
+.botonSubir:hover{
+    background-color: var(--color-hover);
+    border: 2px solid var(--color-hover);
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SubirArchivo from "./SubirArchivo/SubirArchivo";
 import './Menu.css';
 
 class Menu extends Component {
@@ -19,6 +20,7 @@ class Menu extends Component {
                     <h1 className="tituloMenu">¡Sube tu archivo!</h1>
                 </div>
                 <button className="SubirBoton" onClick={() => this.changePage("PantallaDeCarga")}>Subir archivo</button>
+                <SubirArchivo/>
             </div>
         )   
     }
