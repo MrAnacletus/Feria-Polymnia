@@ -1,9 +1,10 @@
 @import "../../variables.css";
 
 .containerExportar {
-	width: 100%;
-	height: 100%;
 	background-color: #e9f2fb;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
 }
 .containerTituloExportar{
 	margin-top: 20px;
@@ -39,12 +40,9 @@
 	color: black;
 	font-size: 35px;
 	font-family: 'Roboto', sans-serif;
-	background-color: white;
 	border-radius: 10px;
 	padding: 20px;
 	transition: border 2s, background-color 2s;
-	margin-top: 210px;
-	margin-bottom: 265px;
 }
 .btnExportar:hover{
 	background-color: var(--color-hover);

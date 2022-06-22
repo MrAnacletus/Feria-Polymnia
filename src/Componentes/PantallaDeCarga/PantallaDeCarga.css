@@ -7,9 +7,8 @@
 }
 .containerTituloCarga{
     margin-top: 20px;
-    margin-left: 350px;
-    margin-bottom: 545px;
-    margin-right: 350px;
+    margin-left: 20%;
+    margin-right: 20%;
     background-color: rgba(255,255,255,255);
 	box-shadow: 0px 0px 10px 5px #deebf9;
 	border-radius: 10px;
@@ -18,10 +17,11 @@
 }
 
 .PantallaDeCarga{
-    justify-content: center;
     align-items: center;
-    flex: center;
     background-color: #e9f2fb;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
 }
 img{
     max-width: 100%;

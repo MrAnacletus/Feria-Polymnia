@@ -9,6 +9,7 @@
   min-height: 100vh;
   width: 100%;
   position: relative;
+  background: #e9f2fb;
 }
 
 .App-logo {
@@ -55,21 +56,25 @@
 
 .colorBg{
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   /* background: rgba(41, 39, 39, 0.753); */
   background: #e9f2fb;
 
 }
 
 .Footer {
-	color:#FFFFFF; 
-	font-size:1.5em;
-	text-align: center;
-	line-height:100px;
-	background: var(--color-7);
+  color: #FFFFFF;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 100px;
+  background: var(--color-7);
   height: 100px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   clear: both;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 /* color:#FFFFFF; 
 font-size:1.5em;
@@ -103,22 +108,22 @@ background: var(--color-7);
 	overflow: hidden;
 }
 
- /* width */
+/* 
 ::-webkit-scrollbar {
 	width: 10px;
 }
   
-  /* Track */
+
 ::-webkit-scrollbar-track {
 	background: #f1f1f1;
 }
   
-  /* Handle */
+
 ::-webkit-scrollbar-thumb {
 	background: #888;
 }
   
-  /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
-} 
+}  */

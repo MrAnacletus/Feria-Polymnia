@@ -2,8 +2,6 @@ import axios from "axios";
 import React, {Component} from "react";
 import './ExportarPartitura.css';
 
-const FileDownload = require('js-file-download');
-
 class ExportarPartitura extends Component {
     constructor(){
         super();

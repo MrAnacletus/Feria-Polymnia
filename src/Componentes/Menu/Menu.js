@@ -19,8 +19,7 @@ class Menu extends Component {
                 <div className="containerMenu">
                     <h1 className="tituloMenu">¡Sube tu archivo!</h1>
                 </div>
-                <button className="SubirBoton" onClick={() => this.changePage("PantallaDeCarga")}>Subir archivo</button>
-                <SubirArchivo/>
+                <SubirArchivo sendData={this.changePage}/>
             </div>
         )   
     }

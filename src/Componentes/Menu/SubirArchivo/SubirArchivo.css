@@ -11,20 +11,43 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.inputArchivo{
-    transition: border 2s, background-color 2s;
-    height: 50px;
-    width: 100%;
+input[type="file"]{
+    display: none;
 }
 
-.botonSubir{
+.custom-file-upload {
+    height: 80px;
+    width: 800px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+    padding: 5px;
     background-color: white;
-    color: black;
+    border: 2px solid black;
+	border-radius: 10px;
+    font-size: 45px;
     transition: border 2s, background-color 2s;
 	font-family: 'Roboto', sans-serif;
+	color: black;
+    cursor: pointer;
 }
-
-.botonSubir:hover{
+.custom-file-upload:hover{
     background-color: var(--color-hover);
     border: 2px solid var(--color-hover);
+}
+
+.input.inputArchivo{
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.conteinerInputs{
+    color: black;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
