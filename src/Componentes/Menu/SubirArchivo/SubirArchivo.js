@@ -13,8 +13,8 @@ class SubirArchivo extends Component{
         this.setState({ selectedFile: event.target.files[0] });
     };
 
-    changePage(value){
-        this.props.sendData(value);
+    changePage(value,value2){
+        this.props.sendData(value,value2);
     }
     
     onFileUpload = () => {
@@ -24,21 +24,21 @@ class SubirArchivo extends Component{
             const bueno = "/";
             let rutaDestino = data.replaceAll(malo, bueno);
             console.log(rutaDestino);
-            var formData1 = new FormData();
-            formData1.append(
-                "path",
-                rutaDestino
-                )
-            axios.post('http://127.0.0.1:8000/partitas', {
-                path: rutaDestino
-            })
-                .then(response => {
-                        rutaDestino = response.data[1];
-                        console.log(rutaDestino);})
-                .catch(error => {
-                    this.setState({ errorMessage: error.message });
-                    console.error('There was an error!', error);
-                })
+            // var formData1 = new FormData();
+            // formData1.append(
+            //     "path",
+            //     rutaDestino
+            //     )
+            // axios.post('http://127.0.0.1:8000/partitas', {
+            //     path: rutaDestino
+            // })
+            //     .then(response => {
+            //             rutaDestino = response.data[1];
+            //             console.log(rutaDestino);})
+            //     .catch(error => {
+            //         this.setState({ errorMessage: error.message });
+            //         console.error('There was an error!', error);
+            //     })
         }
         if (this.state.selectedFile !== undefined){
             var rutaArchivo;
@@ -54,7 +54,7 @@ class SubirArchivo extends Component{
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
                     printIt(rutaArchivo);
-                    this.changePage("PantallaDeCarga");
+                    this.changePage("PantallaDeCarga",rutaArchivo);
                 })
                 .catch(error => {
                     this.setState({ errorMessage: error.message });

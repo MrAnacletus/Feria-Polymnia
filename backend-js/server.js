@@ -33,9 +33,8 @@ app.get('/single',function(req,res) {
   let page = req.query.path;
   console.log(page);
   const folderPath = __dirname+'/temp/';
-  console.log(folderPath+'IMG_8818.JPG')
   // Download function provided by express
-  res.download(folderPath+'IMG_8818.JPG', function(err) {
+  res.download(page, function(err) {
       if(err) {
           console.log(err);
       }

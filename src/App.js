@@ -9,6 +9,7 @@ import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
 
+var fileName;
 class App extends Component{
 	constructor(){
 		super();
@@ -27,14 +28,18 @@ class App extends Component{
 				render = <PantallaDeCarga sendData={this.changePage}></PantallaDeCarga>;
 			}
 			if (this.state.toRender === "ExportarPartitura"){
-				render = <ExportarPartitura sendData={this.changePage}></ExportarPartitura>;
+				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
 			}
 		}
 		return render;
 	}
-	changePage(val){
-		console.log(val);
+	changePage(val,val2){
+		console.log(val,val2);
 		this.setState({toRender: val})
+		if(val2 !== undefined){
+			console.log(val2 + "\n siii")
+			fileName = val2;
+		}
 	}
 
 	render(){

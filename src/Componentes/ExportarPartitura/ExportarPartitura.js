@@ -13,7 +13,8 @@ class ExportarPartitura extends Component {
     }
 
     exportarPartitura = () => { 
-        let path_a_exportar = "hb.pdf";
+        console.log(this.props.nombreArchivo)
+        let path_a_exportar = this.props.nombreArchivo;
         // axios({
         //     url: 'http://localhost:8000/single',
         //     method: 'GET',
@@ -33,7 +34,7 @@ class ExportarPartitura extends Component {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'foto.jpg');
+            link.setAttribute('download', 'generado.jpg');
             document.body.appendChild(link);
             link.click();
           });

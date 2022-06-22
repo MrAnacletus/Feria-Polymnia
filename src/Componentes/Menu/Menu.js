@@ -9,8 +9,8 @@ class Menu extends Component {
         this.changePage = this.changePage.bind(this);
     }
 
-    changePage(value){
-        this.props.sendData(value);
+    changePage(value,value2){
+        this.props.sendData(value,value2);
     }
 
     render() {
