@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 // const multer = require('multer');
 const cors = require("cors");
 const fileupload = require("express-fileupload");
+const url = require("url");
 
 const app = express(); //Line 2
 
@@ -28,7 +29,9 @@ app.post("/upload",  (req, respuesta) => {
 });
 
 app.get('/single',function(req,res) {
-  console.log('single file');
+  // console.log('single file');
+  let page = req.query.path;
+  console.log(page);
   const folderPath = __dirname+'/temp/';
   console.log(folderPath+'IMG_8818.JPG')
   // Download function provided by express

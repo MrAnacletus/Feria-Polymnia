@@ -18,8 +18,30 @@ class SubirArchivo extends Component{
     }
     
     onFileUpload = () => {
+        let printIt = (data) => {
+            console.log(data);
+            const malo = "\\";
+            const bueno = "/";
+            let rutaDestino = data.replaceAll(malo, bueno);
+            console.log(rutaDestino);
+            var formData1 = new FormData();
+            formData1.append(
+                "path",
+                rutaDestino
+                )
+            axios.post('http://127.0.0.1:8000/partitas', {
+                path: rutaDestino
+            })
+                .then(response => {
+                        rutaDestino = response.data[1];
+                        console.log(rutaDestino);})
+                .catch(error => {
+                    this.setState({ errorMessage: error.message });
+                    console.error('There was an error!', error);
+                })
+        }
         if (this.state.selectedFile !== undefined){
-            let rutaArchivo;
+            var rutaArchivo;
             console.log(this.state.selectedFile);
             var formData = new FormData();
             formData.append(
@@ -30,22 +52,15 @@ class SubirArchivo extends Component{
             axios.post('http://localhost:8000/upload', formData)
                 .then(response => {
                     rutaArchivo = response.data.message;
-                    this.changePage("PantallaDeCarga")
+                    //console.log(rutaArchivo);
+                    printIt(rutaArchivo);
+                    this.changePage("PantallaDeCarga");
                 })
                 .catch(error => {
                     this.setState({ errorMessage: error.message });
                     console.error('There was an error!', error);
                 });
-            console.log(rutaArchivo)
-            // formData ={
-                
-            // }
-            // axios.post('http://localhost:8000/API', formData)
-            //     .then(response => rutaArchivo = response.data.message)
-            //     .catch(error => {
-            //         this.setState({ errorMessage: error.message });
-            //         console.error('There was an error!', error);
-            //     })
+            //console.log(printIt);
         ;}else{
             this.changePage("PantallaDeCarga");
         }
