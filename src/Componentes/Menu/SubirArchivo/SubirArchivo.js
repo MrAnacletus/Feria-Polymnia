@@ -3,27 +3,39 @@ import axios from 'axios';
 import "./SubirArchivo.css";
  
 class SubirArchivo extends Component{
-    state = {
-        selectedFile: null
-    }; 
+    constructor(){
+        super();
+        this.state = {};
+    }
+
     onFileChange = event => { 
-        this.setState({ selectedFile: event.target.files[0] }); 
+        this.setState({ selectedFile: event.target.files[0] });
     }; 
-    onFileUpload = () => { 
-        const formData = new FormData(); 
-        formData.append("file",
-            this.state.selectedFile, 
-            this.state.selectedFile.name 
-        ); 
+    
+    onFileUpload = () => {
+        let rutaArchivo;
         console.log(this.state.selectedFile);
-        fetch("http://localhost:8000/upload",{
-            method: 'POST',
-			body: formData
-        }).then(response => {
-			this.setState({msg: "File successfully uploaded"});
-		}).catch(err => {
-			this.setState({error: err});
-		});
+        const formData = new FormData();
+        formData.append(
+            "file",
+            this.state.selectedFile,
+            this.state.selectedFile.name
+            )
+        axios.post('http://localhost:8000/upload', formData)
+            .then(response => rutaArchivo = response.data.message)
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
+        formData ={
+            
+        }
+        axios.post('http://localhost:8000/API', formData)
+            .then(response => rutaArchivo = response.data.message)
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
     };
     fileData = () => { 
     if (this.state.selectedFile) { 
@@ -50,11 +62,11 @@ class SubirArchivo extends Component{
     render() { 
     return ( 
         <div> 
-            <div> 
+            <div>
                 <input name="archivo" type="file" onChange={this.onFileChange} /> 
-                <button onClick={this.onFileUpload}> 
+                <button type="submit" onClick={this.onFileUpload}> 
                 Upload! 
-                </button> 
+                </button>
             </div> 
         {this.fileData()} 
         </div> 
