@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/backendPython/Generaci\303\263n de partitura/__pycache__
 # testing
 /coverage
 
