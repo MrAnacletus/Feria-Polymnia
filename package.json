@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "partitas",
+  "version": "0.2.0",
   "homepage": "https://MrAnacletus.github.io/Feria-Polymnia/",
   "private": true,
   "dependencies": {
