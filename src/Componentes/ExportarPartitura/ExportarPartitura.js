@@ -34,7 +34,7 @@ class ExportarPartitura extends Component {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'generado.pdf');
+            link.setAttribute('download', 'partitura.pdf');
             document.body.appendChild(link);
             link.click();
           });

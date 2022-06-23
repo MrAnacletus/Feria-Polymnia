@@ -125,6 +125,7 @@ def estimate_pitch_and_notes(x, onset_boundaries, i, sr):
     return generate_sine_midi_note(f0_info, sr, n1-n0)
 
 def generar_midi(filepath):
+    name = filepath.split('/')[-1].split('.')[0]
     x, fs = cargar_wav.cargar(filepath)
     global CdB 
     global tempo
@@ -186,6 +187,6 @@ def generar_midi(filepath):
     key=s.analyze('key')
     s.insert(0, key)
 
-    midi = s.write('midi', 'music21.mid')
+    midi = s.write('midi', name+".mid")
 
-    return midi
+    return name
