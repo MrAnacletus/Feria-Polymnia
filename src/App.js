@@ -4,7 +4,7 @@ import Menu from './Componentes/Menu/Menu';
 import Navbar from "./Componentes/Navbar/Navbar";
 import PantallaDeCarga from './Componentes/PantallaDeCarga/PantallaDeCarga';
 import ExportarPartitura from './Componentes/ExportarPartitura/ExportarPartitura';
-import logoFooter from "./logos/logos.png"
+import logoFooter from "./logos/partitas.png"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
