@@ -1,35 +1,35 @@
 self.__precacheManifest = [
   {
-    "revision": "7167e4c80b5d9e10b09a",
-    "url": "/Feria-Polymnia/static/css/main.a4a5f7a9.chunk.css"
+    "revision": "50c79bec2e5dab18db87",
+    "url": "/Feria-Polymnia/static/css/main.a36c0ee8.chunk.css"
   },
   {
-    "revision": "7167e4c80b5d9e10b09a",
-    "url": "/Feria-Polymnia/static/js/main.7167e4c8.chunk.js"
+    "revision": "50c79bec2e5dab18db87",
+    "url": "/Feria-Polymnia/static/js/main.50c79bec.chunk.js"
   },
   {
     "revision": "cd474f2dcda6b2605ecf",
     "url": "/Feria-Polymnia/static/js/1.cd474f2d.chunk.js"
   },
   {
-    "revision": "e77349b9e79f7f243d67",
+    "revision": "6a3e9884b3924ab7f43c",
     "url": "/Feria-Polymnia/static/css/2.2eacaed9.chunk.css"
   },
   {
-    "revision": "e77349b9e79f7f243d67",
-    "url": "/Feria-Polymnia/static/js/2.e77349b9.chunk.js"
+    "revision": "6a3e9884b3924ab7f43c",
+    "url": "/Feria-Polymnia/static/js/2.6a3e9884.chunk.js"
   },
   {
     "revision": "6ace168915aea0cc93fe",
     "url": "/Feria-Polymnia/static/js/runtime~main.6ace1689.js"
   },
   {
-    "revision": "7684980e191b3a3b9126f9d729547732",
-    "url": "/Feria-Polymnia/static/media/carga.7684980e.gif"
+    "revision": "3ef0e69f3c889c1307330c36a501eb12",
+    "url": "/Feria-Polymnia/static/media/carga.3ef0e69f.gif"
   },
   {
-    "revision": "a571a1f207e56bb2f0e790d09ce35a86",
-    "url": "/Feria-Polymnia/static/media/logos.a571a1f2.png"
+    "revision": "bd38d3a844d7e0b730236cf64873019e",
+    "url": "/Feria-Polymnia/static/media/partitas.bd38d3a8.png"
   },
   {
     "revision": "693dd490cd05f7942b51fee1dd4974e2",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/Feria-Polymnia/static/media/twt.546381d7.png"
   },
   {
-    "revision": "a5c1497feab7ec2bbe21ded72587da67",
+    "revision": "7729aea116e0507739b37f86915d6713",
     "url": "/Feria-Polymnia/index.html"
   }
 ];
