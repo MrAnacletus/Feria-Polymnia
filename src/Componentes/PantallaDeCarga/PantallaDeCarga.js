@@ -10,7 +10,7 @@ class PantalladeCarga extends Component {
     }
 
     componentDidMount(){
-        this.handleTime("ExportarPartitura")
+        //this.handleTime("ExportarPartitura")
     }
 
     changePage(val){

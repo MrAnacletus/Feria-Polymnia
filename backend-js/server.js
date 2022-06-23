@@ -34,7 +34,7 @@ app.get('/single',function(req,res) {
   console.log(page);
   const folderPath = __dirname+'/temp/';
   // Download function provided by express
-  res.download(page, function(err) {
+  res.download(folderPath+page, function(err) {
       if(err) {
           console.log(err);
       }
