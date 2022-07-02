@@ -4,7 +4,7 @@ import numpy as np
 
 import librosa
 import music21
-music21.environment.set('musescoreDirectPNGPath', 'C:\\Program Files\\MuseScore 3\\bin\\MuseScore3.exe')
+music21.environment.set('musescoreDirectPNGPath', '/usr/bin/mscore3')
 from music21.tempo import MetronomeMark
 from music21.note import Note, Rest
 from music21.stream import Stream
@@ -126,6 +126,7 @@ def estimate_pitch_and_notes(x, onset_boundaries, i, sr):
 
 def generar_midi(filepath):
     name = filepath.split('/')[-1].split('.')[0]
+    print(name)
     x, fs = cargar_wav.cargar(filepath)
     global CdB 
     global tempo
@@ -187,6 +188,6 @@ def generar_midi(filepath):
     key=s.analyze('key')
     s.insert(0, key)
 
-    midi = s.write('midi', name+".mid")
+    midi = s.write('midi', "./backendPython/GeneracionDePartitura/Generados/" + name+".mid")
 
     return name

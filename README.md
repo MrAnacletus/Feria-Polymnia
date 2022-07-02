@@ -19,3 +19,19 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - Para node package manager (npm) estamos usando la versión 8.11.0
 - Desarrollado en WSL1
 - Distribución de Ubuntu 20.04 LTS
+- Utilizando las librerías de npm:
+    - React
+    - Express
+- Utilizando las librerías de pip
+    - librosa
+    - music21
+    - numpy 1.20.1
+- Utilizando museScore3 desde:
+    - https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
+
+
+
+## Comandos para correr todo desde root de carpetas (es decir /my-app/)
+- npm start -> Inicia server de React
+- node ./backend-js/server.js -> Iniciar server de backend Js
+- uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ -> Inicia server de backend de Python

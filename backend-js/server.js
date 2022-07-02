@@ -20,9 +20,12 @@ app.post("/upload",  (req, respuesta) => {
   const newpath = __dirname + "/temp/";
   const UploadedFile = req.files.file;
   const filename = req.files.file.name;
+  console.log(newpath)
   UploadedFile.mv(`${newpath}${filename}`, (err) => {
     if (err) {
       respuesta.status(500).send({ message: "File upload failed", code: 200 });
+      console.log("File upload failed")
+      return
     }
     respuesta.status(200).send({ message: `${newpath}${filename}`, code: 200 });
   });
@@ -32,7 +35,7 @@ app.get('/single',function(req,res) {
   // console.log('single file');
   let page = req.query.path;
   console.log(page);
-  const folderPath = __dirname+'/temp/';
+  const folderPath = __dirname+'/backend-js/temp/';
   // Download function provided by express
   res.download(folderPath+page, function(err) {
       if(err) {

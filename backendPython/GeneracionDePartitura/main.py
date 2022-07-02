@@ -28,7 +28,7 @@ app.add_middleware(
 @app.post("/partitas")
 
 async def create_item(item: Item):
-  path = "C:/Users/salva/Desktop/Feria-Polymnia/backendPython/Generación de partitura"  
+  path = "./backendPython/GeneracionDePartitura/Generados"  
   name = procesamiento.generar_midi(item.path)  
   d_pdf = try1.generar_partitura(path+"/"+name+".mid")
   return {d_pdf}
