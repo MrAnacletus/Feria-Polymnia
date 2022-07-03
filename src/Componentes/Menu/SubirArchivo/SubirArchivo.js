@@ -67,20 +67,20 @@ class SubirArchivo extends Component{
         }
     };
     render() { 
-    return ( 
-        <div className='conteinerInputs'>
-            <label for="file-upload" class="custom-file-upload">
-                Seleccionar Archivo
-                <input id="file-upload" type="file" onChange={this.onFileChange}/>
-            </label>
-            <h5>Por el momento solo es posible procesar archivos WAV</h5>
-            
-            <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} > 
-            Generar partitura
-            </button>
-        </div>
-    ); 
-    } 
+        return ( 
+            <div className='conteinerInputs'>
+                <label for="file-upload" class="custom-file-upload">
+                    Seleccionar Archivo
+                    <input id="file-upload" type="file" onChange={this.onFileChange}/>
+                </label>
+                <h5>Por el momento solo es posible procesar archivos WAV</h5> 
+                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} enabled> 
+                Generar partitura
+                </button>          
+            </div>
+        );
+    
+    }
 }
 
 export default SubirArchivo;
