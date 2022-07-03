@@ -29,6 +29,9 @@ class Navbar extends Component {
             <nav className="NavbarItems">  
                 <ul className='nav-menuSPA'>
                     <li>
+                        <i class="gg-home-alt" ref='#' onClick={() => this.changePage("Menu", 0)}></i>
+                    </li>
+                    <li>
                         <a className="SPA" ref='#' onClick={() => this.changePage("Menu", 0)}>
                             Partitas
                         </a>

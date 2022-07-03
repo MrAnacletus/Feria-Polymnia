@@ -10,6 +10,7 @@ import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
 
 var fileName;
+var boolean;
 class App extends Component{
 	constructor(){
 		super();
@@ -25,7 +26,7 @@ class App extends Component{
 				render = <Menu sendData={this.changePage}></Menu>;
 			}
 			if (this.state.toRender === "PantallaDeCarga"){
-				render = <PantallaDeCarga sendData={this.changePage}></PantallaDeCarga>;
+				render = <PantallaDeCarga sendData={this.changePage} boolean ={boolean}></PantallaDeCarga>;
 			}
 			if (this.state.toRender === "ExportarPartitura"){
 				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
@@ -36,10 +37,12 @@ class App extends Component{
 	changePage(val,val2){
 		console.log(val,val2);
 		this.setState({toRender: val})
-		if(val2 !== undefined){
-			console.log(val2 + "\n siii")
+		if (val === "ExportarPartitura"){
 			fileName = val2;
+		}else if (val === "PantallaDeCarga"){
+			boolean = val2
 		}
+		
 	}
 
 	render(){

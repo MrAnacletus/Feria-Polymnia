@@ -35,6 +35,9 @@ input[type="file"]{
     border: 2px solid var(--color-hover);
 }
 
+.conteinerInputs h5{
+    font-family: 'Roboto', sans-serif;
+}
 .input.inputArchivo{
     border: none;
     color: black;

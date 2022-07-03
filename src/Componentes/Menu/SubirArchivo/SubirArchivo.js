@@ -55,7 +55,7 @@ class SubirArchivo extends Component{
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
                     printIt(rutaArchivo);
-                    this.changePage("PantallaDeCarga");
+                    this.changePage("PantallaDeCarga", false);
                 })
                 .catch(error => {
                     this.setState({ errorMessage: error.message });
@@ -63,7 +63,7 @@ class SubirArchivo extends Component{
                 });
             //console.log(printIt);
         ;}else{
-            this.changePage("PantallaDeCarga");
+            this.changePage("PantallaDeCarga", true);
         }
     };
     render() { 
@@ -73,8 +73,10 @@ class SubirArchivo extends Component{
                 Seleccionar Archivo
                 <input id="file-upload" type="file" onChange={this.onFileChange}/>
             </label>
+            <h5>Por el momento solo es posible procesar archivos WAV</h5>
+            
             <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} > 
-            Subir
+            Generar partitura
             </button>
         </div>
     ); 

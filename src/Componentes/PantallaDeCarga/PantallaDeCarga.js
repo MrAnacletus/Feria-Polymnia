@@ -10,7 +10,9 @@ class PantalladeCarga extends Component {
     }
 
     componentDidMount(){
-        //this.handleTime("ExportarPartitura")
+        if (this.props.boolean){
+            this.handleTime("ExportarPartitura")
+        }
     }
 
     changePage(val){
@@ -25,7 +27,7 @@ class PantalladeCarga extends Component {
         return (
             <div className="PantallaDeCarga">
                 <div className="containerTituloCarga">
-                    <h2 className="tituloCarga">Cargando, por favor espere</h2>
+                    <h2 className="tituloCarga">Procesando la partitura, por favor espere</h2>
                     <img className="cat" src={carga}></img>
                 </div>
             </div>
