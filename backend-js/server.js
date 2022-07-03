@@ -35,7 +35,7 @@ app.get('/single',function(req,res) {
   // console.log('single file');
   let page = req.query.path;
   console.log(page);
-  const folderPath = __dirname+'/backend-js/temp/';
+  const folderPath = __dirname+'/temp/';
   // Download function provided by express
   res.download(folderPath+page, function(err) {
       if(err) {
