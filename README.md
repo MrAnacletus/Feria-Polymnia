@@ -32,6 +32,7 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 
 
 ## Comandos para correr todo desde root de carpetas (es decir /my-app/)
-- npm start -> nicia server de React
+- export QT_QPA_PLATFORM=offscreen -> quita la necesidad de pantalla de museScore3
+- npm start -> inicia server de React
 - node ./backend-js/server.js -> Iniciar server de backend Js
 - uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ -> Inicia server de backend de Python

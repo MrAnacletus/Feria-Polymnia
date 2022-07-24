@@ -5,12 +5,13 @@ import "./SubirArchivo.css";
 class SubirArchivo extends Component{
     constructor(){
         super();
-        this.state = {};
+        this.state = {habilitado:""};
         this.changePage = this.changePage.bind(this);
     }
 
     onFileChange = event => { 
         this.setState({ selectedFile: event.target.files[0] });
+        this.setState({ habilitado: "habilitado" });
     };
 
     changePage(value,value2){
@@ -42,6 +43,7 @@ class SubirArchivo extends Component{
                 })
         }
         if (this.state.selectedFile !== undefined){
+            
             var rutaArchivo;
             console.log(this.state.selectedFile);
             var formData = new FormData();
@@ -71,10 +73,10 @@ class SubirArchivo extends Component{
             <div className='conteinerInputs'>
                 <label for="file-upload" class="custom-file-upload">
                     Seleccionar Archivo
-                    <input id="file-upload" type="file" onChange={this.onFileChange}/>
+                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav"/>
                 </label>
                 <h5>Por el momento solo es posible procesar archivos WAV</h5> 
-                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} enabled> 
+                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={!this.state.habilitado}> 
                 Generar partitura
                 </button>          
             </div>
