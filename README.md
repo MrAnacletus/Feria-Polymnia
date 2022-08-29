@@ -19,6 +19,8 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - Para node package manager (npm) estamos usando la versión 8.11.0
 - Desarrollado en WSL1
 - Distribución de Ubuntu 20.04 LTS
+- Para correr el sercer de python se utiliza Uvicorn con:
+    - sudo apt install uvicorn
 - Utilizando las librerías de npm:
     - React
     - Express
@@ -26,6 +28,7 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
     - librosa
     - music21
     - numpy 1.20.1
+    - fastapi
 - Utilizando museScore3 desde:
     - https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
 
