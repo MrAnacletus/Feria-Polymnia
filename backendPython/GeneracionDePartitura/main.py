@@ -1,5 +1,6 @@
 import procesamiento
 import try1
+import melodia
 
 #filepath = "pistas/hb.wav"
 #try1.generar_partitura(
@@ -12,6 +13,7 @@ import try1
 
 class Item(BaseModel):
     path: str
+    type: str
 
 origins = ["http://localhost:3000", "localhost:3000"]
 
@@ -29,8 +31,13 @@ app.add_middleware(
 
 async def create_item(item: Item):
   path = "./backendPython/GeneracionDePartitura/Generados"  
-  name = procesamiento.generar_midi(item.path)  
-  d_pdf = try1.generar_partitura(path+"/"+name+".mid")
+  tipo = item.type
+  if tipo == "voz":
+    name_voice = melodia.generarMelodia(item.path)  
+    d_pdf = try1.generar_partitura(path+"/"+name_voice+".mid")
+  else:
+    name = procesamiento.generar_midi(item.path)
+    d_pdf = try1.generar_partitura(path+"/"+name+".mid")
   return {d_pdf}
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):

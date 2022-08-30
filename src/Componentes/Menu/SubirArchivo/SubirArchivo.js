@@ -24,14 +24,20 @@ class SubirArchivo extends Component{
             const malo = "\\";
             const bueno = "/";
             let rutaDestino = data.replaceAll(malo, bueno);
+            let tipo = "voz";
             console.log(rutaDestino);
             var formData1 = new FormData();
             formData1.append(
                 "path",
                 rutaDestino
                 )
+            formData1.append(
+                "type",
+                tipo
+            )
             axios.post('http://127.0.0.1:3001/partitas', {
-                path: rutaDestino
+                path: rutaDestino,
+                type: tipo
             })
                 .then(response => {
                         rutaDestino = response.data[0];
