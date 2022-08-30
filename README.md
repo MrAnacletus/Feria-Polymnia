@@ -14,28 +14,79 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
         Todos los componentes inician su nombre con ***MAYUSCULAS***, ¿Por qué?, porque yo quise :D (y ya inicié así porfavor mantengamoslo así)
         - logos -> Imagenes y logos que deban ser usados por uno o mas componentes de React
 ## Versión de las cosas que estamos usando
-
+- Para NVM estamos usando la versión 0.39.1 (creo que no importa)
 - Para Node.js estamos utilizando la versión v16.15.1
 - Para node package manager (npm) estamos usando la versión 8.11.0
 - Desarrollado en WSL1
 - Distribución de Ubuntu 20.04 LTS
-- Para correr el sercer de python se utiliza Uvicorn con:
-    - sudo apt install uvicorn
-- Utilizando las librerías de npm:
-    - React
-    - Express
-- Utilizando las librerías de pip
-    - librosa
-    - music21
-    - numpy 1.20.1
-    - fastapi
-- Utilizando museScore3 desde:
-    - https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
+### Librerias de python
+- librosa 0.9.1
+- music21 7.3.3
+- numpy 1.20.1
+- fastapi 0.78.0
+- uvicorn [standard]0.17.6
+- pypianoroll 0.5.3
+### Librerias NPM
+- @testing-library/jest-dom": "^5.16.4",
+- "@testing-library/react": "^13.3.0",
+- "@testing-library/user-event": "^13.5.0",
+- "axios": "^0.27.2",
+- "body-parser": "^1.20.0",
+- "bootstrap": "^5.1.3",
+- "cors": "^2.8.5",
+- "express": "^4.18.1",
+- "express-fileupload": "^1.4.0",
+- "js-file-download": "^0.4.12",
+- "multer": "^1.4.5-lts.1",
+- "react": "^18.2.0",
+- "react-dom": "^18.1.0",
+- "react-router-dom": "^6.3.0",
+- "react-scripts": "^2.1.3",
+- "web-vitals": "^2.1.4"
 
+## Para la instalación de todo:
+#### Actualizar Ubuntu
+- ```sudo apt-get update```
+- ```sudo apt-get upgrade```
+#### Obtener repo de git
+- ```git clone https://github.com/MrAnacletus/Feria-Polymnia.git```
+#### Cambiar a una branch nueva
+- ```git checkout -b <Nombre-branch>```
 
+#### Instalar NVM
+- ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
+- ```export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"```
+- ```[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm```
+#### Instalar node
+- ```nvm install 16.15.1```
+#### Instalar pip3
+- ```sudo apt install python3-pip```
+#### Instalar museScore3 desde https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
+- ```sudo add-apt-repository ppa:mscore-ubuntu/mscore3-stable```
+- ```sudo apt-get install musescore3```
+#### Instalar librosa 0.9.1
+- ```pip3 install librosa==0.9.1```
+#### Instalar music21 7.3.3
+- ```pip3 install music21==7.3.3```
+#### Instalar numpy 1.20.1
+- ```pip3 install numpy==1.20.1```
+#### Instalar fastapi 0.78.0
+- ```pip3 install fastapi==0.78.0```
+#### Instalar uvicorn 0.17.6
+- ```pip3 install uvicorn[standard]==0.17.6```
+#### Instalar pypianoroll
+- ```pip3 install pypianoroll==0.5.3```
+#### Instalar dependencias de npm
+- ```npm ci```
 
-## Comandos para correr todo desde root de carpetas (es decir /my-app/)
-- export QT_QPA_PLATFORM=offscreen -> quita la necesidad de pantalla de museScore3
-- npm start -> inicia server de React
-- node ./backend-js/server.js -> Iniciar server de backend Js
-- uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ -> Inicia server de backend de Python
+#### Si es que hay problemas con libQt5Core.so.5
+- ```sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5```
+
+## Para correr todo:
+#### Terminal 1
+- ```npm start```
+#### Terminal 2
+- ```node ./backend-js/server.js```
+#### Terminal 3
+- ```export QT_QPA_PLATFORM=offscreen```
+- ```python3 -m uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ --port 3001```
