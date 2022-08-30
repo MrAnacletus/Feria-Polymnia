@@ -30,7 +30,7 @@ class SubirArchivo extends Component{
                 "path",
                 rutaDestino
                 )
-            axios.post('http://127.0.0.1:8000/partitas', {
+            axios.post('http://127.0.0.1:3001/partitas', {
                 path: rutaDestino
             })
                 .then(response => {
@@ -52,7 +52,7 @@ class SubirArchivo extends Component{
                 this.state.selectedFile,
                 this.state.selectedFile.name
                 )
-            axios.post('http://localhost:8000/upload', formData)
+            axios.post('http://127.0.0.1:8000/upload', formData)
                 .then(response => {
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
