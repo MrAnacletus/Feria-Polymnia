@@ -26,6 +26,9 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - fastapi 0.78.0
 - uvicorn [standard]0.17.6
 - pypianoroll 0.5.3
+- scipy 1.7.0
+- pytorch 1.12.0
+- pysoundfile 0.9.0
 ### Librerias NPM
 - @testing-library/jest-dom": "^5.16.4",
 - "@testing-library/react": "^13.3.0",
@@ -74,8 +77,14 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - ```pip3 install fastapi==0.78.0```
 #### Instalar uvicorn 0.17.6
 - ```pip3 install uvicorn[standard]==0.17.6```
-#### Instalar pypianoroll
+#### Instalar pypianoroll 0.5.3
 - ```pip3 install pypianoroll==0.5.3```
+#### Instalar scipy 1.7.0
+- ```pip3 install scipy==1.7.0```
+#### Instalar pytorch 1.12.0
+- ```pip3 install torch==1.12.0```
+#### Instalar pysoundfile 0.9.0
+- ```pip3 install pysoundfile==0.9.0```
 #### Instalar dependencias de npm
 - ```npm ci```
 
