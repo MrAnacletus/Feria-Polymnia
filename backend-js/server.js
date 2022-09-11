@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 const port = process.env.PORT || 8000; //Line 3
 
 app.post("/upload",  (req, respuesta) => {
+  console.log(req.body.nombre);
+  console.log(req.body.autor);
   console.log(req.files.file.name); // the uploaded file object
   const newpath = __dirname + "/temp/";
   const UploadedFile = req.files.file;

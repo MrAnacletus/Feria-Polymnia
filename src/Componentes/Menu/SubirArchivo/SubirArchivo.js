@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./SubirArchivo.css";
- 
+
+
+
 class SubirArchivo extends Component{
     constructor(){
         super();
-        this.state = {habilitado:""};
+        this.state = {
+            habilitado:"",
+            autorElegido: "Unknown",
+        };
         this.changePage = this.changePage.bind(this);
+        this.changeHandlerNombre = this.changeHandlerNombre.bind(this);
+        this.changeHandlerAutor = this.changeHandlerAutor.bind(this);
     }
 
-    onFileChange = event => { 
-        this.setState({ selectedFile: event.target.files[0] });
-        this.setState({ habilitado: "habilitado" });
+    onFileChange = event => {
+        this.setState({
+            selectedFile: event.target.files[0],
+            nombreDefault: event.target.files[0].name.slice(0,event.target.files[0].name.length-4)
+        });
+        
     };
 
     changePage(value,value2){
         this.props.sendData(value,value2);
     }
+
+    changeHandlerNombre(event){
+        this.setState({
+            nombreElegido: event.target.value
+        });
+    }
+    changeHandlerAutor(event){
+        this.setState({
+            autorElegido: event.target.value
+        });
+    }
     
     onFileUpload = () => {
+        console.log(this.state.nombreElegido);
         let printIt = (data) => {
             console.log(data);
             const malo = "\\";
@@ -57,8 +79,13 @@ class SubirArchivo extends Component{
                 "file",
                 this.state.selectedFile,
                 this.state.selectedFile.name
+                // this.state.nombreElegido,
+                // this.state.autorElegido
                 )
-            axios.post('http://127.0.0.1:8000/upload', formData)
+            formData.append("nombre",this.state.nombreElegido)
+            formData.append("autor",this.state.autorElegido)
+            
+            axios.post('http://127.0.0.1:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data'})
                 .then(response => {
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
@@ -73,17 +100,40 @@ class SubirArchivo extends Component{
         ;}else{
             this.changePage("PantallaDeCarga", true);
         }
-    };
-    render() { 
+    };    
+
+    render() {
+        if (this.state.selectedFile !== undefined){
+            return (
+                <div className='conteinerInputs'>
+                <label for="file-upload" class="custom-file-upload">
+                    {this.state.selectedFile.name}
+                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav"/>
+                </label>
+                <h5>Por el momento solo es posible procesar archivos WAV</h5> 
+                
+                <form>
+                <label htmlFor="namedInput" >Nombre Canción:</label>
+                <input id="namedInput" name="nombre" type="text" placeholder={this.state.nombreDefault} required={true} onChange={this.changeHandlerNombre}/>
+                <label htmlFor="namedInput" >Autor</label>
+                <input id="namedInput" name="autor" type="text" defaultValue={"Unknown"} placeholder={"Unknown"} onChange={this.changeHandlerAutor} on/>
+                </form>
+                
+                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={false}> 
+                Procesar el audio
+                </button>          
+            </div>
+            )
+        }
         return ( 
             <div className='conteinerInputs'>
                 <label for="file-upload" class="custom-file-upload">
                     Seleccionar Archivo
                     <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav"/>
                 </label>
-                <h5>Por el momento solo es posible procesar archivos WAV</h5> 
-                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={!this.state.habilitado}> 
-                Generar partitura
+                <h5>Por el momento solo es posible procesar archivos WAV</h5>                 
+                <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={true}> 
+                Procesar el audio
                 </button>          
             </div>
         );
