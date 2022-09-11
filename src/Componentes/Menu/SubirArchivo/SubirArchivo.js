@@ -47,6 +47,8 @@ class SubirArchivo extends Component{
             const bueno = "/";
             let rutaDestino = data.replaceAll(malo, bueno);
             let tipo = "voz";
+            let nombre=this.state.nombreElegido;
+            let autor=this.state.autorElegido;
             console.log(rutaDestino);
             var formData1 = new FormData();
             formData1.append(
@@ -57,9 +59,13 @@ class SubirArchivo extends Component{
                 "type",
                 tipo
             )
+            formData1.append("nombre",nombre)
+            formData1.append("autor",autor)
             axios.post('http://127.0.0.1:3001/partitas', {
                 path: rutaDestino,
-                type: tipo
+                type: tipo,
+                nombre: nombre,
+                autor: autor
             })
                 .then(response => {
                         rutaDestino = response.data[0];
