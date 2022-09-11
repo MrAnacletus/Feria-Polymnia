@@ -4,6 +4,7 @@ import Menu from './Componentes/Menu/Menu';
 import Navbar from "./Componentes/Navbar/Navbar";
 import PantallaDeCarga from './Componentes/PantallaDeCarga/PantallaDeCarga';
 import ExportarPartitura from './Componentes/ExportarPartitura/ExportarPartitura';
+import EleccionInicial from './Componentes/Elecciones/EleccionInicial';
 import logoFooter from "./logos/partitas.png"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
@@ -20,7 +21,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <Menu sendData={this.changePage}></Menu>;
+		render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -30,6 +31,9 @@ class App extends Component{
 			}
 			if (this.state.toRender === "ExportarPartitura"){
 				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
+			}
+			if (this.state.toRender === "EleccionInicial"){
+				render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
 			}
 		}
 		return render;
