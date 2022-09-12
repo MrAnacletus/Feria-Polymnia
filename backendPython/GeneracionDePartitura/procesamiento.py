@@ -126,7 +126,7 @@ def estimate_pitch_and_notes(x, onset_boundaries, i, sr):
 
 def generar_midi(filepath):
     name = filepath.split('/')[-1].split('.')[0]
-    print(name)
+    #print(name)
     x, fs = cargar_wav.cargar(filepath)
     global CdB 
     global tempo

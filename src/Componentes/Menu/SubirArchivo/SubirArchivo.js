@@ -46,7 +46,7 @@ class SubirArchivo extends Component{
             const malo = "\\";
             const bueno = "/";
             let rutaDestino = data.replaceAll(malo, bueno);
-            let tipo = "voz";
+            let tipo = "a";
             let nombre=this.state.nombreElegido;
             let autor=this.state.autorElegido;
             console.log(rutaDestino);

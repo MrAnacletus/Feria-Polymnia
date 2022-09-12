@@ -14,6 +14,8 @@ import try1
 class Item(BaseModel):
     path: str
     type: str
+    nombre: str
+    autor: str
 
 origins = ["http://localhost:3000", "localhost:3000"]
 
@@ -34,10 +36,10 @@ async def create_item(item: Item):
   tipo = item.type
   if tipo == "voz":
     name_voice = melodia.generarMelodia(item.path)  
-    d_pdf = try1.generar_partitura(path+"/"+name_voice+".mid")
+    d_pdf = try1.generar_partitura(path+"/"+name_voice+".mid", item.nombre, item.autor)
   else:
     name = procesamiento.generar_midi(item.path)
-    d_pdf = try1.generar_partitura(path+"/"+name+".mid")
+    d_pdf = try1.generar_partitura(path+"/"+name+".mid", item.nombre, item.autor)
   return {d_pdf}
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):
