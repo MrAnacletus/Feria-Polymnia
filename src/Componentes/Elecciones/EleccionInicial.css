@@ -1,0 +1,25 @@
+@import "../../variables.css";
+
+.containerEleccion{
+    padding-top: 20px;
+}
+
+.containerTituloEleccion{
+    padding-bottom: 20px;
+}
+
+/* .containerBotones{
+} */
+
+.btnEleccion{
+    font-family: 'Roboto', sans-serif;
+    height: 70px;
+    width: 600px;
+    font-size: 28px;
+}
+
+.tituloEleccion {
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    color: black;
+}

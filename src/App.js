@@ -7,7 +7,7 @@ import ExportarPartitura from './Componentes/ExportarPartitura/ExportarPartitura
 import EleccionInicial from './Componentes/Elecciones/EleccionInicial';
 import EleccionInstrumentos from './Componentes/Elecciones/EleccionInstrumentos';
 import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
-import logoFooter from "./logos/partitas.png"
+import logoFooter from "./logos/finalv1.svg"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
@@ -69,9 +69,9 @@ class App extends Component{
 				<div className="Footer">
 					<img className="logoFooter" src={logoFooter}></img>
 					<div className="Redes">
-						<img className="fb" src={logoFB}></img>
+						<img className="fb" src={logoFB} ref="https://www.facebook.com/Polymnia-103142859200736"></img>
 						<img className="twt" src={logoTWT}></img>
-						<img className="ig" src={logoIG}></img>
+						<img className="ig" src={logoIG} ref="https://www.instagram.com/polymnia_fsw/"></img>
 					</div>
 				</div>
 			</div>
