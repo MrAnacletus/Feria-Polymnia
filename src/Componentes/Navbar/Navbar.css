@@ -1,7 +1,9 @@
 @import "../../variables.css";
 .NavbarItems {
-    height: 54px;
+    height: 10vh;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.2rem;
     background-color: var(--color-7);
     font-family: 'Roboto', sans-serif;

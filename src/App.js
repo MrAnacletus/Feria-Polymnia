@@ -59,22 +59,22 @@ class App extends Component{
 
 	render(){
 		return(
-			<div className="App">
+			<body className="App">
 				<Navbar sendData={this.changePage}/>
 				<div className="RenderContainer">
 					<div className="colorBg">
 						{this.RenderPage()}
 					</div>	
 				</div>
-				<div className="Footer">
+				<footer className="Footer">
 					<img className="logoFooter" src={logoFooter}></img>
 					<div className="Redes">
-						<img className="fb" src={logoFB} ref="https://www.facebook.com/Polymnia-103142859200736"></img>
-						<img className="twt" src={logoTWT}></img>
-						<img className="ig" src={logoIG} ref="https://www.instagram.com/polymnia_fsw/"></img>
+						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank"><img className="fb" src={logoFB}></img></a>
+						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank"><img className="ig" src={logoIG}></img></a>
+						<a href="https://twitter.com/PolymniaFSW" target="_blank"><img className="twt" src={logoTWT}></img></a>
 					</div>
-				</div>
-			</div>
+				</footer>
+			</body>
 		)
 	}
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import './EleccionInicial.css';
+import './Elecciones.css';
 import PantalladeCarga from "../PantallaDeCarga/PantallaDeCarga";
 
 

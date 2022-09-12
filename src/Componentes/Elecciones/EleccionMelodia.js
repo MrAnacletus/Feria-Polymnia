@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './EleccionMelodia.css';
+import './Elecciones.css';
 
 class EleccionMelodia extends Component {
     constructor(){
