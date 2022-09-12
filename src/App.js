@@ -54,7 +54,6 @@ class App extends Component{
 		}else if (val === "PantallaDeCarga"){
 			boolean = val2
 		}
-		
 	}
 
 	render(){
@@ -69,9 +68,9 @@ class App extends Component{
 				<footer className="Footer">
 					<img className="logoFooter" src={logoFooter}></img>
 					<div className="Redes">
-						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank"><img className="fb" src={logoFB}></img></a>
-						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank"><img className="ig" src={logoIG}></img></a>
-						<a href="https://twitter.com/PolymniaFSW" target="_blank"><img className="twt" src={logoTWT}></img></a>
+						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB}></img></a>
+						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG}></img></a>
+						<a href="https://twitter.com/PolymniaFSW" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT}></img></a>
 					</div>
 				</footer>
 			</body>

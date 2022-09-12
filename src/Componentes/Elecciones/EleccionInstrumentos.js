@@ -24,22 +24,23 @@ class EleccionInstrumentos extends Component {
                 </div>
                 <div className="containerBotones">
                     {/* instrumentos */}
-                    <button className="btnEleccion" onClick={() => this.changePage("Piano")}>Piano</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Guitarra")}>Guitarra</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Bajo")}>Bajo</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Bateria")}>Bateria</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Violin")}>Violin</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Flauta")}>Flauta</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Saxofon")}>Saxofon</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Trompeta")}>Trompeta</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Trombon")}>Trombon</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Oboe")}>Oboe</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Clarinete")}>Clarinete</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Tuba")}>Tuba</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Timbal")}>Timbal</button>
-                    <button className="btnEleccion" onClick={() => this.changePage("Marimba")}>Marimba</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Piano")}>Piano</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Guitarra")}>Guitarra</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Bajo")}>Bajo</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Bateria")}>Bateria</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Violin")}>Violin</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Flauta")}>Flauta</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Saxofon")}>Saxofon</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Trompeta")}>Trompeta</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Trombon")}>Trombon</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Oboe")}>Oboe</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Clarinete")}>Clarinete</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Tuba")}>Tuba</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Timbal")}>Timbal</button>
+                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage("Marimba")}>Marimba</button>
                     <button className="btnEleccion" onClick={() => this.changePage("EleccionInicial",false)}>Volver</button>
                 </div>
+                
             </div>
         );
     }

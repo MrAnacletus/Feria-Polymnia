@@ -1,5 +1,7 @@
 @import "./variables.css";
 
+
+
 .App {
   text-align: center;
   font-family: 'MuliRegular';
@@ -70,7 +72,7 @@
   font-weight: normal;
   font-style: normal;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 /* color:#FFFFFF; 
 font-size:1.5em;
@@ -82,14 +84,12 @@ background: var(--color-7);
 .logoFooter {
 	float: left;
 	margin-left: 5vw;
-  margin-right: 30vw;
 }
 
 .Redes {
 	float: right;
 	padding-right: 15px;
   margin-right: 5vw;
-  margin-left: 30vw;
 }
 
 .fb {

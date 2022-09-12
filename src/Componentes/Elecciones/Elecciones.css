@@ -25,18 +25,40 @@
 }
 
 .containerBotones{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 20px;
+    
+
+
+    margin: 0 5%;
 }
 
 .btnEleccion{
+    height: auto;
+    width: auto;
+    margin: 0 0;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 45px;
+    transition: border 2s, background-color 2s;
     font-family: 'Roboto', sans-serif;
-    height: 70px;
-    width: 600px;
-    font-size: 28px;
-    margin: 5px;
+    color: black;
+    grid-column: 1/4;
 }
+
+.btnEleccionInstrumentos{
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 45px;
+    transition: border 2s, background-color 2s;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
