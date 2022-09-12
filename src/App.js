@@ -5,6 +5,8 @@ import Navbar from "./Componentes/Navbar/Navbar";
 import PantallaDeCarga from './Componentes/PantallaDeCarga/PantallaDeCarga';
 import ExportarPartitura from './Componentes/ExportarPartitura/ExportarPartitura';
 import EleccionInicial from './Componentes/Elecciones/EleccionInicial';
+import EleccionInstrumentos from './Componentes/Elecciones/EleccionInstrumentos';
+import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
 import logoFooter from "./logos/partitas.png"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
@@ -34,6 +36,12 @@ class App extends Component{
 			}
 			if (this.state.toRender === "EleccionInicial"){
 				render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
+			}
+			if (this.state.toRender === "EleccionInstrumentos"){
+				render = <EleccionInstrumentos sendData={this.changePage}></EleccionInstrumentos>;
+			}
+			if (this.state.toRender === "EleccionMelodia"){
+				render = <EleccionMelodia sendData={this.changePage}></EleccionMelodia>;
 			}
 		}
 		return render;

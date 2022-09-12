@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import './EleccionDeInstrumento.css';
-import PantalladeCarga from "../..PantallaDeCarga/PantalladeCarga";
+import './EleccionInstrumentos.css';
+import PantallaDeCarga from "../PantallaDeCarga/PantallaDeCarga";
 
 
-class EleccionDeInstrumento extends Component {
+class EleccionInstrumentos extends Component {
     constructor(){
         super();
         this.state = {
@@ -29,10 +29,11 @@ class EleccionDeInstrumento extends Component {
                     <button className="btnEleccion" onClick={() => this.changePage("Bajo")}>Bajo</button>
                     <button className="btnEleccion" onClick={() => this.changePage("Bateria")}>Bateria</button>
                     <button className="btnEleccion" onClick={() => this.changePage("Violin")}>Violin</button>
+                    <button className="btnEleccion" onClick={() => this.changePage("EleccionInicial",false)}>Volver</button>
                 </div>
             </div>
         );
     }
 }
 
-export default EleccionDeInstrumento;
+export default EleccionInstrumentos;

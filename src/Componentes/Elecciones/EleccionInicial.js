@@ -17,8 +17,23 @@ class EleccionInicial extends Component {
     }
 
     elegirInstrumentos(){
-        this.changePage("PantallaDeCarga", true);
+        this.changePage("PantallaDeCarga", false);
+        // Acá se debe hacer un fetch para obtener los instrumentos
+        // y luego cambiar el estado de toRender a "EleccionInstrumentos"
+        setTimeout(() => {
+            this.changePage("EleccionInstrumentos", false);
+        }, 4000);
     }
+
+    elegirMelodia(){
+        this.changePage("PantallaDeCarga", false);
+        // Acá se debe hacer un fetch para obtener la melodía
+        // y luego cambiar el estado de toRender a "EleccionMelodia"
+        setTimeout(() => {
+            this.changePage("EleccionMelodia", false);
+        }, 4000);
+    }
+
 
     render() {
         return (
@@ -28,7 +43,7 @@ class EleccionInicial extends Component {
                 </div>
                 <div className="containerBotones">
                     <button className="btnEleccion" onClick={() => this.elegirInstrumentos()} >Generar partitura de un instrumento</button>
-                    <button className="btnEleccion" >Generar partitura de melodía</button>
+                    <button className="btnEleccion" onClick={() => this.elegirMelodia()} >Generar partitura de melodía</button>
                 </div>
             </div>
         );
