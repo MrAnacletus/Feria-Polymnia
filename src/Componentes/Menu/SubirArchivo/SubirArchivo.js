@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import "./SubirArchivo.css";
 
-
-
 class SubirArchivo extends Component{
     constructor(){
         super();

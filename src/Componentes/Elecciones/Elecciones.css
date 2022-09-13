@@ -51,6 +51,7 @@
 
 .btnEleccionInstrumentos{
     height: auto;
+    width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
@@ -58,6 +59,32 @@
     border-radius: 10px;
     font-size: 45px;
     transition: border 2s, background-color 2s;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+.containerBotonIntrumento{
+    height: auto;
+    width: auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 45px;
+    transition: border 2s, background-color 2s;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.imagenBotonEleccion{
+    height: 40px;
+    width: 40px;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+.textoBotonEleccion{
+    margin: 0 0;
+    padding: 0 0;
+    
     font-family: 'Roboto', sans-serif;
     color: black;
 }
