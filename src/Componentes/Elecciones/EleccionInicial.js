@@ -30,7 +30,7 @@ class EleccionInicial extends Component {
         // Acá se debe hacer un fetch para obtener la melodía
         // y luego cambiar el estado de toRender a "EleccionMelodia"
         setTimeout(() => {
-            this.changePage("EleccionMelodia", false);
+            this.changePage("ExportarPartitura", false);
         }, 4000);
     }
 
