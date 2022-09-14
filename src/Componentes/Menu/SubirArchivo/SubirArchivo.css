@@ -29,6 +29,7 @@ input[type="file"]{
 	font-family: 'Roboto', sans-serif;
 	color: black;
     cursor: pointer;
+    overflow: hidden;
 }
 .custom-file-upload:hover{
     background-color: var(--color-hover);

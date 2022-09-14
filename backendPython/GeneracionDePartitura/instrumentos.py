@@ -56,7 +56,7 @@ def limpiar_midi(midi, instrumento):
             if instrumentos[i] == instrumento:
                 l_instrumentos.append(i)
         for instrument in midi_data.instruments:
-            if str(instrument.program) in l_instrumentos:
+            if str(instrument.program) in l_instrumentos and not instrument.is_drum:
                 midi_limpio.instruments.append(instrument)
     midi_limpio.write(midi+'_new'+'.mid')
 
