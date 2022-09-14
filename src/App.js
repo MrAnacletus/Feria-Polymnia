@@ -11,8 +11,11 @@ import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
 
+
 var fileName;
 var boolean;
+var respuestaInstrumentos;
+
 class App extends Component{
 	constructor(){
 		super();
@@ -22,7 +25,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -37,7 +40,7 @@ class App extends Component{
 				render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
 			}
 			if (this.state.toRender === "EleccionInstrumentos"){
-				render = <EleccionInstrumentos sendData={this.changePage}></EleccionInstrumentos>;
+				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos}></EleccionInstrumentos>;
 			}
 		}
 		return render;
@@ -47,8 +50,11 @@ class App extends Component{
 		this.setState({toRender: val})
 		if (val === "ExportarPartitura"){
 			fileName = val2;
+			console.log(fileName + " recibí este nombre de archivo");
 		}else if (val === "PantallaDeCarga"){
-			boolean = val2
+			boolean = val2;
+		}else if (val === "EleccionInstrumentos"){
+			respuestaInstrumentos = val2;
 		}
 	}
 

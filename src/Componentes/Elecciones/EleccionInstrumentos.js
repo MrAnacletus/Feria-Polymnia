@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import './Elecciones.css';
 import PantallaDeCarga from "../PantallaDeCarga/PantallaDeCarga";
 import instrumentos from "./instrumentos";
+import axios from "axios";
+
 
 
 class EleccionInstrumentos extends Component {
@@ -11,29 +13,58 @@ class EleccionInstrumentos extends Component {
             toRender: "EleccionInicial"
         }
         this.changePage = this.changePage.bind(this);
+        this.elegirEsteInstrumento = this.elegirEsteInstrumento.bind(this);
     }
 
-    changePage(val){
-        this.props.sendData(val);
+    changePage(val,val2){
+        this.props.sendData(val,val2);
+    }
+
+    elegirEsteInstrumento(instrumento, tipo){
+        // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
+        this.changePage("PantallaDeCarga", false);
+        axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
+            instrumento: instrumento.nombre,
+            partitura: tipo
+        })
+            .then(response => {
+                //response contiene un json con los instrumentos
+                this.changePage("ExportarPartitura", response.data);
+                console.log(response.data + " Ruta archivo a descargar");
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
     }
 
     render() {
         return (
             <div className="containerEleccion">
                 <div className="containerTituloEleccion">
-                    <h2 className="tituloEleccion">Elije que deseas hacer</h2>
+                    <h2 className="tituloEleccion">Elige que deseas hacer</h2>
                 </div>
                 <div className="containerBotones">
                     {
                         instrumentos.map((instrumento, index) => {
-                            return (
-                                <div className="containerBotonInstrumento">
-                                    <button className="btnEleccionInstrumentos" onClick={() => this.changePage(instrumento.nombre)}>
-                                        <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                        <p className="textoBotonEleccion">{instrumento.nombre}</p>
-                                    </button>
-                                </div>
-                            )
+                            for (let i = 0; i < this.props.instrumentos.length; i++) {
+                                if (this.props.instrumentos[i] === instrumento.nombre) {
+                                    return (
+                                        <div className="containerBotonInstrumento">
+                                            <div className="InstrumentoGrande">
+                                                <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
+                                                <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                                            </div>
+                                            <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")}>
+                                                <h3 className="textoBotonEleccion">Partitura</h3>
+                                            </button>
+                                            <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")} disabled={instrumento.tablatura === "no"}>
+                                                <h3 className="textoBotonEleccion">Tablatura</h3>
+                                            </button>
+                                        </div>
+                                    )
+                                    }
+                                }
                             }
                         )
                     }

@@ -49,9 +49,9 @@
     grid-column: 1/4;
 }
 
-.btnEleccionInstrumentos{
+.btnInstrumentoPequeño{
     height: auto;
-    width: 100%;
+    width: 40%;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
@@ -63,6 +63,11 @@
     color: black;
 }
 .containerBotonIntrumento{
+    /* grid de 2x2 */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    justify-content: space-between;
     height: auto;
     width: auto;
     padding: 5px;
@@ -84,7 +89,6 @@
 .textoBotonEleccion{
     margin: 0 0;
     padding: 0 0;
-    
     font-family: 'Roboto', sans-serif;
     color: black;
 }

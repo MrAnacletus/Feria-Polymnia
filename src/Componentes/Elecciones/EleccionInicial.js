@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './Elecciones.css';
 import PantalladeCarga from "../PantallaDeCarga/PantallaDeCarga";
+import axios from "axios";
 
 
 class EleccionInicial extends Component {
@@ -18,20 +19,36 @@ class EleccionInicial extends Component {
 
     elegirInstrumentos(){
         this.changePage("PantallaDeCarga", false);
-        // Acá se debe hacer un fetch para obtener los instrumentos
-        // y luego cambiar el estado de toRender a "EleccionInstrumentos"
-        setTimeout(() => {
-            this.changePage("EleccionInstrumentos", false);
-        }, 4000);
+        axios.post('http://127.0.0.1:3001/eleccioninicial', {
+            eleccion: 'instrumentos'
+                })
+            .then(response => {
+                //response contiene un json con los instrumentos
+                this.changePage("EleccionInstrumentos", response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
     }
 
     elegirMelodia(){
         this.changePage("PantallaDeCarga", false);
-        // Acá se debe hacer un fetch para obtener la melodía
-        // y luego cambiar el estado de toRender a "EleccionMelodia"
-        setTimeout(() => {
-            this.changePage("ExportarPartitura", false);
-        }, 4000);
+        var formData = new FormData();
+        formData.append("eleccion","melodia");
+        axios.post('http://127.0.0.1:3001/eleccioninicial', {
+            eleccion: 'melodia'
+        })
+            .then(response => {
+                //response contiene un json con los instrumentos
+                this.changePage("ExportarPartitura", response.data);
+                console.log(response.data + " Ruta archivo a descargar");
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
     }
 
 

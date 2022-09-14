@@ -8,6 +8,7 @@ class SubirArchivo extends Component{
         this.state = {
             habilitado:"",
             autorElegido: "Unknown",
+            nombreElegido: "Untitled",
         };
         this.changePage = this.changePage.bind(this);
         this.changeHandlerNombre = this.changeHandlerNombre.bind(this);
@@ -44,31 +45,17 @@ class SubirArchivo extends Component{
             const malo = "\\";
             const bueno = "/";
             let rutaDestino = data.replaceAll(malo, bueno);
-            let tipo = "a";
             console.log(rutaDestino);
             let nombre=this.state.nombreElegido;
             let autor=this.state.autorElegido;
-            var formData1 = new FormData();
-            formData1.append(
-                "path",
-                rutaDestino
-                )
-            formData1.append(
-                "type",
-                tipo
-            )
-            formData1.append("nombre",nombre)
-            formData1.append("autor",autor)
             axios.post('http://127.0.0.1:3001/partitas', {
                 path: rutaDestino,
-                type: tipo,
                 nombre: nombre,
                 autor: autor
             })
                 .then(response => {
-                        rutaDestino = response.data[0];
-                        this.changePage("ExportarPartitura",rutaDestino);
-                        console.log(rutaDestino);})
+                        this.changePage("EleccionInicial",rutaDestino);
+                    })
                 .catch(error => {
                     this.setState({ errorMessage: error.message });
                     console.error('There was an error!', error);
@@ -83,8 +70,6 @@ class SubirArchivo extends Component{
                 "file",
                 this.state.selectedFile,
                 this.state.selectedFile.name
-                // this.state.nombreElegido,
-                // this.state.autorElegido
                 )
             formData.append("nombre",this.state.nombreElegido)
             formData.append("autor",this.state.autorElegido)
@@ -118,7 +103,7 @@ class SubirArchivo extends Component{
                 
                 <form>
                 <label htmlFor="namedInput" >Nombre Canción:</label>
-                <input id="namedInput" name="nombre" type="text" placeholder={this.state.nombreDefault} required={true} onChange={this.changeHandlerNombre}/>
+                <input id="namedInput" name="nombre" type="text" defaultValue={"Untitled"} placeholder={"Untitled"} onChange={this.changeHandlerNombre}/>
                 <label htmlFor="namedInput" >Autor</label>
                 <input id="namedInput" name="autor" type="text" defaultValue={"Unknown"} placeholder={"Unknown"} onChange={this.changeHandlerAutor} on/>
                 </form>
