@@ -147,7 +147,6 @@ def place_note(note, prev, note_table, frets):
     """Place a note in the tablature in relation to the previous note, so it is easier to play
     TODO: Improve algorithm, if previous note was placed without pressing a fret, 
     then its fret value(0) sould not be taken into account.
-    Do something with notes that are not in the instrument range
 
     Args:
         note (int): MIDI numerical value of the note to place
@@ -160,7 +159,16 @@ def place_note(note, prev, note_table, frets):
     """
     # Strings that can play the note, and the fret where it is played
     candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
-    
+    if len(candidate_positions)==0:
+        # If the note is not in the instrument range, change its value to be in range
+        max_note = max([max(x) for x in note_table])
+        min_note = min([min(x) for x in note_table])
+        while note>max_note:
+            note -= 12
+        while note<min_note:
+            note += 12
+        candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
+
     position = -1
     temp = 1000
     if(prev==-1):
@@ -176,7 +184,6 @@ def place_note(note, prev, note_table, frets):
 
 def place_chord(chord, note_table, strings_num, frets):
     """Place a chord in the tablature
-    TODO: Do something if some notes cant be played
     
     Args:
         chord (int array): MIDI numerical values of the notes of the chord to place
@@ -187,11 +194,21 @@ def place_chord(chord, note_table, strings_num, frets):
     Returns:
         2D int array: array with information of the placed notes in the format of [string,fret]
     """
-    # Strings that can play the note, and the fret where it is played
+    # Strings that can play the note, and the fret where it is played(p.e. [[[0,3],[1,5]], [[0,5],[1,7]]])
     candidates = []
+    # Strings that can play the notes(p.e. [[0, 1, 2, 4], [0, 1, 2, 3]])
     l=[]
     for note in chord:
         candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
+        if len(candidate_positions)==0:
+            # If the note is not in the instrument range, change its value to be in range
+            max_note = max([max(x) for x in note_table])
+            min_note = min([min(x) for x in note_table])
+            while note>max_note:
+                note -= 12
+            while note<min_note:
+                note += 12
+            candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
         # print(candidate_positions)
         candidates.append(candidate_positions)
         l.append([x[0] for x in candidate_positions])
@@ -203,8 +220,12 @@ def place_chord(chord, note_table, strings_num, frets):
     temp=[]    
     uni = unique_product(*l)
     # print("uni: "+str(uni))
-    if(len(uni)==0):
-        print("could not place chord "+str(chord))
+    while(len(uni)==0):
+        # drop the last note
+        chord = chord[:-1]
+        l = l[:-1]
+        uni = unique_product(*l)
+
     else:
         for u in uni:
             for r in range(len(u)):

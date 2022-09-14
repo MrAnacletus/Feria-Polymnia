@@ -13,6 +13,7 @@ import try1
 import Transc.transcripcion as tc
 import os
 import instrumentos
+import tabs
 
 class ItemSubirArchivo(BaseModel):
     path: str
@@ -95,7 +96,12 @@ async def create_item(item: ItemEleccionInstrumentos):
   path = "./backendPython/GeneracionDePartitura/Generados"
   pathname = lineas[3].strip()
   instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
-  d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())
+  d_pdf=""
+  if item.partitura == "si":
+    tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip())
+    d_pdf = lineas[1].strip() + '.pdf'
+  else:
+    d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf}
 
