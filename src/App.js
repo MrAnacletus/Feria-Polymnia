@@ -10,7 +10,7 @@ import logoFooter from "./logos/finalv1.svg"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
-import logoYT from "./logos/youtube.svg"
+// import logoYT from "./logos/youtube.svg"
 
 
 var fileName;
