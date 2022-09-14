@@ -29,7 +29,7 @@ class ExportarPartitura extends Component {
         //     document.body.appendChild(link);
         //     link.click();
         //   });
-        axios.get('http://192.168.100.154:8000/single?path='+path_a_exportar,{
+        axios.get('http://34.73.193.75:8000/single?path='+path_a_exportar,{
             responseType:'blob',
             crossDomain: true,
         }).then((response) => {
