@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {Component} from "react";
 import './ExportarPartitura.css';
 
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 class ExportarPartitura extends Component {
     constructor(){
         super();
@@ -28,8 +29,9 @@ class ExportarPartitura extends Component {
         //     document.body.appendChild(link);
         //     link.click();
         //   });
-        axios.get('http://localhost:8000/single?path='+path_a_exportar,{
+        axios.get('http://192.168.100.154:8000/single?path='+path_a_exportar,{
             responseType:'blob',
+            crossDomain: true,
         }).then((response) => {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');

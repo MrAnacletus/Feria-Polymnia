@@ -17,17 +17,17 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - Para NVM estamos usando la versión 0.39.1 (creo que no importa)
 - Para Node.js estamos utilizando la versión v16.15.1
 - Para node package manager (npm) estamos usando la versión 8.11.0
-- Desarrollado en WSL1
+- Desarrollado en WSL2
 - Distribución de Ubuntu 20.04 LTS
 ### Librerias de python
-- librosa 0.9.1
+- librosa 0.9.2
 - music21 7.3.3
 - numpy 1.20.1
 - fastapi 0.78.0
 - uvicorn [standard]0.17.6
 - pypianoroll 0.5.3
-- scipy 1.7.0
-- pytorch 1.12.0
+- scipy 1.7.3
+- pytorch 1.12.1
 - pysoundfile 0.9.0
 ### Librerias NPM
 - @testing-library/jest-dom": "^5.16.4",
@@ -62,13 +62,20 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - ```[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm```
 #### Instalar node
 - ```nvm install 16.15.1```
-#### Instalar pip3
-- ```sudo apt install python3-pip```
+#### Intalar python3.7 env
+```sudo add-apt-repository ppa:deadsnakes/ppa```
+```sudo apt-get update```
+```sudo apt-get install python3.7```
+```sudo apt-get install python3.7-dev python3.7-venv```
+```python3.7 -m venv env```
+```source env/bin/activate```
+#### Instalar Cuda y dependencias de transcripcion en
+```backendPython\GeneracionDePartitura\Transc\comandos.txt```
 #### Instalar museScore3 desde https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
 - ```sudo add-apt-repository ppa:mscore-ubuntu/mscore3-stable```
 - ```sudo apt-get install musescore3```
-#### Instalar librosa 0.9.1
-- ```pip3 install librosa==0.9.1```
+#### Instalar librosa 0.9.2
+- ```pip3 install librosa==0.9.2```
 #### Instalar music21 7.3.3
 - ```pip3 install music21==7.3.3```
 #### Instalar numpy 1.20.1
@@ -79,13 +86,14 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - ```pip3 install uvicorn[standard]==0.17.6```
 #### Instalar pypianoroll 0.5.3
 - ```pip3 install pypianoroll==0.5.3```
-#### Instalar scipy 1.7.0
-- ```pip3 install scipy==1.7.0```
-#### Instalar pytorch 1.12.0
-- ```pip3 install torch==1.12.0```
+#### Instalar scipy 1.7.3
+- ```pip3 install scipy==1.7.3```
+#### Instalar pytorch 1.12.1
+- ```pip3 install torch==1.12.1```
 #### Instalar pysoundfile 0.9.0
 - ```pip3 install pysoundfile==0.9.0```
 #### Instalar dependencias de npm
+- ```npm install```
 - ```npm ci```
 
 #### Si es que hay problemas con libQt5Core.so.5

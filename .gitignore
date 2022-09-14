@@ -7,7 +7,19 @@
 /backendPython/Generaci\303\263n de partitura/__pycache__
 # testing
 /coverage
-
+#Basura
+/backend-js/temp/*.pdf
+/backend-js/temp/*.mp3
+/backend-js/temp/*.wav
+/backend-js/temp/*.ogg
+/backend-js/temp/*.flac
+/backend-js/temp/*.musicxml
+/backendPython/GeneracionDePartitura/Transc/*
+!/backendPython/GeneracionDePartitura/Transc/requirements.txt
+!/backendPython/GeneracionDePartitura/Transc/test.py
+!/backendPython/GeneracionDePartitura/Transc/transcripcion.py
+!/backendPython/GeneracionDePartitura/Transc/comandos.txt
+/backendPython/GeneracionDePartitura/Generados/*
 # production
 /build
 

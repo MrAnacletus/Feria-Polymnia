@@ -3,7 +3,7 @@ import axios from 'axios';
 import "./SubirArchivo.css";
 
 
-
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 class SubirArchivo extends Component{
     constructor(){
         super();
@@ -61,12 +61,12 @@ class SubirArchivo extends Component{
             )
             formData1.append("nombre",nombre)
             formData1.append("autor",autor)
-            axios.post('http://127.0.0.1:3001/partitas', {
+            axios.post('http://192.168.100.154:3001/partitas', {
                 path: rutaDestino,
                 type: tipo,
                 nombre: nombre,
-                autor: autor
-            })
+                autor: autor,
+            },{CrossDomain: true})
                 .then(response => {
                         rutaDestino = response.data[0];
                         this.changePage("ExportarPartitura",rutaDestino);
@@ -91,7 +91,7 @@ class SubirArchivo extends Component{
             formData.append("nombre",this.state.nombreElegido)
             formData.append("autor",this.state.autorElegido)
             
-            axios.post('http://127.0.0.1:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data'})
+            axios.post('http://192.168.100.154:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
                 .then(response => {
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
@@ -114,9 +114,9 @@ class SubirArchivo extends Component{
                 <div className='conteinerInputs'>
                 <label for="file-upload" class="custom-file-upload">
                     {this.state.selectedFile.name}
-                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav"/>
+                    <input id="file-upload" type="file" onChange={this.onFileChange} accept="/wav, .mp3, .ogg, .flac"/>
                 </label>
-                <h5>Por el momento solo es posible procesar archivos WAV</h5> 
+                <h5>Solo es posible procesar archivos en formato WAV, MP3, OGG y FLAC</h5> 
                 
                 <form>
                 <label htmlFor="namedInput" >Nombre Canción:</label>
@@ -135,9 +135,9 @@ class SubirArchivo extends Component{
             <div className='conteinerInputs'>
                 <label for="file-upload" class="custom-file-upload">
                     Seleccionar Archivo
-                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav"/>
+                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
                 </label>
-                <h5>Por el momento solo es posible procesar archivos WAV</h5>                 
+                <h5>Solo es posible procesar archivos en formato WAV, MP3, OGG y FLAC</h5>                 
                 <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={true}> 
                 Procesar el audio
                 </button>          
