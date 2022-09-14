@@ -15,6 +15,7 @@
 /backend-js/temp/*.flac
 /backend-js/temp/*.musicxml
 /backendPython/GeneracionDePartitura/Transc/*
+/backendPython/GeneracionDePartitura/flujo.txt
 !/backendPython/GeneracionDePartitura/Transc/requirements.txt
 !/backendPython/GeneracionDePartitura/Transc/test.py
 !/backendPython/GeneracionDePartitura/Transc/transcripcion.py
