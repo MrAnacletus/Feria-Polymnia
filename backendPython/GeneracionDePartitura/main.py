@@ -12,6 +12,7 @@ from pydantic import BaseModel
 import try1
 import Transc.transcripcion as tc
 import os
+import instrumentos
 
 class ItemSubirArchivo(BaseModel):
     path: str
@@ -68,20 +69,22 @@ async def create_item(item: ItemEleccionInicial):
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
   lineas = f.readlines()
   f.close()
+  sep=os.path.split(lineas[0].strip())
+  path = "./backendPython/GeneracionDePartitura/Generados"
   if item.eleccion == "melodia":
-    name_voice = melodia.generarMelodia(lineas[0].strip())
-    path = "./backendPython/GeneracionDePartitura/Generados"
-    d_pdf = try1.generar_partitura(path+'/'+name_voice+'.mid', lineas[1].strip(), lineas[2].strip())
+    pathname = tc.transc_melodia(sep[1], sep[0], path)
+    d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip())
     print(d_pdf)
     print(type(d_pdf))
     open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
     return {d_pdf}
   else:
-    name = procesamiento.generar_midi(lineas[0].strip())
+    pathname = tc.transc_intrumento(sep[1], sep[0], path)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(name)
+    f.write(pathname)
     f.close()
-    return ["Piano", "Guitarra eléctrica", "Bajo"]
+    intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
+    return intrus
 
 @app.post("/eleccioninstrumentos")
 
@@ -90,10 +93,11 @@ async def create_item(item: ItemEleccionInstrumentos):
   lineas = f.readlines()
   f.close()
   path = "./backendPython/GeneracionDePartitura/Generados"
-  if item.instrumento == "Guitarra eléctrica":
-    d_pdf = try1.generar_partitura(path+'/'+lineas[3].strip()+'.mid', lineas[1].strip(), lineas[2].strip())
-    #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-    return {d_pdf}
+  pathname = lineas[3].strip()
+  instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
+  d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())
+  #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
+  return {d_pdf}
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):
   print(path_to_midi)

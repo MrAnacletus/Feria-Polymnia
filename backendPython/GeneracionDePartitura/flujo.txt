@@ -1,4 +1,4 @@
-/home/sebastian/Feria-Polymnia/backend-js/temp/star.wav
+/home/zeo/partitas/Feria-Polymnia/backend-js/temp/TunePocket-Happy-Guitar-Intro-1-Preview.mp3
 Untitled
 Unknown
-star
+./backendPython/GeneracionDePartitura/Generados/TunePocket-Happy-Guitar-Intro-1-Preview

@@ -5561,7 +5561,7 @@
     "inherits" "^2.0.3"
     "minimalistic-assert" "^1.0.1"
 
-"he@1.2.x":
+"he@^1.2.0", "he@1.2.x":
   "integrity" "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="
   "resolved" "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
   "version" "1.2.0"
@@ -5747,7 +5747,7 @@
     "lodash" "^4.17.5"
     "micromatch" "^3.1.9"
 
-"http-proxy@^1.16.2":
+"http-proxy@^1.16.2", "http-proxy@^1.18.1":
   "integrity" "sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ=="
   "resolved" "https://registry.npmjs.org/http-proxy/-/http-proxy-1.18.1.tgz"
   "version" "1.18.1"
@@ -5755,6 +5755,25 @@
     "eventemitter3" "^4.0.0"
     "follow-redirects" "^1.0.0"
     "requires-port" "^1.0.0"
+
+"http-server@^14.1.1":
+  "integrity" "sha512-+cbxadF40UXd9T01zUHgA+rlo2Bg1Srer4+B4NwIHdaGxAGGv59nYRnGGDJ9LBk7alpS0US+J+bLLdQOOkJq4A=="
+  "resolved" "https://registry.npmjs.org/http-server/-/http-server-14.1.1.tgz"
+  "version" "14.1.1"
+  dependencies:
+    "basic-auth" "^2.0.1"
+    "chalk" "^4.1.2"
+    "corser" "^2.0.1"
+    "he" "^1.2.0"
+    "html-encoding-sniffer" "^3.0.0"
+    "http-proxy" "^1.18.1"
+    "mime" "^1.6.0"
+    "minimist" "^1.2.6"
+    "opener" "^1.5.1"
+    "portfinder" "^1.0.28"
+    "secure-compare" "3.0.1"
+    "union" "~0.5.0"
+    "url-join" "^4.0.1"
 
 "http-signature@~1.2.0":
   "integrity" "sha512-CAbnr6Rz4CYQkLYUtSNXxQPUH2gK8f3iWexVlsnMeD+GjlsQ0Xsy1cOX+mN3dtxYomRy21CiOzU8Uhw6OwncEQ=="
@@ -7596,6 +7615,11 @@
   "version" "2.1.35"
   dependencies:
     "mime-db" "1.52.0"
+
+"mime@^1.6.0":
+  "integrity" "sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg=="
+  "resolved" "https://registry.npmjs.org/mime/-/mime-1.6.0.tgz"
+  "version" "1.6.0"
 
 "mime@^2.0.3", "mime@^2.3.1":
   "integrity" "sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg=="

@@ -373,4 +373,47 @@ def transcripcion(name,inp,outp):
     os.remove(inp+"/"+name)
     gc.collect()
     return f"{outp}/{foldername}"
+
+def transc_intrumento(name,inp,outp):
+    gc.collect()
+    t_ini=time()
+    foldername=Path(name).with_suffix('')
+    if not os.path.exists(f"{outp}/{foldername}"):
+        os.makedirs(f"{outp}/{foldername}")
+    separate(name,inp,"backendPython/GeneracionDePartitura/Transc/audio_temp")
+    t_dem=time()
+    print('Demucs: {}:{}'.format(int(t_dem-t_ini)//60,int(t_dem-t_ini)%60))
+    gc.collect()
+    mt3proc=multiprocessing.Process(target=mt3_aux_2,args=(foldername,outp,))
+    mt3proc.start()
+    mt3proc.join()
+    gc.collect()
+    t_fin=time()
+    print('Mt3: {}:{}'.format(int(t_fin-t_dem)//60,int(t_fin-t_dem)%60))
+    print('Completo: {}:{}'.format(int(t_fin-t_ini)//60,int(t_fin-t_ini)%60))
+    rmtree(f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}")
+    os.remove(inp+"/"+name)
+    gc.collect()
+    return f"{outp}/{foldername}"
+
+def transc_melodia(name,inp,outp):
+    gc.collect()
+    t_ini=time()
+    foldername=Path(name).with_suffix('')
+    if not os.path.exists(f"{outp}/{foldername}"):
+        os.makedirs(f"{outp}/{foldername}")
+    separate(name,inp,"backendPython/GeneracionDePartitura/Transc/audio_temp")
+    t_dem=time()
+    print('Demucs: {}:{}'.format(int(t_dem-t_ini)//60,int(t_dem-t_ini)%60))
+    gc.collect()
+    bpproc=multiprocessing.Process(target=predict_and_save,args=([f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}/vocals.{suffix}"],f"{outp}/{foldername}",True,False,False,False),)
+    bpproc.start()
+    bpproc.join()
+    t_fin=time()
+    print('Basic Pitch: {}:{}'.format(int(t_fin-t_dem)//60,int(t_fin-t_dem)%60))
+    print('Completo: {}:{}'.format(int(t_fin-t_ini)//60,int(t_fin-t_ini)%60))
+    rmtree(f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}")
+    os.remove(inp+"/"+name)
+    gc.collect()
+    return f"{outp}/{foldername}"
  

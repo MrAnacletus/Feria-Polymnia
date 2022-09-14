@@ -39,7 +39,7 @@ let instrumentos = [
         "tablatura": "no"
     },
     {
-        "nombre": "Violonchelo",
+        "nombre": "Violoncello",
         "familia": "cuerdas",
         "imagen": violonchelo,
         "tablatura": "no"
@@ -55,7 +55,12 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": contrabajo,
         "tablatura": "no"
-    },   
+    },{
+        "nombre": "Batería",
+        "familia": "percusión",
+        "imagen": "https://www.pngitem.com/pimgs/m/146-1468479_transparent-drum-set-png-drum-set-png-download.png",
+        "tablatura": "no"
+    }   
 ]
 
 export default instrumentos;

@@ -19,7 +19,7 @@ class EleccionInicial extends Component {
 
     elegirInstrumentos(){
         this.changePage("PantallaDeCarga", false);
-        axios.post('http://127.0.0.1:3001/eleccioninicial', {
+        axios.post('http://34.139.161.175:3001/eleccioninicial', {
             eleccion: 'instrumentos'
                 })
             .then(response => {
@@ -37,7 +37,7 @@ class EleccionInicial extends Component {
         this.changePage("PantallaDeCarga", false);
         var formData = new FormData();
         formData.append("eleccion","melodia");
-        axios.post('http://127.0.0.1:3001/eleccioninicial', {
+        axios.post('http://34.139.161.175:3001/eleccioninicial', {
             eleccion: 'melodia'
         })
             .then(response => {
