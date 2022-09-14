@@ -63,12 +63,12 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 #### Instalar node
 - ```nvm install 16.15.1```
 #### Intalar python3.7 env
-```sudo add-apt-repository ppa:deadsnakes/ppa```
-```sudo apt-get update```
-```sudo apt-get install python3.7```
-```sudo apt-get install python3.7-dev python3.7-venv```
-```python3.7 -m venv env```
-```source env/bin/activate```
+- ```sudo add-apt-repository ppa:deadsnakes/ppa```
+- ```sudo apt-get update```
+- ```sudo apt-get install python3.7```
+- ```sudo apt-get install python3.7-dev python3.7-venv```
+- ```python3.7 -m venv env```
+- ```source env/bin/activate```
 #### Instalar Cuda y dependencias de transcripcion en
 ```backendPython\GeneracionDePartitura\Transc\comandos.txt```
 #### Instalar museScore3 desde https://ourcodeworld.com/articles/read/1408/how-to-install-musescore-3-in-ubuntu-2004
