@@ -54,3 +54,22 @@ input[type="file"]{
     justify-content: center;
     flex-direction: column;
 }
+
+.conteinerInputs form{
+    height: 50px;
+    width: 2000px;
+}
+
+.conteinerInputs form label{
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.conteinerInputs form input{
+    font-family: 'Roboto', sans-serif;
+    height: 46px;
+    width: 320px;
+    font-size: 30px;
+}

@@ -14,7 +14,7 @@ class ExportarPartitura extends Component {
     }
 
     exportarPartitura = () => { 
-        console.log(this.props.nombreArchivo)
+        console.log(this.props.nombreArchivo + " nombre archivo a exportar");
         let path_a_exportar = this.props.nombreArchivo;
         // axios({
         //     url: 'http://localhost:8000/single',

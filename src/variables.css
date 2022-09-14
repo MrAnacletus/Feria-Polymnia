@@ -9,4 +9,5 @@
     --shadow: #deebf9;
     --background: #e9f2fb;
     --color-hover: #cfdbd5;
+    --grad-1: linear-gradient(to right, #6091a9, #243842 );
 }

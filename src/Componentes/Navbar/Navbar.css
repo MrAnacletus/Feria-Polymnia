@@ -1,9 +1,11 @@
 @import "../../variables.css";
 .NavbarItems {
-    height: 54px;
+    height: 10vh;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.2rem;
-    background-color: var(--color-7);
+    background-image: var(--grad-1);
     font-family: 'Roboto', sans-serif;
     color: white;
 }
@@ -97,6 +99,7 @@
     padding-left: 25px;
     padding-bottom: 0;
     height: inherit;
+    width: 50px;
 
     font-size: 28px;
     font-weight: bold;

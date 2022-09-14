@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './PantallaDeCarga.css';
 import carga from "./carga.gif"
 
-class PantalladeCarga extends Component {
+class PantallaDeCarga extends Component {
     constructor(){
         super();
         this.changePage = this.changePage.bind(this);
@@ -11,7 +11,7 @@ class PantalladeCarga extends Component {
 
     componentDidMount(){
         if (this.props.boolean){
-            this.handleTime("ExportarPartitura")
+            this.handleTime(this.props.pagina);
         }
     }
 
@@ -27,7 +27,7 @@ class PantalladeCarga extends Component {
         return (
             <div className="PantallaDeCarga">
                 <div className="containerTituloCarga">
-                    <h2 className="tituloCarga">Procesando la partitura, por favor espere</h2>
+                    <h2 className="tituloCarga">Procesando, por favor espere</h2>
                     <img className="cat" src={carga}></img>
                 </div>
             </div>
@@ -38,4 +38,4 @@ class PantalladeCarga extends Component {
 
 
 
-export default PantalladeCarga;
+export default PantallaDeCarga;
