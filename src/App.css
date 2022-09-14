@@ -12,6 +12,7 @@
   width: 100%;
   position: relative;
   background: var(--color-6);
+  background-image: var(--grad-2);
 }
 
 .App-logo {
@@ -73,6 +74,7 @@
   font-style: normal;
   align-items: center;
   justify-content: space-between;
+  background-image: var(--grad-1);
 }
 /* color:#FFFFFF; 
 font-size:1.5em;
@@ -100,6 +102,10 @@ background: var(--color-7);
 }
 .ig {
 	width: 32px;
+}
+.yt{
+  width: 32px;
+  color: white;
 }
 
 /* 
