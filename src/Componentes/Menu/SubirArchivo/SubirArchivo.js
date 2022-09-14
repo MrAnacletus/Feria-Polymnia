@@ -61,7 +61,7 @@ class SubirArchivo extends Component{
             )
             formData1.append("nombre",nombre)
             formData1.append("autor",autor)
-            axios.post('http://10.142.0.2:3001/partitas', {
+            axios.post('http://34.139.161.175:3001/partitas', {
                 path: rutaDestino,
                 type: tipo,
                 nombre: nombre,
@@ -91,7 +91,7 @@ class SubirArchivo extends Component{
             formData.append("nombre",this.state.nombreElegido)
             formData.append("autor",this.state.autorElegido)
             
-            axios.post('http://10.142.0.2:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
+            axios.post('http://34.139.161.175:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
                 .then(response => {
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
