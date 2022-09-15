@@ -1,20 +1,18 @@
 import pretty_midi
 
-instrumentos = {"0": "Piano",
-                "1": "Piano",
-                "2": "Piano",
-                "24": "Guitarra acústica",
-                "25": "Guitarra acústica",
-                "26": "Guitarra eléctrica",
-                "27": "Guitarra eléctrica",
-                "28": "Guitarra eléctrica",
-                "33": "Bajo",
-                "34": "Bajo",
-                "40": "Violín",
-                "41": "Viola",
-                "42": "Violoncello",
-                "43": "Contrabajo"
-                }
+instrumentos = {
+    "24": "Guitarra acústica",
+    "25": "Guitarra acústica",
+    "26": "Guitarra eléctrica",
+    "27": "Guitarra eléctrica",
+    "28": "Guitarra eléctrica",
+    "33": "Bajo",
+    "34": "Bajo",
+    "40": "Violín",
+    "41": "Viola",
+    "42": "Violoncello",
+    "43": "Contrabajo"
+    }
 
 def reconocer_instrumentos(midi):
     instrumentos_presentes = []
