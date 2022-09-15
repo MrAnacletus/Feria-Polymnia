@@ -7,6 +7,7 @@ instrumentos = {
     "26": "Guitarra eléctrica",
     "27": "Guitarra eléctrica",
     "28": "Guitarra eléctrica",
+    "29": "Guitarra eléctrica",
     "33": "Bajo",
     "34": "Bajo",
     "40": "Violín",
@@ -46,8 +47,8 @@ def filtro(midi_path):
                 notes+=len(note.pitches)
                 notas_totales+=len(note.pitches)
         inst_temp.append([p.partName, notes])
-    filtro = notas_totales/10
-    print(filtro)
+    filtro = (notas_totales)*0.03
+    #print(filtro)
     for i in inst_temp:
         if i[1] < filtro:
             sacar.append(i[0])
@@ -81,14 +82,14 @@ def reconocer_instrumentos(midi):
                 if instrumentos[i] not in instrumentos_presentes:
                     instrumentos_presentes.append(instrumentos[i])
     filtros = filtro(midi)
-    print(filtros)
-    print(instrumentos_presentes)
+    #print(filtros)
+    #print(instrumentos_presentes)
     for j in instrumentos_presentes:
         if j not in filtros:
             instrumentos_filtrados.append(j)
     return instrumentos_filtrados
 
-#print(reconocer_instrumentos("aleluya"))
+#print(reconocer_instrumentos("daniel2"))
 
 def get_programs(midi):
     midi_data = pretty_midi.PrettyMIDI(midi+'.mid')
