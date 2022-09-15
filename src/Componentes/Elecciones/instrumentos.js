@@ -6,6 +6,7 @@ import violin from "../../logos/violin.png";
 import violonchelo from "../../logos/violonchelo.png";
 import viola from "../../logos/viola.png";
 import contrabajo from "../../logos/contrabajo.png";
+import bateria from "../../logos/bateria.png";
 
 let instrumentos = [
     {
@@ -58,7 +59,7 @@ let instrumentos = [
     },{
         "nombre": "Batería",
         "familia": "percusión",
-        "imagen": "https://www.pngitem.com/pimgs/m/146-1468479_transparent-drum-set-png-drum-set-png-download.png",
+        "imagen": bateria,
         "tablatura": "no"
     }   
 ]
