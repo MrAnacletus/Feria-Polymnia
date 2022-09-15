@@ -108,4 +108,4 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - ```node ./backend-js/server.js```
 #### Terminal 3
 - ```export QT_QPA_PLATFORM=offscreen```
-- ```python3 -m uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ --port 3001```
+- ```python3 -m uvicorn main:app --reload --app-dir ./backendPython/GeneracionDePartitura/ --reload-dir ./backendPython/GeneracionDePartitura/ --port 3001 --host 10.142.0.2```
