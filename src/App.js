@@ -38,10 +38,10 @@ class App extends Component{
 				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
 			}
 			if (this.state.toRender === "EleccionInicial"){
-				render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
+				render = <EleccionInicial sendData={this.changePage} boolean = {boolean}></EleccionInicial>;
 			}
 			if (this.state.toRender === "EleccionInstrumentos"){
-				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos}></EleccionInstrumentos>;
+				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean}></EleccionInstrumentos>;
 			}
 		}
 		return render;
@@ -52,10 +52,11 @@ class App extends Component{
 		if (val === "ExportarPartitura"){
 			fileName = val2;
 			console.log(fileName + " recibí este nombre de archivo");
-		}else if (val === "PantallaDeCarga"){
+		}else if (val === "PantallaDeCarga" || val === "EleccionInicial"){
 			boolean = val2;
 		}else if (val === "EleccionInstrumentos"){
 			respuestaInstrumentos = val2;
+			boolean = val2;
 		}
 	}
 

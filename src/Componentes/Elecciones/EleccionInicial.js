@@ -18,8 +18,11 @@ class EleccionInicial extends Component {
     }
 
     elegirInstrumentos(){
-        this.changePage("PantallaDeCarga", false);
-        axios.post('http://34.139.161.175:3001/eleccioninicial', {
+        if (this.props.boolean){
+            this.changePage("EleccionInstrumentos", true);
+        }else{
+            this.changePage("PantallaDeCarga", false);
+            axios.post('http://34.139.161.175:3001/eleccioninicial', {
             eleccion: 'instrumentos'
                 })
             .then(response => {
@@ -31,6 +34,8 @@ class EleccionInicial extends Component {
                 this.setState({ errorMessage: error.message });
                 console.error('There was an error!', error);
             });
+        }
+        
     }
 
     elegirMelodia(){
