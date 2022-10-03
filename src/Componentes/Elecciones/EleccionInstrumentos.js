@@ -3,6 +3,7 @@ import './Elecciones.css';
 import PantallaDeCarga from "../PantallaDeCarga/PantallaDeCarga";
 import instrumentos from "./instrumentos";
 import axios from "axios";
+import BotonPartitura from "./BotonPartitura";
 
 
 
@@ -91,16 +92,7 @@ class EleccionInstrumentos extends Component {
                                         <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")}>
                                             <h3 className="textoBotonEleccion">Partitura</h3>
                                         </button>
-                                        <div className="dropdown" disabled={instrumento.tablatura === "no"}>
-                                            <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")} disabled={instrumento.tablatura === "no"}>
-                                                <h3 className="textoBotonEleccion">Tablatura</h3>
-                                            </button>
-                                            <div class="dropdown-content">
-                                                <a href="#">Link 1</a>
-                                                <a href="#">Link 2</a>
-                                                <a href="#">Link 3</a>
-                                            </div>
-                                        </div>
+                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura}/>
                                     </div>
                                     )
                                 }
