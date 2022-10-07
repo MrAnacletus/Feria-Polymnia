@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import './Elecciones.css';
-import instrumentos from "./instrumentos";
-import axios from "axios";
 
 
 class BotonPartitura extends Component {
@@ -18,7 +16,7 @@ class BotonPartitura extends Component {
         if (this.state.habilitado == "si"){
             return (
                 <div className="dropdown">
-                    <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(this.state.instrumento,"si")}>
+                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento,"si")}>
                         <h3 className="textoBotonEleccion">Tablatura</h3>
                     </button>
                     <div className="dropdown-content">

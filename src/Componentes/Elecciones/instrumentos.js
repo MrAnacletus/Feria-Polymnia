@@ -14,6 +14,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": pianoImagen,
         "tablatura": "no",
+        "melodia": "si",
         "compatibles": []
     },
     {
@@ -21,6 +22,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": guitarraAcustica,
         "tablatura": "si",
+        "melodia": "si",
         "compatibles": [
             "Guitarra eléctrica","Ukelele"]
     },
@@ -29,6 +31,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": guitarraElectrica,
         "tablatura": "si",
+        "melodia": "si",
         "compatibles": [
             "Guitarra acústica","Ukelele"]
     },
@@ -37,6 +40,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": bajo,
         "tablatura": "si",
+        "melodia": "si",
         "compatibles": []
     },
     {
@@ -44,6 +48,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": violin,
         "tablatura": "no",
+        "melodia": "si",
         "compatibles": []
     },
     {
@@ -51,6 +56,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": violonchelo,
         "tablatura": "no",
+        "melodia": "si",
         "compatibles": []
     },
     {
@@ -58,6 +64,7 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": viola,
         "tablatura": "no",
+        "melodia": "si",
         "compatibles": []
     },
     {
@@ -65,12 +72,14 @@ let instrumentos = [
         "familia": "cuerdas",
         "imagen": contrabajo,
         "tablatura": "no",
+        "melodia": "si",
         "compatibles": []
     },{
         "nombre": "Batería",
         "familia": "percusión",
         "imagen": bateria,
         "tablatura": "no",
+        "melodia": "no",
         "compatibles": []
     }   
 ]

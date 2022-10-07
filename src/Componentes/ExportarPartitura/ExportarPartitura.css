@@ -41,8 +41,8 @@
 }
 
 .btnExportar{
-	height: 250px;
-    width: 800px;
+	height: 188px;
+    width: 600px;
 	color: black;
 	font-size: 35px;
 	font-family: 'Roboto', sans-serif;
@@ -53,4 +53,32 @@
 .btnExportar:hover{
 	background-color: var(--color-hover);
     border: 2px solid var(--color-hover);
+}
+
+.tituloExportarChico{
+	text-align: center;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+}
+.tituloExportarChico:after {
+	width: 100%;
+	height: 3px;
+	display: block;
+	content: "";
+	position: relative;
+	margin-top: 25px;
+	background-color: var(--color-7);
+}
+
+.btnExportarChico {
+	height: 125px;
+    width: 400px;
+	color: black;
+	font-size: 35px;
+	font-family: 'Roboto', sans-serif;
+	border-radius: 10px;
+	padding: 20px;
+	transition: border 2s, background-color 2s;
 }

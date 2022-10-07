@@ -7,6 +7,8 @@ class ExportarPartitura extends Component {
     constructor(){
         super();
         this.changePage = this.changePage.bind(this);
+        this.exportarPartitura = this.exportarPartitura.bind(this);
+        this.simplificar = this.simplificar.bind(this);
     }
 
     changePage(val){
@@ -42,6 +44,10 @@ class ExportarPartitura extends Component {
           });
     };
 
+    simplificar = () => {
+        console.log("simplificar");
+    }
+
     render() {
         return (
             <div className="containerExportar">
@@ -49,6 +55,13 @@ class ExportarPartitura extends Component {
                     <h2 className="tituloExportar">Exportar Partitura</h2>
                 </div>
                 <button className="btnExportar" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
+                <div className="containerTituloExportar">
+                    <h4 className="tituloExportarChico">¿Muy dificil? ¡Simplificala!</h4>
+                </div>
+                <div>
+                    <button className="btnExportarChico" onClick={() => this.simplificar()}>Simplificar</button>
+                </div>
+
             </div>
         );
     }

@@ -26,7 +26,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <Menu sendData={this.changePage}></Menu>;
+		render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
