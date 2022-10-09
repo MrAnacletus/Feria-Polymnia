@@ -26,7 +26,7 @@ for i in der.recurse():
         print(i.name, i.octave, i.quarterLength, i.offset, i.tie)        
     else:
         print(i)
- 
+
 #Falta agregarle el tempo a la mano izquierda
 #print("izq")
 #izq.show('text')
