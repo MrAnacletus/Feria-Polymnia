@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import './Elecciones.css';
-import PantallaDeCarga from "../PantallaDeCarga/PantallaDeCarga";
 import instrumentos from "./instrumentos";
 import axios from "axios";
 import BotonPartitura from "./BotonPartitura";
@@ -89,7 +88,7 @@ class EleccionInstrumentos extends Component {
                                             <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                             <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                         </div>
-                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")}>
+                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")}>
                                             <h3 className="textoBotonEleccion">Partitura</h3>
                                         </button>
                                         <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura}/>

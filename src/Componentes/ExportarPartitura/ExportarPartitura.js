@@ -31,6 +31,29 @@ class ExportarPartitura extends Component {
         }
     }
 
+    aplicarCambios(instrumento){
+        // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
+        // primero recuperar los valores de los inputs
+        let tono = this.state.tono;
+        let acordes = document.getElementById("simpAcordes").value;
+        let derecha = document.getElementById("elimManoIzquierda").value;
+        this.changePage("PantallaDeCarga", false);
+        axios.post('http://127.0.0.1:3001/simplificar', {
+            tono: tono,
+            acordes: acordes,
+            derecha: derecha,
+        })
+            .then(response => {
+                //response contiene un json con los instrumentos
+                this.changePage("ExportarPartitura", response.data);
+                console.log(response.data + " Ruta archivo a descargar");
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.message });
+                console.error('There was an error!', error);
+            });
+    }
+
     exportarPartitura = () => { 
         console.log(this.props.nombreArchivo + " nombre archivo a exportar");
         let path_a_exportar = this.props.nombreArchivo;
@@ -80,7 +103,7 @@ class ExportarPartitura extends Component {
                             <div className="form-group">
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" id="simpAcordes" value="simpAcordes"></input>
+                                        <input className="form-check-input" type="checkbox" id="simpAcordes" value="si"></input>
                                         <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
                                             <p>Simplificar acordes</p>
                                         </label>
@@ -88,7 +111,7 @@ class ExportarPartitura extends Component {
                                 </div>
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value="elimManoIzquierda"></input>
+                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value="si"></input>
                                         <label className="form-check-label text-dark" for="elimManoIzquierda">
                                             <p>Eliminar mano izquierda</p>
                                         </label>

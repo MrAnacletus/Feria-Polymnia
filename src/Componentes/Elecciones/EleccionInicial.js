@@ -45,8 +45,6 @@ class EleccionInicial extends Component {
             this.toRender("EleccionMelodiaGenerada");
         }else{
             this.changePage("PantallaDeCarga", false);
-            var formData = new FormData();
-            formData.append("eleccion","melodia");
             axios.post('http://127.0.0.1:3001/eleccioninicial', {
                 eleccion: 'melodia'
             })

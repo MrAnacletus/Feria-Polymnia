@@ -99,14 +99,14 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.close()
   if item.partitura == "si":
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("partitura pa piano porfa")
+    f.write("partitura pa piano porfa\n")
     f.close()
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("mamita kiero tablatura")
+    f.write("mamita kiero tablatura\n")
     f.close()
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-  d_pdf = try1.generar_partitura(lineas[0], lineas[1], lineas[2])
+  d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
   return {d_pdf}
 
 @app.post("/simplificar")
@@ -118,17 +118,17 @@ async def create_item(item: ItemSimplificar):
   f.close()
   if item.tono != 0:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("tono cambiado en " + item.tono + "semitonos")
+    f.write("tono cambiado en " + item.tono + "semitonos\n")
     f.close()
   if item.acordes == "si":
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("acordes simplificados")
+    f.write("acordes simplificados\n")
     f.close()
   if item.derecha == "si":
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("mano derecha xd")
+    f.write("mano derecha xd\n")
     f.close()
-  d_pdf = try1.generar_partitura(lineas[0], lineas[1], lineas[2])
+  d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
   return {d_pdf}
 
 

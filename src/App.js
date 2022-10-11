@@ -10,7 +10,6 @@ import logoFooter from "./logos/finalv1.svg"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
-import { type } from '@testing-library/user-event/dist/type';
 import instrumentos from './Componentes/Elecciones/instrumentos';
 // import logoYT from "./logos/youtube.svg"
 
@@ -82,11 +81,11 @@ class App extends Component{
 					</div>	
 				</div>
 				<footer className="Footer">
-					<img className="logoFooter" src={logoFooter}></img>
+					<img className="logoFooter" src={logoFooter} alt="logoFooter"></img>
 					<div className="Redes">
-						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB}></img></a>
-						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG}></img></a>
-						<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT}></img></a>
+						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB} alt="logoFacebook"></img></a>
+						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG} alt="logoInstagram"></img></a>
+						<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT} alt="logoTwitter"></img></a>
 						{/* <a href="https://www.youtube.com/channel/UChzWYYawHWMG3Q11WhYcAqA" target="_blank" rel="noopener noreferrer"><img className="yt" src={logoYT}></img></a> */}
 					</div>
 				</footer>
