@@ -1,8 +1,7 @@
 import music21
-from tabs import open_midi
 
-def simplificar_acordes(midi, output):
-    m=open_midi(midi)
+def simplificar_acordes(midi_path, output):
+    m= music21.converter.parse(midi_path)
 
     for chord in m.recurse().getElementsByClass('Chord'):
         n = chord.notes

@@ -1,15 +1,14 @@
 import music21
-from tabs import open_midi
 
-def cambiar_tono(midi, cambio, output):
+def cambiar_tono(midi_path, cambio, output):
     """Cambia el tono de la partitura midi en cambio semitonos y lo guarda en output
 
     Args:
-        midi (string): Ruta del archivo midi
+        midi_path (string): Ruta del archivo midi
         cambio (int): Cantidad de semitonos a cambiar, puede ir desde -11 a 11
         output (string): Ruta donde se guardara el archivo midi con el cambio de tono
     """    
-    midi = open_midi(midi)
+    midi = music21.converter.parse(midi_path)
 
     llave=None
     for i in midi.recurse():
