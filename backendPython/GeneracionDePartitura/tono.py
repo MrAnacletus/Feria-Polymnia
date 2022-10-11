@@ -1,4 +1,5 @@
 import music21
+import pretty_midi
 
 def cambiar_tono(midi_path, cambio, output):
     """Cambia el tono de la partitura midi en cambio semitonos y lo guarda en output
@@ -8,38 +9,11 @@ def cambiar_tono(midi_path, cambio, output):
         cambio (int): Cantidad de semitonos a cambiar, puede ir desde -11 a 11
         output (string): Ruta donde se guardara el archivo midi con el cambio de tono
     """    
-    midi = music21.converter.parse(midi_path)
 
-    llave=None
-    for i in midi.recurse():
-        if isinstance(i, music21.key.Key):
-            llave = i
-            break
-    if llave is None:
-        #analizar el midi para identificar la llave
-        llave = midi.analyze('key')
-
-    #lista de llaves musicales
-    llaves=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
-
-    nueva_llave = music21.key.Key(llaves[(llaves.index(llave.tonic.name)+cambio)%12], llave.mode)
-    #print(nueva_llave)
-
-    if((llaves.index(llave.tonic.name)+cambio)%12 != llaves.index(llave.tonic.name)+cambio):
-        #print("Cambio de octava")
-        if(cambio>0):
-            #subir una octava
-            midi.transpose(12, inPlace=True)
-        else:
-            #bajar una octava
-            midi.transpose(-12, inPlace=True)
-
-    inter = music21.interval.Interval(llave.tonic, nueva_llave.tonic)
-    #print(inter)
-
-    midi_nuevo = midi.transpose(inter)
-    #midi_nuevo.show('text')
-
-    midi_nuevo.write('midi', fp=output)
+    mid = pretty_midi.PrettyMIDI(midi_path)
+    for instrument in mid.instruments:
+        for note in instrument.notes:
+            note.pitch += cambio
+    mid.write(output)
     
 cambiar_tono("backendPython/GeneracionDePartitura/test/sparkle_new.mid", 9, "backendPython/GeneracionDePartitura/test/test_cambio_tono.mid")
