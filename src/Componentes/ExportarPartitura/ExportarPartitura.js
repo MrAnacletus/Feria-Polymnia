@@ -6,13 +6,29 @@ axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 class ExportarPartitura extends Component {
     constructor(){
         super();
+        this.state = {
+            Tono: 0
+        }
         this.changePage = this.changePage.bind(this);
         this.exportarPartitura = this.exportarPartitura.bind(this);
         this.simplificar = this.simplificar.bind(this);
+        this.sumarTono = this.sumarTono.bind(this);
     }
 
     changePage(val){
         this.props.sendData(val);
+    }
+
+    sumarTono(valor){
+        if (this.state.Tono + valor >= -11 && this.state.Tono + valor <= 11){
+            this.setState({Tono: this.state.Tono + valor})
+        }
+        if (this.state.Tono + valor < -11){
+            this.setState({Tono: 11})
+        }
+        if (this.state.Tono + valor > 11){
+            this.setState({Tono: -11})
+        }
     }
 
     exportarPartitura = () => { 
@@ -50,18 +66,61 @@ class ExportarPartitura extends Component {
 
     render() {
         return (
-            <div className="containerExportar">
+            <div className="container">
                 <div className="containerTituloExportar">
                     <h2 className="tituloExportar">Exportar Partitura</h2>
                 </div>
                 <button className="btnExportar" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
-                <div className="containerTituloExportar">
-                    <h4 className="tituloExportarChico">¿Muy dificil? ¡Simplificala!</h4>
+                <div className="row">
+                    <div className="col">
+                        <div className="containerTituloExportar">
+                            <h4 className="tituloExportarChico">¿Muy dificil? ¡Simplificala!</h4>
+                        </div>
+                        <form>
+                            <div className="form-group">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" id="simpAcordes" value="simpAcordes"></input>
+                                    <label className="form-check-label text-dark" for="simpAcordes">
+                                        <p>Simplificar acordes</p>
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value="elimManoIzquierda"></input>
+                                    <label className="form-check-label text-dark" for="elimManoIzquierda">
+                                        <p>Eliminar mano izquierda</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="col">
+                        <div className="containerTituloExportar">
+                            <h4 className="tituloExportarChico">¿Quieres cambiar el tono?</h4>
+                        </div>
+                        <form className="form">
+                            <div className="form-group row justify-content-center">
+                                {/* Dos botones y un numero central que sumar y bajan el mismo numero  */}
+                                <button className="btn btn-light col-1 text-dark" type="button" id="button-addon1" onClick={()=>this.sumarTono(-1)}>-</button>
+                                <h2 className="col-1 text-dark">{this.state.Tono}</h2>
+                                <button className="btn btn-light col-1 text-dark" type="button" id="button-addon1" onClick={()=>this.sumarTono(1)}>+</button>
+                            </div>
+                            {/* Pequeña descripción del tono */}
+                            <div className="container">
+                                <p className="text-dark">
+                                    El tono es la distancia entre la nota original y la nota que quieres tocar.
+                                    Por ejemplo, si quieres tocar una canción en la tonalidad de Do mayor, pero la canción está en la tonalidad de Sol mayor, el tono es de 5.
+                                    Si quieres tocar una canción en la tonalidad de Sol mayor, pero la canción está en la tonalidad de Do mayor, el tono es de -5.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <button className="btnExportarChico" onClick={() => this.simplificar()}>Simplificar</button>
+                <div className="container">
+                    <button className="btnExportarChico" onClick={() => this.changePage(0)}>
+                        Aplicar cambios
+                    </button>
                 </div>
-
+                
             </div>
         );
     }
