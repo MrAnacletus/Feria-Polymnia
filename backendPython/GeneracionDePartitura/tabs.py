@@ -104,6 +104,9 @@ def format_tablature(tablature, strings, max_length=100):
                 for j in range(len(note)):
                     if i==note[j][0]:
                         tab_print[i]+=str(note[j][1])
+                        #if the fret number is a numebr of one digit, add a "-" to keep the format
+                        if guiones==2 and len(str(note[j][1]))==1:
+                            tab_print[i]+="-"
                         used = True
                 if(not used):
                     tab_print[i]+="-"*guiones
