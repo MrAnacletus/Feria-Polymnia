@@ -21,6 +21,7 @@
 !/backendPython/GeneracionDePartitura/Transc/transcripcion.py
 !/backendPython/GeneracionDePartitura/Transc/comandos.txt
 /backendPython/GeneracionDePartitura/Generados/*
+/backendPython/GeneracionDePartitura/test/*
 # production
 /build
 
@@ -31,6 +32,7 @@
 .env.test.local
 .env.production.local
 *.pyc
+.vs/
 
 npm-debug.log*
 yarn-debug.log*

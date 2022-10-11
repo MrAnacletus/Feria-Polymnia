@@ -1,6 +1,9 @@
 import procesamiento
 import try1
 import melodia
+import tono
+import separacion_manos
+import acordes
 
 #filepath = "pistas/hb.wav"
 #try1.generar_partitura(
@@ -27,6 +30,11 @@ class ItemEleccionInicial(BaseModel):
 class ItemEleccionInstrumentos(BaseModel):
     instrumento: str
     partitura: str
+
+class ItemSimplificar(BaseModel):
+    tono: int
+    acordes: str
+    derecha: str
 
 app = FastAPI()
 
@@ -96,6 +104,10 @@ async def create_item(item: ItemEleccionInstrumentos):
   path = "./backendPython/GeneracionDePartitura/Generados"
   pathname = lineas[3].strip()
   instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
+  f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+  f.write(pathname+"/no_vocals_new.mid")
+  f.write(item.instrumento)
+  f.close()
   d_pdf=""
   if item.partitura == "si":
     tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(), max_lenght=70)
@@ -104,6 +116,37 @@ async def create_item(item: ItemEleccionInstrumentos):
     d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf}
+
+@app.post("/simplificar")
+
+async def create_item(item: ItemSimplificar):
+  d_pdf = ""
+  f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
+  lineas = f.readlines()
+  f.close()
+  path = "./backendPython/GeneracionDePartitura/Generados"
+  pathname = lineas[4].strip()
+  if item.tono != 0:
+    tono.cambiar_tono(pathname, item.tono, pathnuevo)
+    lineas[4] = pathnuevo
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    f.writelines(lineas)
+    f.close()
+  if item.acordes == "si":
+    acordes.simplificar_acordes(pathname, pathnuevo, 60)
+    lineas[4] = pathnuevo
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    f.writelines(lineas)
+    f.close()
+  if item.derecha == "si":
+    separacion_manos.derecha_piano(pathname, pathnuevo, 60)
+    lineas[4] = pathnuevo
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    f.writelines(lineas)
+    f.close()
+  d_pdf = try1.generar_partitura(lineas[4].strip(), lineas[1].strip(), lineas[2].strip())
+  return {d_pdf}
+
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):
   print(path_to_midi)
