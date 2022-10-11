@@ -6,8 +6,6 @@
     align-items: center;
 }
 .containerTituloExportar{
-	margin-top: 20px;
-	margin-bottom: 20px;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 10px;
@@ -27,7 +25,7 @@
 	content: "";
 	position: relative;
 	margin-top: 25px;
-	background-color: var(--color-7);
+	background-color: black;
 }
 
 .containerBoton{
@@ -65,7 +63,7 @@
 	content: "";
 	position: relative;
 	margin-top: 25px;
-	background-color: var(--color-7);
+	background-color: black;
 }
 
 .btnExportarChico {

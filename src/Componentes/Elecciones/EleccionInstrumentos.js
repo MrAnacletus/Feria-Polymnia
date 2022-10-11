@@ -24,7 +24,7 @@ class EleccionInstrumentos extends Component {
     elegirEsteInstrumento(instrumento, tipo){
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
         this.changePage("PantallaDeCarga", false);
-        axios.post('http://34.139.161.175:3001/eleccioninstrumentos', {
+        axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
             instrumento: instrumento.nombre,
             partitura: tipo
         })
@@ -40,7 +40,7 @@ class EleccionInstrumentos extends Component {
     }
 
     render() {
-        if (!this.props.boolean){
+        if (this.props.boolean === false){
             return (
                 <div className="containerEleccion">
                     <div className="containerTituloEleccion">
@@ -57,10 +57,10 @@ class EleccionInstrumentos extends Component {
                                                     <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                     <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                                 </div>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")}>
+                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")}>
                                                     <h3 className="textoBotonEleccion">Partitura</h3>
                                                 </button>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")} disabled={instrumento.tablatura === "no"}>
+                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")} disabled={instrumento.tablatura === "no"}>
                                                     <h3 className="textoBotonEleccion">Tablatura</h3>
                                                 </button>
                                             </div>
@@ -82,7 +82,7 @@ class EleccionInstrumentos extends Component {
                     </div>
                     <div className="containerBotones">
                         {
-                            instrumentos.map((instrumento, index) => {
+                            this.props.instrumentos.map((instrumento, index) => {
                                 return (
                                     <div className="containerBotonesInstrumento">
                                         <div className="InstrumentoGrande">

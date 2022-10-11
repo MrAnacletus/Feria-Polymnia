@@ -20,11 +20,11 @@ class EleccionInicial extends Component {
     }
 
     elegirInstrumentos(){
-        if (this.props.boolean){
+        if (this.props.boolean === true){
             this.changePage("EleccionInstrumentos", true);
         }else{
             this.changePage("PantallaDeCarga", false);
-            axios.post('http://34.139.161.175:3001/eleccioninicial', {
+            axios.post('http://127.0.0.1:3001/eleccioninicial', {
             eleccion: 'instrumentos'
                 })
             .then(response => {
@@ -41,13 +41,13 @@ class EleccionInicial extends Component {
     }
 
     elegirMelodia(){
-        if (this.props.boolean){
+        if (this.props.boolean === true){
             this.toRender("EleccionMelodiaGenerada");
         }else{
             this.changePage("PantallaDeCarga", false);
             var formData = new FormData();
             formData.append("eleccion","melodia");
-            axios.post('http://34.139.161.175:3001/eleccioninicial', {
+            axios.post('http://127.0.0.1:3001/eleccioninicial', {
                 eleccion: 'melodia'
             })
                 .then(response => {
@@ -68,8 +68,6 @@ class EleccionInicial extends Component {
             toRender: value
         });
     }
-
-
     render() {
         if (this.state.toRender === "EleccionInicial"){
             return (

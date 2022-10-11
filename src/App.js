@@ -10,6 +10,8 @@ import logoFooter from "./logos/finalv1.svg"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
+import { type } from '@testing-library/user-event/dist/type';
+import instrumentos from './Componentes/Elecciones/instrumentos';
 // import logoYT from "./logos/youtube.svg"
 
 
@@ -26,7 +28,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -55,7 +57,17 @@ class App extends Component{
 		}else if (val === "PantallaDeCarga" || val === "EleccionInicial"){
 			boolean = val2;
 		}else if (val === "EleccionInstrumentos"){
-			respuestaInstrumentos = val2;
+			if (Array.isArray(val2)){
+				// mapear los nombres a sus objetos en instrumentos.js
+				respuestaInstrumentos = [];
+				val2.map((instrumentoRec)=>{
+					instrumentos.map((instrumentosObj)=>{
+						if (instrumentoRec === instrumentosObj.nombre){
+							respuestaInstrumentos.push(instrumentosObj);
+						}
+					})
+				})
+			}
 			boolean = val2;
 		}
 	}
