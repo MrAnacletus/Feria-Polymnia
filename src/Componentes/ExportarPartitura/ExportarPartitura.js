@@ -31,12 +31,15 @@ class ExportarPartitura extends Component {
         }
     }
 
-    aplicarCambios(instrumento){
+    aplicarCambios(){
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
         // primero recuperar los valores de los inputs
-        let tono = this.state.tono;
+        let tono = parseInt(this.state.Tono);
         let acordes = document.getElementById("simpAcordes").value;
         let derecha = document.getElementById("elimManoIzquierda").value;
+        console.log(tono);
+        console.log(acordes);
+        console.log(derecha);
         this.changePage("PantallaDeCarga", false);
         axios.post('http://127.0.0.1:3001/simplificar', {
             tono: tono,
@@ -103,7 +106,7 @@ class ExportarPartitura extends Component {
                             <div className="form-group">
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" id="simpAcordes" value="si"></input>
+                                        <input className="form-check-input" type="checkbox" id="simpAcordes" value='si' defaultValue='no'></input>
                                         <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
                                             <p>Simplificar acordes</p>
                                         </label>
@@ -111,7 +114,7 @@ class ExportarPartitura extends Component {
                                 </div>
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value="si"></input>
+                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value='si' defaultValue='no'></input>
                                         <label className="form-check-label text-dark" for="elimManoIzquierda">
                                             <p>Eliminar mano izquierda</p>
                                         </label>
@@ -143,7 +146,7 @@ class ExportarPartitura extends Component {
                     </div>
                 </div>
                 <div className="container">
-                    <button className="btnExportarChico" onClick={() => this.changePage(0)}>
+                    <button className="btnExportarChico" onClick={() => this.aplicarCambios()}>
                         Aplicar cambios
                     </button>
                 </div>

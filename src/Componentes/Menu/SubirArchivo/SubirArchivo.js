@@ -42,6 +42,7 @@ class SubirArchivo extends Component{
     
     onFileUpload = () => {
         console.log(this.state.nombreElegido);
+        this.changePage("PantallaDeCarga",false);
         let printIt = (data) => {
             console.log(data);
             const malo = "\\";

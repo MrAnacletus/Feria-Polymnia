@@ -30,6 +30,7 @@ class ItemEleccionInicial(BaseModel):
 class ItemEleccionInstrumentos(BaseModel):
     instrumento: str
     partitura: str
+    melodia: str
 
 class ItemSimplificar(BaseModel):
     tono: int
@@ -79,10 +80,11 @@ async def create_item(item: ItemEleccionInicial):
   lineas = f.readlines()
   f.close()
   path = "./backendPython/GeneracionDePartitura/Generados"
+  print(item)
   if item.eleccion == "melodia":
-    d_pdf = try1.generar_partitura(lineas[0], lineas[1], lineas[2])
-    open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-    return {d_pdf}
+    # d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
+    # open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
+    return {"Hola"}
   else:
     intrus = ["Piano", "Guitarra acústica", "Bajo"]
     return intrus
@@ -99,7 +101,11 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.close()
   if item.partitura == "si":
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("partitura pa piano porfa\n")
+    f.write("partitura porfa\n")
+    f.close()
+  if item.melodia == "si":
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("deme melodia xfi\n")
     f.close()
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
@@ -118,7 +124,7 @@ async def create_item(item: ItemSimplificar):
   f.close()
   if item.tono != 0:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("tono cambiado en " + item.tono + "semitonos\n")
+    f.write("tono cambiado en " + str(item.tono) + "semitonos\n")
     f.close()
   if item.acordes == "si":
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")

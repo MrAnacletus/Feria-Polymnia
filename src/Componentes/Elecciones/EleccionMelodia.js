@@ -22,9 +22,10 @@ class EleccionMelodia extends Component {
     elegirEsteInstrumento(instrumento, tipo){
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
         this.changePage("PantallaDeCarga", false);
-        axios.post('http://34.139.161.175:3001/eleccioninstrumentos', {
+        axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
             instrumento: instrumento.nombre,
-            partitura: tipo
+            partitura: tipo,
+            melodia: "si"
         })
             .then(response => {
                 //response contiene un json con los instrumentos
@@ -38,28 +39,34 @@ class EleccionMelodia extends Component {
     }
 
     render(){
-        return(
-            <div className="containerEleccion">
-                <div className="containerTituloEleccion">
-                    <h2 className="tituloEleccion">Elige un instrumento compatible</h2>
+            return(
+                <div className="containerEleccion">
+                    <div className="containerTituloEleccion">
+                        <h2 className="tituloEleccion">Elige un instrumento compatible</h2>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            {instrumentos.map((instrumento, index) => {
+                                if (instrumento.melodia === "si"){
+                                    return (
+                                        <div className="containerBotonInstrumento col-3">
+                                            <div className="InstrumentoGrande">
+                                                <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
+                                                <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                                            </div>
+                                            <BotonPartitura instrumento={instrumento} habilitado={instrumento.tablatura} elegirEsteInstrumento={this.elegirEsteInstrumento} partitura={this.props.partitura}/>
+                                        </div>
+                                    )
+                                }
+                                
+                            })}
+                        </div>
+                    </div>
+                    {/* boton volver */}
+                    <button className="botonVolver" onClick={() => this.props.toRender("EleccionInicial")}>Volver</button>
                 </div>
-                <div className="containerBotones">
-                    {instrumentos.map((instrumento, index) => {
-                        return (
-                            <div className="containerBotonInstrumento">
-                                <div className="InstrumentoGrande">
-                                    <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                    <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
-                                </div>
-                                <BotonPartitura instrumento={instrumento} habilitado={instrumento.tablatura} elegirEsteInstrumento={this.elegirEsteInstrumento}/>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        )
+            )
     }
-
 }
 
 export default EleccionMelodia;

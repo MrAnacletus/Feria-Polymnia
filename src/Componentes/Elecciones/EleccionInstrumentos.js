@@ -22,10 +22,13 @@ class EleccionInstrumentos extends Component {
 
     elegirEsteInstrumento(instrumento, tipo){
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
+        console.log(instrumento);
+        console.log(tipo);
         this.changePage("PantallaDeCarga", false);
         axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
-            instrumento: instrumento.nombre,
-            partitura: tipo
+            instrumento: instrumento,
+            partitura: tipo,
+            melodia: "no"
         })
             .then(response => {
                 //response contiene un json con los instrumentos
@@ -39,13 +42,14 @@ class EleccionInstrumentos extends Component {
     }
 
     render() {
+        // 
         if (this.props.boolean === false){
             return (
-                <div className="containerEleccion">
+                <div className="container">
                     <div className="containerTituloEleccion">
                         <h2 className="tituloEleccion">Elige que deseas hacer</h2>
                     </div>
-                    <div className="containerBotones">
+                    <div className="container row">
                         {
                             instrumentos.map((instrumento, index) => {
                                 for (let i = 0; i < this.props.instrumentos.length; i++) {
@@ -56,10 +60,10 @@ class EleccionInstrumentos extends Component {
                                                     <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                     <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                                 </div>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")}>
+                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"si")}>
                                                     <h3 className="textoBotonEleccion">Partitura</h3>
                                                 </button>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"no")} disabled={instrumento.tablatura === "no"}>
+                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"no")} disabled={instrumento.tablatura === "no"}>
                                                     <h3 className="textoBotonEleccion">Tablatura</h3>
                                                 </button>
                                             </div>
@@ -75,23 +79,21 @@ class EleccionInstrumentos extends Component {
             );
         }else{
             return (
-                <div className="containerEleccion">
+                <div className="container">
                     <div className="containerTituloEleccion">
                         <h2 className="tituloEleccion">Elige que deseas hacer</h2>
                     </div>
-                    <div className="containerBotones">
+                    <div className="container row">
                         {
-                            this.props.instrumentos.map((instrumento, index) => {
+                            instrumentos.map((instrumento, index) => {
                                 return (
-                                    <div className="containerBotonesInstrumento">
+                                    <div className="container col-4 form-group-inline">
                                         <div className="InstrumentoGrande">
                                             <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                             <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                         </div>
-                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento,"si")}>
-                                            <h3 className="textoBotonEleccion">Partitura</h3>
-                                        </button>
-                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura}/>
+                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"}/>
+                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"}/>
                                     </div>
                                     )
                                 }

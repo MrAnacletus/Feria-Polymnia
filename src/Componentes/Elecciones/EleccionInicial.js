@@ -4,6 +4,7 @@ import PantalladeCarga from "../PantallaDeCarga/PantallaDeCarga";
 import axios from "axios";
 import EleccionMelodia from "./EleccionMelodia";
 
+var rutaArchivo = '';
 
 class EleccionInicial extends Component {
     constructor(){
@@ -17,6 +18,12 @@ class EleccionInicial extends Component {
 
     changePage(val,val2){
         this.props.sendData(val,val2);
+    }
+
+    toRender(value){
+        this.setState({
+            toRender: value
+        });
     }
 
     elegirInstrumentos(){
@@ -40,17 +47,18 @@ class EleccionInicial extends Component {
         
     }
 
-    elegirMelodia(){
+    elegirMelodia(Valor){
         if (this.props.boolean === true){
-            this.toRender("EleccionMelodiaGenerada");
+            this.toRender("EleccionMelodia");
         }else{
-            this.changePage("PantallaDeCarga", false);
+            this.toRender("PantallaDeCarga");
             axios.post('http://127.0.0.1:3001/eleccioninicial', {
                 eleccion: 'melodia'
             })
                 .then(response => {
                     //response contiene un json con los instrumentos
-                    this.changePage("ExportarPartitura", response.data);
+                    rutaArchivo = response.data;
+                    this.toRender("EleccionMelodia");
                     console.log(response.data + " Ruta archivo a descargar");
                 })
                 .catch(error => {
@@ -58,36 +66,31 @@ class EleccionInicial extends Component {
                     console.error('There was an error!', error);
                 });
         }
-        
     }
 
-    toRender(value){
-        this.setState({
-            toRender: value
-        });
-    }
+    
     render() {
         if (this.state.toRender === "EleccionInicial"){
             return (
-                <div className="containerEleccion">
-                    <div className="containerTituloEleccion">
+                <div className="container">
+                    <div className="container">
                         <h2 className="tituloEleccion">¿Qué quieres hacer?</h2>
                     </div>
                     <div className="containerBotones">
                         <button className="btnEleccion" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                        <button className="btnEleccion" onClick={() => this.toRender("EleccionMelodia")}>Elegir melodía</button>
+                        <button className="btnEleccion" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
                     </div>
                 </div>
             );
         }else if (this.state.toRender === "EleccionMelodia"){
             return (
-                <div className="containerEleccion">
-                    <div className="containerTituloEleccion">
+                <div className="container">
+                    <div className="container">
                         <h2 className="tituloEleccion">¿Qué quieres hacer?</h2>
                     </div>
                     <div className="containerBotones">
-                        <button className="btnEleccion" onClick={() => this.elegirMelodia()} >Generar partitura de la melodía</button>
-                        <button className="btnEleccion" onClick={() => this.elegirMelodia()} >Generar tablatura de la melodía</button>
+                        <button className="btnEleccion" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >Generar partitura de la melodía</button>
+                        <button className="btnEleccion" onClick={() => this.toRender("EleccionMelodiaGenerada tablatura")} >Generar tablatura de la melodía</button>
                         {/* boton de  volver */}
                         <button className="btnEleccion" onClick={() => this.toRender("EleccionInicial")}>Volver</button>
                     </div>
@@ -97,9 +100,13 @@ class EleccionInicial extends Component {
             return (
                 <PantalladeCarga />
             );
-        }else if (this.state.toRender === "EleccionMelodiaGenerada"){
+        }else if (this.state.toRender === "EleccionMelodiaGenerada partitura"){
             return (
-                <EleccionMelodia boolean = {this.props.boolean} sendData={this.props.sendData}/>
+                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="si"/>
+            )
+        }else if (this.state.toRender === "EleccionMelodiaGenerada tablatura"){
+            return (
+                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="no"/>
             )
         }
 
