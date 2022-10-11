@@ -10,14 +10,15 @@ def cambiar_tono(midi, cambio, output):
         output (string): Ruta donde se guardara el archivo midi con el cambio de tono
     """    
     midi = open_midi(midi)
-    #midi.show('text')
 
     llave=None
     for i in midi.recurse():
         if isinstance(i, music21.key.Key):
             llave = i
             break
-    #print(llave)
+    if llave is None:
+        #analizar el midi para identificar la llave
+        llave = midi.analyze('key')
 
     #lista de llaves musicales
     llaves=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
@@ -42,4 +43,4 @@ def cambiar_tono(midi, cambio, output):
 
     midi_nuevo.write('midi', fp=output)
     
-cambiar_tono("backendPython/GeneracionDePartitura/test/piano.mid", 9, "backendPython/GeneracionDePartitura/test/test_cambio_tono.mid")
+cambiar_tono("backendPython/GeneracionDePartitura/test/sparkle_new.mid", 9, "backendPython/GeneracionDePartitura/test/test_cambio_tono.mid")
