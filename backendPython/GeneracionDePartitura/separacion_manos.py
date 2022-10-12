@@ -12,20 +12,11 @@ def derecha_piano(midi_path, output, nota_corte):
     """   
 
     mid = pretty_midi.PrettyMIDI(midi_path)
-    #low_notes = copy.deepcopy(mid)
     high_notes = copy.deepcopy(mid)
 
-    """ for instrument in low_notes.instruments:
-        for note in instrument.notes:
-            if note.pitch > nota_corte:
-                note.velocity = 0 """
-
     for instrument in high_notes.instruments:
-        for note in instrument.notes:
-            if note.pitch < nota_corte:
-                note.velocity = 0
+        instrument.notes = [note for note in instrument.notes if note.pitch >= nota_corte]
 
-    #low_notes.write("low_notes.mid")
     high_notes.write(output)
 
     
