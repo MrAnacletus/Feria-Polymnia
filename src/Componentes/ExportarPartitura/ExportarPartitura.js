@@ -132,7 +132,7 @@ class ExportarPartitura extends Component {
                                     <div className="form-group">
                                         <div className="input-group justify-content-center">
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" id="simpAcordes" onChange={e => this.handleChange("acordes",e)}></input>
+                                                <input className="form-check-input" type="checkbox" id="simpAcordes" onChange={e => this.handleChange("acordes",e)} value="si"></input>
                                                 <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
                                                     <p>Simplificar acordes</p>
                                                 </label>
@@ -142,7 +142,7 @@ class ExportarPartitura extends Component {
                                             this.props.instrumento == "Piano"?
                                                 <div className="input-group justify-content-center">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)}></input>
+                                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)} value="si"></input>
                                                         <label className="form-check-label text-dark" for="elimManoIzquierda">
                                                             <p>Eliminar mano izquierda</p>
                                                         </label>
