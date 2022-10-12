@@ -91,6 +91,7 @@ class ExportarPartitura extends Component {
     }
 
     render() {
+        console.log(props)
         return (
             <div className="container">
                 <div className="containerTituloExportar">
