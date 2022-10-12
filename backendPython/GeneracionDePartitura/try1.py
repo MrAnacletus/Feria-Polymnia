@@ -9,7 +9,7 @@ def generar_partitura(path_to_midi, title, composer, instrument):
 
     path_to_pdf = title + "_temp.pdf"
 
-    res = os.system("mscore3 -o " + path_to_pdf + " " + path_to_midi) 
+    res = os.system("mscore3 -o '" + path_to_pdf + "' '" + path_to_midi+"'") 
 
     shutil.copyfile(path_to_pdf, "temp.pdf")
 
