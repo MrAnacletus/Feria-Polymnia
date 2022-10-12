@@ -24,7 +24,7 @@ let instrumentos = [
         "tablatura": "si",
         "melodia": "si",
         "compatibles": [
-            "Guitarra eléctrica","Ukelele"]
+            "Guitarra eléctrica","Ukelele","Bajo"]
     },
     {
         "nombre": "Guitarra eléctrica",
@@ -33,7 +33,7 @@ let instrumentos = [
         "tablatura": "si",
         "melodia": "si",
         "compatibles": [
-            "Guitarra acústica","Ukelele"]
+            "Guitarra acústica","Ukelele","Bajo"]
     },
     {
         "nombre": "Bajo",
