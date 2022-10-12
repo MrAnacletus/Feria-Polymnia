@@ -5,7 +5,7 @@ import os
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 
-def generar_partitura(path_to_midi, title, composer):
+def generar_partitura(path_to_midi, title, composer, instrument):
 
     path_to_pdf = title + "_temp.pdf"
 
@@ -20,7 +20,7 @@ def generar_partitura(path_to_midi, title, composer):
     can.setFont('Times-Roman', 20)
     can.drawString(250, 810, title)
     can.setFont('Times-Roman', 12)
-    #can.drawString(30, 805, instrument)
+    can.drawString(30, 805, instrument)
     can.drawString(500, 805, composer)
     can.save()
 
