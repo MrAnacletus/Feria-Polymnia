@@ -23,7 +23,7 @@ class EleccionMelodia extends Component {
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
         this.changePage("PantallaDeCarga", false);
         axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
-            instrumento: instrumento.nombre,
+            instrumento: instrumento,
             partitura: tipo,
             melodia: "si"
         })
@@ -54,7 +54,7 @@ class EleccionMelodia extends Component {
                                                 <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                 <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                             </div>
-                                            <BotonPartitura instrumento={instrumento} habilitado={instrumento.tablatura} elegirEsteInstrumento={this.elegirEsteInstrumento} partitura={this.props.partitura}/>
+                                            <BotonPartitura instrumento={instrumento} habilitado={instrumento.tablatura} elegirEsteInstrumento={this.elegirEsteInstrumento} partitura={this.props.partitura} melodia="si"/>
                                         </div>
                                     )
                                 }
@@ -63,7 +63,9 @@ class EleccionMelodia extends Component {
                         </div>
                     </div>
                     {/* boton volver */}
-                    <button className="botonVolver" onClick={() => this.props.toRender("EleccionInicial")}>Volver</button>
+                    <button className="btnInstrumentoPequeño" onClick={() => this.changePage()}>
+                        <h3 className="textoBotonEleccion">Volver</h3>
+                    </button>
                 </div>
             )
     }

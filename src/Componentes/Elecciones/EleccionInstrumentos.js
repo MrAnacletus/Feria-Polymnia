@@ -28,7 +28,7 @@ class EleccionInstrumentos extends Component {
         axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
             instrumento: instrumento,
             partitura: tipo,
-            melodia: "no"
+            melodia: 'no'
         })
             .then(response => {
                 //response contiene un json con los instrumentos
@@ -92,15 +92,17 @@ class EleccionInstrumentos extends Component {
                                             <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                             <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                         </div>
-                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"}/>
-                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"}/>
+                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
+                                        <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
                                     </div>
                                     )
                                 }
                             )
                         }
                     </div>
-                    <button className="btnEleccion" onClick={() => this.changePage()}>Regresar</button>
+                    <button className="btnInstrumentoPequeño" onClick={() => this.changePage()}>
+                        <h3 className="textoBotonEleccion">Volver</h3>
+                    </button>
                 </div>
             );
         }
