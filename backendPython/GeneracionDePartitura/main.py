@@ -100,13 +100,8 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.write("piano porfa\n")
     f.close()
   if item.partitura == "si":
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("partitura porfa\n")
-    f.close()
-  if item.melodia == "si":
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write("deme melodia xfi\n")
-    f.close()
+    tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
+    d_pdf = lineas[1].strip() + '.pdf'
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
     f.write("mamita kiero tablatura\n")
