@@ -114,7 +114,7 @@ class ExportarPartitura extends Component {
                                     </div>
                                 </div>
                                 {() => {
-                                    if (this.props.instrumento == "Piano"){
+                                    if (this.props.instrumento == "Piano "){
                                         return(
                                         <div className="input-group justify-content-center">
                                             <div className="form-check">
