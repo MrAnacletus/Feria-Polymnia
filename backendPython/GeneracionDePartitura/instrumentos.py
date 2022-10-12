@@ -2,6 +2,9 @@ import pretty_midi
 import music21
 
 instrumentos = {
+    "0": "Piano",
+    "1": "Piano",
+    "2": "Piano",
     "24": "Guitarra acústica",
     "25": "Guitarra acústica",
     "26": "Guitarra eléctrica",
