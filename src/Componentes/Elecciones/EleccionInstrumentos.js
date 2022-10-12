@@ -25,7 +25,7 @@ class EleccionInstrumentos extends Component {
         console.log(instrumento);
         console.log(tipo);
         this.changePage("PantallaDeCarga", false);
-        axios.post('http://127.0.0.1:3001/eleccioninstrumentos', {
+        axios.post('http://34.139.161.175:3001/eleccioninstrumentos', {
             instrumento: instrumento,
             partitura: tipo,
             melodia: 'no'

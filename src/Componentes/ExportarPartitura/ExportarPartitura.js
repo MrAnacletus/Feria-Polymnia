@@ -41,7 +41,7 @@ class ExportarPartitura extends Component {
         console.log(acordes);
         console.log(derecha);
         this.changePage("PantallaDeCarga", false);
-        axios.post('http://127.0.0.1:3001/simplificar', {
+        axios.post('http://34.139.161.175:3001/simplificar', {
             tono: tono,
             acordes: acordes,
             derecha: derecha,
@@ -73,7 +73,7 @@ class ExportarPartitura extends Component {
         //     document.body.appendChild(link);
         //     link.click();
         //   });
-        axios.get('http://localhost:8000/single?path='+path_a_exportar,{
+        axios.get('http://34.139.161.175:8000/single?path='+path_a_exportar,{
             responseType:'blob',
             crossDomain: true,
         }).then((response) => {
