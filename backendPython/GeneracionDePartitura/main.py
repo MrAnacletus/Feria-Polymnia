@@ -30,6 +30,7 @@ class ItemEleccionInicial(BaseModel):
 class ItemEleccionInstrumentos(BaseModel):
     instrumento: str
     partitura: str
+    melodia: str
 
 class ItemSimplificar(BaseModel):
     tono: int
