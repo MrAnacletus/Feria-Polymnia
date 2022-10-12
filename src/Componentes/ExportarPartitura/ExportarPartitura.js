@@ -113,9 +113,8 @@ class ExportarPartitura extends Component {
                                         </label>
                                     </div>
                                 </div>
-                                {() => {
-                                    if (this.props.instrumento == "Piano "){
-                                        return(
+                                {
+                                    this.props.instrumento == "Piano"?
                                         <div className="input-group justify-content-center">
                                             <div className="form-check">
                                                 <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" defaultValue='no'></input>
@@ -123,10 +122,9 @@ class ExportarPartitura extends Component {
                                                     <p>Eliminar mano izquierda</p>
                                                 </label>
                                             </div>
-                                        </div>
-                                        )
-                                    }
-                                }}
+                                        </div>:null
+                                    
+                                }
                                 
                             </div>
                         </form>
