@@ -124,6 +124,7 @@ async def create_item(item: ItemEleccionInstrumentos):
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
     f.write(pathname+"/vocals_basic_pitch.mid\n")
+    f.write(item.instrumento+"-melodia\n")
     f.close()
     if item.partitura == "no":
       tabs.get_tab(pathname+"/vocals_basic_pitch.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
@@ -141,26 +142,27 @@ async def create_item(item: ItemSimplificar):
   lineas = f.readlines()
   f.close()
   path = "./backendPython/GeneracionDePartitura/Generados"
-  pathname = lineas[4].strip()
+  pathname = lineaw[3].strip()
+  pathtemp = lineas[4].strip()
   if item.tono != 0:
-    tono.cambiar_tono(pathname, item.tono, pathnuevo)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
-    f.close()
+    tono.cambiar_tono(pathtemp, item.tono, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid")
+    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid"
+    #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    #f.writelines(lineas)
+    #f.close()
   if item.acordes == "si":
-    acordes.simplificar_acordes(pathname, pathnuevo, 60)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
-    f.close()
+    acordes.simplificar_acordes(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid", 60)
+    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid"
+    #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    #f.writelines(lineas)
+    #f.close()
   if item.derecha == "si":
-    separacion_manos.derecha_piano(pathname, pathnuevo, 60)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
-    f.close()
-  d_pdf = try1.generar_partitura(lineas[4].strip(), lineas[1].strip(), lineas[2].strip())
+    separacion_manos.derecha_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_derecha.mid", 60)
+    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_derecha.mid"
+    #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
+    #f.writelines(lineas)
+    #f.close()
+  d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
   return {d_pdf}
 
 
