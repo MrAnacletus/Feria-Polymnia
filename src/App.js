@@ -18,6 +18,7 @@ var fileName;
 var boolean;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
+var tipoDocumento;
 
 class App extends Component{
 	constructor(){
@@ -37,7 +38,7 @@ class App extends Component{
 				render = <PantallaDeCarga sendData={this.changePage} boolean ={boolean}></PantallaDeCarga>;
 			}
 			if (this.state.toRender === "ExportarPartitura"){
-				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado}></ExportarPartitura>;
+				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
 			}
 			if (this.state.toRender === "EleccionInicial"){
 				render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
@@ -72,9 +73,16 @@ class App extends Component{
 		}
 	}
 
-	seleccionarInstrumento(instrumento){
+	seleccionarInstrumento(instrumento,tipo){
 		instrumentoSeleccionado = instrumento;
 		console.log(instrumento + " ha sido seleccionado");
+		if (tipo === "si"){
+			tipoDocumento = "partitura";
+		}
+		else{
+			tipoDocumento = "tablatura";
+		}
+
 	}
 
 	render(){
