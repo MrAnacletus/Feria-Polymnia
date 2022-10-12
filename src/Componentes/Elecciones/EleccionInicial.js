@@ -31,7 +31,7 @@ class EleccionInicial extends Component {
             this.changePage("EleccionInstrumentos", true);
         }else{
             this.changePage("PantallaDeCarga", false);
-            axios.post('http://http://34.139.161.175:3001/eleccioninicial', {
+            axios.post('http://34.139.161.175:3001/eleccioninicial', {
             eleccion: 'instrumentos'
                 })
             .then(response => {
@@ -52,7 +52,7 @@ class EleccionInicial extends Component {
             this.toRender("EleccionMelodia");
         }else{
             this.toRender("PantallaDeCarga");
-            axios.post('http://http://34.139.161.175:3001/eleccioninicial', {
+            axios.post('http://34.139.161.175:3001/eleccioninicial', {
                 eleccion: 'melodia'
             })
                 .then(response => {
