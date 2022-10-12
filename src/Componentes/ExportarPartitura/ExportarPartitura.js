@@ -15,8 +15,8 @@ class ExportarPartitura extends Component {
         this.sumarTono = this.sumarTono.bind(this);
     }
 
-    changePage(val){
-        this.props.sendData(val);
+    changePage(val,val2){
+        this.props.sendData(val,val2);
     }
 
     sumarTono(valor){
