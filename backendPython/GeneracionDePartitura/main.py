@@ -163,6 +163,7 @@ async def create_item(item: ItemSimplificar):
     #f.writelines(lineas)
     #f.close()
   d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
+  print(d_pdf)
   return {d_pdf}
 
 
