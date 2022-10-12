@@ -43,7 +43,7 @@ class EleccionInstrumentos extends Component {
     }
 
     render() {
-        // 
+        console.log(this.props, "props de eleccion instrumentos");
         if (this.props.boolean === false){
             return (
                 <div className="container">
