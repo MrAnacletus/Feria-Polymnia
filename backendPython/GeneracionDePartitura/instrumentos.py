@@ -74,6 +74,7 @@ def reconocer_instrumentos(midi):
     instrumentos_presentes = []
     instrumentos_filtrados = []
     midi_data = pretty_midi.PrettyMIDI(midi+'.mid')
+    print("original: ", midi_data.instruments)
     for instrument in midi_data.instruments:
         if instrument.is_drum:
             instrumentos_presentes.append("Batería")
@@ -87,6 +88,7 @@ def reconocer_instrumentos(midi):
     for j in instrumentos_presentes:
         if j not in filtros:
             instrumentos_filtrados.append(j)
+    print("filtrados: ", instrumentos_filtrados)
     return instrumentos_filtrados
 
 #print(reconocer_instrumentos("daniel2"))
