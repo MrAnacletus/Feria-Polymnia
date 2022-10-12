@@ -151,7 +151,10 @@ async def create_item(item: ItemSimplificar):
     #f.writelines(lineas)
     #f.close()
   if item.acordes == "si":
-    acordes.simplificar_acordes(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid", if(lineas[5].strip()=="Piano"){60}else{0})
+    val_acorde = 0 
+    if lineas[5].strip() == "Piano":
+      val_acorde = 60
+    acordes.simplificar_acordes(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid", val_acorde)
     pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid"
     #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
     #f.writelines(lineas)
