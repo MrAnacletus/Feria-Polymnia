@@ -81,20 +81,25 @@ async def create_item(item: ItemEleccionInicial):
   f.close()
   sep=os.path.split(lineas[0].strip())
   path = "./backendPython/GeneracionDePartitura/Generados"
-  if item.eleccion == "melodia":
-    pathname = tc.transc_melodia(sep[1], sep[0], path)
+  if item.eleccion == "instrumentos":
+    """pathname = tc.transc_melodia(sep[1], sep[0], path)
     d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),"Melodia")
     print(d_pdf)
     print(type(d_pdf))
     open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-    return {d_pdf}
-  else:
+    return {d_pdf}"""
     pathname = tc.transc_intrumento(sep[1], sep[0], path)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
     f.write(pathname)
     f.close()
     intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
     return intrus
+  else:
+    pathname = tc.transc_melodia(sep[1], sep[0], path)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write(pathname)
+    f.close()
+    return {pathname}
 
 @app.post("/eleccioninstrumentos")
 
@@ -104,17 +109,27 @@ async def create_item(item: ItemEleccionInstrumentos):
   f.close()
   path = "./backendPython/GeneracionDePartitura/Generados"
   pathname = lineas[3].strip()
-  instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
-  f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-  f.write(pathname+"/no_vocals_new.mid")
-  f.write(item.instrumento)
-  f.close()
   d_pdf=""
-  if item.partitura == "si":
-    tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
-    d_pdf = lineas[1].strip() + '.pdf'
+  if item.melodia == "no":
+    instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write(pathname+"/no_vocals_new.mid")
+    f.write(item.instrumento)
+    f.close()
+    if item.partitura == "no":
+      tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
+      d_pdf = lineas[1].strip() + '.pdf'
+    else:
+      d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
   else:
-    d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write(pathname+"/vocals_basic_pitch.mid")
+    f.close()
+    if item.partitura == "no":
+      tabs.get_tab(pathname+"/vocals_basic_pitch.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
+      d_pdf = lineas[1].strip() + '.pdf'
+    else:
+      d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf}
 
