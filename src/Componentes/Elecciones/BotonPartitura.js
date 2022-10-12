@@ -18,7 +18,7 @@ class BotonPartitura extends Component {
         console.log(this.props, "props de boton partitura");
         if (this.state.partitura === "si"){
             return (
-                <button className="btnInstrumentoPequeño" disabled={!this.state.habilitado} onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre, this.state.partitura)}>
+                <button className="btnInstrumentoPequeño" disabled={!this.state.habilitado} onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre, this.state.partitura,"a")}>
                     <h3 className="textoBotonEleccion">
                         Partitura
                     </h3>
@@ -28,20 +28,20 @@ class BotonPartitura extends Component {
             if (this.state.habilitado == "si" && this.props.melodia === "no"){
                 if (this.state.instrumento.compatibles.length == 0){
                     return(
-                        <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no")}>
+                        <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
                             <h3 className="textoBotonEleccion">Tablatura</h3>
                         </button>
                     );
                 }else{
                 return (
                     <div className="dropdown">
-                         <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no")}>
+                         <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
                              <h3 className="textoBotonEleccion">Tablatura<b class="caret dropdown-toggle"/></h3>
                          </button>
                          <div className="dropdown-content">
                              {this.state.instrumento.compatibles.map((instrumento, index) => {
                                  return (
-                                     <a onClick={() => this.props.elegirEsteInstrumento(instrumento,"no")}>{instrumento}</a>
+                                     <a onClick={() => this.props.elegirEsteInstrumento(this.props.instrumento.nombre,"no",instrumento)}>{instrumento}</a>
                                  )
                              })}
                          </div>
@@ -49,14 +49,14 @@ class BotonPartitura extends Component {
                 );}
             }else if(this.state.habilitado == "si" && this.props.melodia === "si"){
                 return (
-                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no")}>
+                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
                         <h3 className="textoBotonEleccion">Tablatura</h3>
                     </button>
                 );
             }
             else{
                 return (
-                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no")} disabled={true}>
+                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")} disabled={true}>
                         <h3 className="textoBotonEleccion">Tablatura</h3>
                     </button>
                 )

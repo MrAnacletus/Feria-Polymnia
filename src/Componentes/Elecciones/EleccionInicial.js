@@ -107,7 +107,7 @@ class EleccionInicial extends Component {
             )
         }else if (this.state.toRender === "EleccionMelodiaGenerada tablatura"){
             return (
-                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="no"/>
+                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="no" seleccionarInstrumento={this.props.seleccionarInstrumento}/>
             )
         }
 

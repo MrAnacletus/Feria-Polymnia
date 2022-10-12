@@ -19,11 +19,12 @@ class EleccionMelodia extends Component {
         this.props.sendData(val,val2);
     }
 
-    elegirEsteInstrumento(instrumento, tipo){
+    elegirEsteInstrumento(instrumento, tipo, instrumento2){
         // Realizar un post a la api con el instrumento elegido y si es partitura o tablatura
         this.changePage("PantallaDeCarga", false);
         axios.post('http://34.139.161.175:3001/eleccioninstrumentos', {
             instrumento: instrumento,
+            instrumento2: instrumento2,
             partitura: tipo,
             melodia: "si"
         })
