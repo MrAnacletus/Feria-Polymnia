@@ -106,7 +106,7 @@ class ExportarPartitura extends Component {
                             <div className="form-group">
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" id="simpAcordes" value='si' defaultValue='no'></input>
+                                        <input className="form-check-input" type="checkbox" id="simpAcordes" defaultValue='no'></input>
                                         <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
                                             <p>Simplificar acordes</p>
                                         </label>
@@ -114,7 +114,7 @@ class ExportarPartitura extends Component {
                                 </div>
                                 <div className="input-group justify-content-center">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" value='si' defaultValue='no'></input>
+                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" defaultValue='no'></input>
                                         <label className="form-check-label text-dark" for="elimManoIzquierda">
                                             <p>Eliminar mano izquierda</p>
                                         </label>
