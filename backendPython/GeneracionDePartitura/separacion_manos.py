@@ -1,4 +1,3 @@
-import music21
 import pretty_midi
 import copy
 
