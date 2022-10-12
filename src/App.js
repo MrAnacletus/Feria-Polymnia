@@ -74,6 +74,7 @@ class App extends Component{
 
 	seleccionarInstrumento(instrumento){
 		instrumentoSeleccionado = instrumento;
+		console.log(instrumento," ha sido seleccionado");
 	}
 
 	render(){

@@ -41,6 +41,7 @@ class EleccionMelodia extends Component {
     }
 
     render(){
+        console.log(this.props, "props de eleccion melodia");
             return(
                 <div className="containerEleccion">
                     <div className="containerTituloEleccion">

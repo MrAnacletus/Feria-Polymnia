@@ -70,6 +70,7 @@ class EleccionInicial extends Component {
 
     
     render() {
+        console.log(this.props, "props de eleccion inicial");
         if (this.state.toRender === "EleccionInicial"){
             return (
                 <div className="container">

@@ -15,6 +15,7 @@ class BotonPartitura extends Component {
     }
 
     render() {
+        console.log(this.props, "props de boton partitura");
         if (this.state.partitura === "si"){
             return (
                 <button className="btnInstrumentoPequeño" disabled={!this.state.habilitado} onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre, this.state.partitura)}>
