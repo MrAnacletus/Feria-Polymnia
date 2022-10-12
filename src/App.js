@@ -10,6 +10,7 @@ import logoFooter from "./logos/finalv1.svg"
 import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
+import instrumentos from './Componentes/Elecciones/instrumentos';
 // import logoYT from "./logos/youtube.svg"
 
 
@@ -38,10 +39,10 @@ class App extends Component{
 				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
 			}
 			if (this.state.toRender === "EleccionInicial"){
-				render = <EleccionInicial sendData={this.changePage}></EleccionInicial>;
+				render = <EleccionInicial sendData={this.changePage} boolean = {boolean}></EleccionInicial>;
 			}
 			if (this.state.toRender === "EleccionInstrumentos"){
-				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos}></EleccionInstrumentos>;
+				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean}></EleccionInstrumentos>;
 			}
 		}
 		return render;
@@ -52,10 +53,21 @@ class App extends Component{
 		if (val === "ExportarPartitura"){
 			fileName = val2;
 			console.log(fileName + " recibí este nombre de archivo");
-		}else if (val === "PantallaDeCarga"){
+		}else if (val === "PantallaDeCarga" || val === "EleccionInicial"){
 			boolean = val2;
 		}else if (val === "EleccionInstrumentos"){
-			respuestaInstrumentos = val2;
+			if (Array.isArray(val2)){
+				// mapear los nombres a sus objetos en instrumentos.js
+				respuestaInstrumentos = [];
+				val2.map((instrumentoRec)=>{
+					instrumentos.map((instrumentosObj)=>{
+						if (instrumentoRec === instrumentosObj.nombre){
+							respuestaInstrumentos.push(instrumentosObj);
+						}
+					})
+				})
+			}
+			boolean = val2;
 		}
 	}
 
@@ -69,11 +81,11 @@ class App extends Component{
 					</div>	
 				</div>
 				<footer className="Footer">
-					<img className="logoFooter" src={logoFooter}></img>
+					<img className="logoFooter" src={logoFooter} alt="logoFooter"></img>
 					<div className="Redes">
-						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB}></img></a>
-						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG}></img></a>
-						<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT}></img></a>
+						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB} alt="logoFacebook"></img></a>
+						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG} alt="logoInstagram"></img></a>
+						<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT} alt="logoTwitter"></img></a>
 						{/* <a href="https://www.youtube.com/channel/UChzWYYawHWMG3Q11WhYcAqA" target="_blank" rel="noopener noreferrer"><img className="yt" src={logoYT}></img></a> */}
 					</div>
 				</footer>

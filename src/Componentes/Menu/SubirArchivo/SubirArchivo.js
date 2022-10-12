@@ -42,6 +42,7 @@ class SubirArchivo extends Component{
     
     onFileUpload = () => {
         console.log(this.state.nombreElegido);
+        this.changePage("PantallaDeCarga",false);
         let printIt = (data) => {
             console.log(data);
             const malo = "\\";
@@ -50,7 +51,7 @@ class SubirArchivo extends Component{
             console.log(rutaDestino);
             let nombre=this.state.nombreElegido;
             let autor=this.state.autorElegido;
-            axios.post('http://34.139.161.175:3001/partitas', {
+            axios.post('http://127.0.0.1:3001/partitas', {
                 path: rutaDestino,
                 nombre: nombre,
                 autor: autor,
@@ -76,12 +77,13 @@ class SubirArchivo extends Component{
             formData.append("nombre",this.state.nombreElegido)
             formData.append("autor",this.state.autorElegido)
             
-            axios.post('http://34.139.161.175:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
+            axios.post('http://localhost:8000/upload', formData, Headers={'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
                 .then(response => {
                     rutaArchivo = response.data.message;
                     //console.log(rutaArchivo);
-                    printIt(rutaArchivo);
+                    
                     this.changePage("PantallaDeCarga", false);
+                    printIt(rutaArchivo);
                 })
                 .catch(error => {
                     this.setState({ errorMessage: error.message });
@@ -123,7 +125,7 @@ class SubirArchivo extends Component{
                     <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
                 </label>
                 <h5>Solo es posible procesar archivos en formato WAV, MP3, OGG y FLAC</h5>                 
-                <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={true}> 
+                <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={()=>this.changePage("EleccionInicial",true)}> 
                 Procesar el audio
                 </button>          
             </div>

@@ -13,54 +13,74 @@ let instrumentos = [
         "nombre": "Piano",
         "familia": "cuerdas",
         "imagen": pianoImagen,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
     },
     {
         "nombre": "Guitarra acústica",
         "familia": "cuerdas",
         "imagen": guitarraAcustica,
-        "tablatura": "si"
+        "tablatura": "si",
+        "melodia": "si",
+        "compatibles": [
+            "Guitarra eléctrica","Ukelele"]
     },
     {
         "nombre": "Guitarra eléctrica",
         "familia": "cuerdas",
         "imagen": guitarraElectrica,
-        "tablatura": "si"
+        "tablatura": "si",
+        "melodia": "si",
+        "compatibles": [
+            "Guitarra acústica","Ukelele"]
     },
     {
         "nombre": "Bajo",
         "familia": "cuerdas",
         "imagen": bajo,
-        "tablatura": "si"
+        "tablatura": "si",
+        "melodia": "si",
+        "compatibles": []
     },
     {
         "nombre": "Violín",
         "familia": "cuerdas",
         "imagen": violin,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
     },
     {
         "nombre": "Violoncello",
         "familia": "cuerdas",
         "imagen": violonchelo,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
     },
     {
         "nombre": "Viola",
         "familia": "cuerdas",
         "imagen": viola,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
     },
     {
         "nombre": "Contrabajo",
         "familia": "cuerdas",
         "imagen": contrabajo,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
     },{
         "nombre": "Batería",
         "familia": "percusión",
         "imagen": bateria,
-        "tablatura": "no"
+        "tablatura": "no",
+        "melodia": "no",
+        "compatibles": []
     }   
 ]
 

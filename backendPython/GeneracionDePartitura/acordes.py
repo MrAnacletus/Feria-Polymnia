@@ -63,4 +63,4 @@ def simplificar_acordes(midi_path, output, nota_corte = 60, notas_por_acorde = 2
     
     result.write(output)
 
-simplificar_acordes("backendPython/GeneracionDePartitura/test/inception_mt3.mid", "backendPython/GeneracionDePartitura/test/test_simplificar_acordes.mid")
+#simplificar_acordes("backendPython/GeneracionDePartitura/test/sparkle_new.mid", "backendPython/GeneracionDePartitura/test/test_simplificar_acordes.mid", 60)

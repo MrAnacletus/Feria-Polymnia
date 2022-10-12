@@ -19,4 +19,4 @@ def derecha_piano(midi_path, output, nota_corte):
     high_notes.write(output)
 
     
-derecha_piano("backendPython/GeneracionDePartitura/test/sparkle_new.mid", "backendPython/GeneracionDePartitura/test/test_derecha_piano.mid", 60)
+#derecha_piano("backendPython/GeneracionDePartitura/test/sparkle_new.mid", "backendPython/GeneracionDePartitura/test/test_derecha_piano.mid", 60)

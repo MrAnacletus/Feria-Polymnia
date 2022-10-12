@@ -13,10 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 from pydantic import BaseModel
 import try1
-import Transc.transcripcion as tc
+#import Transc.transcripcion as tc
 import os
 import instrumentos
-import tabs
+#import tabs
 
 class ItemSubirArchivo(BaseModel):
     path: str
@@ -30,6 +30,7 @@ class ItemEleccionInicial(BaseModel):
 class ItemEleccionInstrumentos(BaseModel):
     instrumento: str
     partitura: str
+    melodia: str
 
 class ItemSimplificar(BaseModel):
     tono: int
@@ -78,21 +79,14 @@ async def create_item(item: ItemEleccionInicial):
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
   lineas = f.readlines()
   f.close()
-  sep=os.path.split(lineas[0].strip())
   path = "./backendPython/GeneracionDePartitura/Generados"
+  print(item)
   if item.eleccion == "melodia":
-    pathname = tc.transc_melodia(sep[1], sep[0], path)
-    d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip())
-    print(d_pdf)
-    print(type(d_pdf))
-    open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-    return {d_pdf}
+    # d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
+    # open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
+    return {"Hola"}
   else:
-    pathname = tc.transc_intrumento(sep[1], sep[0], path)
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(pathname)
-    f.close()
-    intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
+    intrus = ["Piano", "Guitarra acústica", "Bajo"]
     return intrus
 
 @app.post("/eleccioninstrumentos")
@@ -101,20 +95,19 @@ async def create_item(item: ItemEleccionInstrumentos):
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
   lineas = f.readlines()
   f.close()
-  path = "./backendPython/GeneracionDePartitura/Generados"
-  pathname = lineas[3].strip()
-  instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
-  f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-  f.write(pathname+"/no_vocals_new.mid")
-  f.write(item.instrumento)
-  f.close()
-  d_pdf=""
+  if item.instrumento == "Piano":
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("piano porfa\n")
+    f.close()
   if item.partitura == "si":
     tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
     d_pdf = lineas[1].strip() + '.pdf'
   else:
-    d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("mamita kiero tablatura\n")
+    f.close()
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
+  d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
   return {d_pdf}
 
 @app.post("/simplificar")
@@ -124,27 +117,19 @@ async def create_item(item: ItemSimplificar):
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
   lineas = f.readlines()
   f.close()
-  path = "./backendPython/GeneracionDePartitura/Generados"
-  pathname = lineas[4].strip()
   if item.tono != 0:
-    tono.cambiar_tono(pathname, item.tono, pathnuevo)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("tono cambiado en " + str(item.tono) + "semitonos\n")
     f.close()
   if item.acordes == "si":
-    acordes.simplificar_acordes(pathname, pathnuevo, 60)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("acordes simplificados\n")
     f.close()
   if item.derecha == "si":
-    separacion_manos.derecha_piano(pathname, pathnuevo, 60)
-    lineas[4] = pathnuevo
-    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
-    f.writelines(lineas)
+    f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
+    f.write("mano derecha xd\n")
     f.close()
-  d_pdf = try1.generar_partitura(lineas[4].strip(), lineas[1].strip(), lineas[2].strip())
+  d_pdf = try1.generar_partitura(lineas[0].strip(), lineas[1].strip(), lineas[2].strip())
   return {d_pdf}
 
 

@@ -15,4 +15,4 @@ def cambiar_tono(midi_path, cambio, output):
             note.pitch += cambio
     mid.write(output)
     
-cambiar_tono("backendPython/GeneracionDePartitura/test/sparkle_new.mid", 9, "backendPython/GeneracionDePartitura/test/test_cambio_tono.mid")
+#cambiar_tono("backendPython/GeneracionDePartitura/test/sparkle_new.mid", 9, "backendPython/GeneracionDePartitura/test/test_cambio_tono.mid")
