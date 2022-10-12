@@ -112,14 +112,21 @@ class ExportarPartitura extends Component {
                                         </label>
                                     </div>
                                 </div>
-                                <div className="input-group justify-content-center">
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" defaultValue='no'></input>
-                                        <label className="form-check-label text-dark" for="elimManoIzquierda">
-                                            <p>Eliminar mano izquierda</p>
-                                        </label>
-                                    </div>
-                                </div>
+                                {() => {
+                                    if (this.props.instrumento == "Piano"){
+                                        return(
+                                        <div className="input-group justify-content-center">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" defaultValue='no'></input>
+                                                <label className="form-check-label text-dark" for="elimManoIzquierda">
+                                                    <p>Eliminar mano izquierda</p>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        )
+                                    }
+                                }}
+                                
                             </div>
                         </form>
                     </div>

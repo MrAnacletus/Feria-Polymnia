@@ -30,6 +30,8 @@ class EleccionMelodia extends Component {
             .then(response => {
                 //response contiene un json con los instrumentos
                 this.changePage("ExportarPartitura", response.data);
+                // seleccionar instrumento
+                this.props.seleccionarInstrumento(instrumento);
                 console.log(response.data + " Ruta archivo a descargar");
             })
             .catch(error => {

@@ -47,7 +47,7 @@ class EleccionInicial extends Component {
         
     }
 
-    elegirMelodia(Valor){
+    elegirMelodia(){
         if (this.props.boolean === true){
             this.toRender("EleccionMelodia");
         }else{
@@ -102,7 +102,7 @@ class EleccionInicial extends Component {
             );
         }else if (this.state.toRender === "EleccionMelodiaGenerada partitura"){
             return (
-                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="si"/>
+                <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="si" seleccionarInstrumento={this.props.seleccionarInstrumento}/>
             )
         }else if (this.state.toRender === "EleccionMelodiaGenerada tablatura"){
             return (

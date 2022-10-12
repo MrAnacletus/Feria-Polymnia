@@ -17,13 +17,14 @@ import instrumentos from './Componentes/Elecciones/instrumentos';
 var fileName;
 var boolean;
 var respuestaInstrumentos;
+var instrumentoSeleccionado;
 
 class App extends Component{
 	constructor(){
 		super();
 		this.RenderPage = this.RenderPage.bind(this);
 		this.changePage = this.changePage.bind(this);
-	
+		this.seleccionarInstrumento = this.seleccionarInstrumento.bind(this);
 	}
 	RenderPage(){
 		let render;
@@ -36,13 +37,13 @@ class App extends Component{
 				render = <PantallaDeCarga sendData={this.changePage} boolean ={boolean}></PantallaDeCarga>;
 			}
 			if (this.state.toRender === "ExportarPartitura"){
-				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName}></ExportarPartitura>;
+				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado}></ExportarPartitura>;
 			}
 			if (this.state.toRender === "EleccionInicial"){
-				render = <EleccionInicial sendData={this.changePage} boolean = {boolean}></EleccionInicial>;
+				render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
 			}
 			if (this.state.toRender === "EleccionInstrumentos"){
-				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean}></EleccionInstrumentos>;
+				render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInstrumentos>;
 			}
 		}
 		return render;
@@ -69,6 +70,10 @@ class App extends Component{
 			}
 			boolean = val2;
 		}
+	}
+
+	seleccionarInstrumento(instrumento){
+		instrumentoSeleccionado = instrumento;
 	}
 
 	render(){
