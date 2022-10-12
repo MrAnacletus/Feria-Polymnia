@@ -94,6 +94,10 @@ Para una correcta organización de los archivos propongo la siguiente organizaci
 - ```pip3 install pysoundfile==0.9.0```
 #### Instalar fpdf 1.7.2
 - ```pip3 install fpdf==1.7.2```
+#### Instalar pypdf2
+- ```pip3 install pypdf2```
+#### Instalar ReportLab
+- ```pip3 install reportlab```
 #### Instalar dependencias de npm
 - ```npm install```
 - ```npm ci```
