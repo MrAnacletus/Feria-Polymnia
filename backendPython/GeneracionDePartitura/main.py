@@ -124,7 +124,7 @@ async def create_item(item: ItemEleccionInstrumentos):
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
     f.write(pathname+"/vocals_basic_pitch.mid\n")
-    f.write(item.instrumento+"-melodia\n")
+    f.write(item.instrumento+"\n")
     f.close()
     if item.partitura == "no":
       tabs.get_tab(pathname+"/vocals_basic_pitch.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
@@ -142,7 +142,7 @@ async def create_item(item: ItemSimplificar):
   lineas = f.readlines()
   f.close()
   path = "./backendPython/GeneracionDePartitura/Generados"
-  pathname = lineaw[3].strip()
+  pathname = lineas[3].strip()
   pathtemp = lineas[4].strip()
   if item.tono != 0:
     tono.cambiar_tono(pathtemp, item.tono, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid")
