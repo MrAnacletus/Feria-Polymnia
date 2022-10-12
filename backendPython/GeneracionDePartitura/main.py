@@ -110,7 +110,7 @@ async def create_item(item: ItemEleccionInstrumentos):
   f.close()
   d_pdf=""
   if item.partitura == "si":
-    tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(), max_lenght=70)
+    tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
     d_pdf = lineas[1].strip() + '.pdf'
   else:
     d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip())

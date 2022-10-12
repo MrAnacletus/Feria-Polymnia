@@ -78,9 +78,9 @@ def format_tablature(tablature, strings, max_length=100):
     tab_print = ["" for _ in range(len(strings))]
 
     # First line
-    for i in range(len(strings)):
-        tab_print[i]+=strings[i][0]
-        tab_print[i]+="|"
+    #for i in range(len(strings)):
+        #tab_print[i]+=strings[i][0]
+        #tab_print[i]+="|"
         
     for note in tablature:
         for i in range(len(strings)):
@@ -126,11 +126,14 @@ def format_tablature(tablature, strings, max_length=100):
         lineas = int(len(tab_print[0])/max_length)+1
         for i in range(lineas):
             for st in range(len(tab_print)):
-                to_print.append(tab_print[st][i*max_length:(i+1)*max_length])
+                cuerda = strings[st][0]+"|"
+                to_print.append(cuerda+tab_print[st][i*max_length:(i+1)*max_length])
             to_print.append(" ")
     else:
         for st in range(len(tab_print)):
             to_print.append(tab_print[st])
+    
+    #print(to_print)
     return to_print
 
 def get_notes(midi):
@@ -267,7 +270,7 @@ def create_tab_array(notes, note_table, strings_num, frets):
             prev = tab[-1][0]
     return tab
 
-def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_lenght=77, generate_file=False, file_path="", title="", author=""):
+def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_lenght=77, generate_file=False, file_path="", title="", author="", instrument=""):
     """Generate a tablature from a MIDI file and print it on the console or generate a pdf file with the tablature
 
     Args:
@@ -279,6 +282,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         file_path (str, optional): Path to the file to generate. Defaults to "".
         title (str, optional): Title of the tablature. Defaults to "".
         author (str, optional): Author of the tablature. Defaults to "".
+        instrument (str, optional): Instrument of the tablature. Defaults to "".
     """       
     if isinstance(strings, str):
         if strings.lower() == "guitar":
@@ -286,7 +290,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         elif strings.lower() == "bass":
             strings=["G2","D2","A1","E1"]
         elif strings.lower() == "ukulele":
-            strings=["G4","C4","E4","A3"]
+            strings=["A3","E4","C4","G4"]
 
     base_midi = open_midi(midi_path)
     notes = get_notes(base_midi)
@@ -313,6 +317,8 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
     p = format_tablature(tabs, strings, max_length=max_lenght)
     if(generate_file):
         pdf = FPDF()
+        pdf.set_left_margin(4.0)
+        pdf.set_right_margin(4.0)
  
         # Add a page
         pdf.add_page()
@@ -324,6 +330,10 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         # Author
         pdf.set_font('Times', '', 12)
         pdf.cell(200, 10, txt = author, ln = 2, align = 'C')
+
+        # Instrument
+        pdf.set_font('Times', '', 12)
+        pdf.cell(195, 10, txt = instrument, ln = 3, align = 'R')
         
         # add another cell
         for line in range(len(p)):
@@ -338,4 +348,6 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
     else:
         for line in p:
             print(line)
+
+#get_tab("happy_guitar_new.mid", generate_file=True, file_path = "./emi2.pdf", title = "don", author = "emi", instrument = "guitarra")
 
