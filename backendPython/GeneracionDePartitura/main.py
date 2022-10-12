@@ -90,14 +90,14 @@ async def create_item(item: ItemEleccionInicial):
     return {d_pdf}"""
     pathname = tc.transc_intrumento(sep[1], sep[0], path)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(pathname)
+    f.write(pathname+"\n")
     f.close()
     intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
     return intrus
   else:
     pathname = tc.transc_melodia(sep[1], sep[0], path)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(pathname)
+    f.write(pathname+"\n")
     f.close()
     return {pathname}
 
@@ -113,8 +113,8 @@ async def create_item(item: ItemEleccionInstrumentos):
   if item.melodia == "no":
     instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(pathname+"/no_vocals_new.mid")
-    f.write(item.instrumento)
+    f.write(pathname+"/no_vocals_new.mid\n")
+    f.write(item.instrumento+"\n")
     f.close()
     if item.partitura == "no":
       tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
@@ -123,7 +123,7 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
   else:
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
-    f.write(pathname+"/vocals_basic_pitch.mid")
+    f.write(pathname+"/vocals_basic_pitch.mid\n")
     f.close()
     if item.partitura == "no":
       tabs.get_tab(pathname+"/vocals_basic_pitch.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
