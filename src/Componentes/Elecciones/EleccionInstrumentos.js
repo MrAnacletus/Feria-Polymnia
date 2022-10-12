@@ -51,7 +51,7 @@ class EleccionInstrumentos extends Component {
                     </div>
                     <div className="container row">
                         {
-                            instrumentos.map((instrumento, index) => {
+                            this.props.instrumentos.map((instrumento, index) => {
                                 for (let i = 0; i < this.props.instrumentos.length; i++) {
                                     if (this.props.instrumentos[i] === instrumento.nombre) {
                                         return (
@@ -85,7 +85,7 @@ class EleccionInstrumentos extends Component {
                     </div>
                     <div className="container row">
                         {
-                            instrumentos.map((instrumento, index) => {
+                            this.props.instrumentos.map((instrumento, index) => {
                                 return (
                                     <div className="container col-4 form-group-inline">
                                         <div className="InstrumentoGrande">
