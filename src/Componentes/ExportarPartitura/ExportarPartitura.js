@@ -117,7 +117,7 @@ class ExportarPartitura extends Component {
         return (
             <div className="container">
                 <div className="containerTituloExportar">
-                    <h2 className="tituloExportar">Exportar Partitura</h2>
+                    <h2 className="tituloExportar">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
                 </div>
                 <button className="btnExportar" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
                 {
