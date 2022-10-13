@@ -53,7 +53,7 @@
 .RenderContainer {
   color: var(--color-4);
   background-size: 100%;
-  display: contents;
+  /* display: contents; */
   flex-direction: column;
   height: 80vh;
 }
