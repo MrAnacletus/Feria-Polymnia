@@ -28,6 +28,7 @@ class EleccionInstrumentos extends Component {
         this.changePage("PantallaDeCarga", false);
         axios.post('http://34.139.161.175:3001/eleccioninstrumentos', {
             instrumento: instrumento,
+            instrumento2: instrumento2,
             partitura: tipo,
             melodia: 'no'
         })
