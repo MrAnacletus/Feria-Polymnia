@@ -1,5 +1,5 @@
-import music21
-import json
+import music21, json, logging
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)-8s: %(message)s')
 
 def chord_notation(chord):
     """Change the chord notation, p.e. from  C-major-third to C or from C-minor-third to Cm
@@ -44,7 +44,13 @@ with open('backendPython/GeneracionDePartitura/acordes.json', 'r') as file:
 inp = input("Introduce las notas del acorde: ")
 
 acorde = music21.chord.Chord(inp.split())
-print(f'Acorde según music21: {acorde.pitchedCommonName}')
-print(f'Acorde según la función: {chord_notation(acorde.pitchedCommonName)}')
-print(f'Posible manera de tocar el acorde con cejillos: {acordes[chord_notation(acorde.pitchedCommonName)][0][0]}')
-print(f'Posible manera de tocar el acorde sin cejillos: {acordes[chord_notation(acorde.pitchedCommonName)][1][0]}')
+m21 = acorde.pitchedCommonName
+custom = chord_notation(m21)
+logging.debug(f'Acorde según music21: {m21}')
+logging.debug(f'Acorde según la función: {custom}')
+
+if custom in acordes:
+    logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
+    logging.info(f'Posible manera de tocar el acorde sin cejillos: {acordes[custom][1][0]}')
+else:
+    logging.error(f"Acorde no encontrado: {custom} a partir de {m21}")

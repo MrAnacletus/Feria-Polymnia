@@ -29,6 +29,7 @@ def simplificar_acordes(midi_path, output, nota_corte = 60, notas_por_acorde = 2
     for instrument in mid.instruments[:1]:
         #acordes en la mano izquierda
         notas = sorted(instrument.notes, key=lambda x: (x.start, -x.pitch))
+        print(notas)
         notas_en_acorde = 0
         ultimo_tiempo = -1
         for n in notas:
@@ -63,4 +64,4 @@ def simplificar_acordes(midi_path, output, nota_corte = 60, notas_por_acorde = 2
     
     result.write(output)
 
-#simplificar_acordes("backendPython/GeneracionDePartitura/test/sparkle_new.mid", "backendPython/GeneracionDePartitura/test/test_simplificar_acordes.mid", 60)
+simplificar_acordes("backendPython/GeneracionDePartitura/test/sparkle_new.mid", "backendPython/GeneracionDePartitura/test/test_simplificar_acordes.mid", 60)

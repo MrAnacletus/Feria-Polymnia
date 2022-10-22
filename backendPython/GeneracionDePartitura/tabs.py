@@ -1,7 +1,7 @@
 # Script for generating tablatures from MIDI files
 import numpy as np
 np.set_printoptions(linewidth=np.inf)
-import music21
+import pretty_midi
 from itertools import product
 import numpy as np
 # sudo pip3 install fpdf
@@ -16,17 +16,9 @@ def unique_product(*l, repeat=1):
     return prod
 
 def open_midi(midi_path):
-    """Open MIDI file"""
-    """ mf = music21.midi.MidiFile()
-    mf.open(midi_path)
-    mf.read()
-    mf.close()
-    if (remove_drums):
-        for i in range(len(mf.tracks)):
-            mf.tracks[i].events = [ev for ev in mf.tracks[i].events if ev.channel != 10]   
-    s = music21.midi.translate.midiFileToStream(mf)"""  
+    """Open MIDI file""" 
 
-    s = music21.converter.parse(midi_path)
+    s = pretty_midi.PrettyMIDI(midi_path)
         
     return s
 
@@ -136,18 +128,30 @@ def format_tablature(tablature, strings, max_length=100):
     #print(to_print)
     return to_print
 
-def get_notes(midi):
+def get_notes(midi, threshold=0.05, notas_por_acorde=6):
     """Get notes from MIDI"""
-    notes = []
+    lista = []
 
-    for note in midi.recurse().notes:
+    """ for note in midi.recurse().notes:
         if(isinstance(note, music21.note.Note)):
             notes.append(note_to_num(note.nameWithOctave))
         elif(isinstance(note, music21.chord.Chord)):
-            notes.append([note_to_num(n.nameWithOctave) for n in note])
-   
+            notes.append([note_to_num(n.nameWithOctave) for n in note]) """
+            
+    notas = sorted(midi.instruments[0].notes, key=lambda x: (x.start, -x.pitch))
+    notas_en_acorde = 0
+    ultimo_tiempo = -1
+    for no in notas:
+        if(no.start - ultimo_tiempo <= threshold):
+            notas_en_acorde += 1
+            if(notas_en_acorde<=notas_por_acorde):
+                lista[-1].append(no.pitch)
+        else:
+            lista.append([no.pitch])
+            notas_en_acorde=1
+        ultimo_tiempo=no.start
     # print(notes)
-    return notes
+    return lista
 
 def place_note(note, prev, note_table, frets):
     """Place a note in the tablature in relation to the previous note, so it is easier to play
@@ -262,10 +266,10 @@ def create_tab_array(notes, note_table, strings_num, frets):
     tab = []
     prev = -1
     for note in notes:
-        if(isinstance(note, int)):
-            tab.append(place_note(note, prev, note_table, frets))
+        if(len(note)==1):
+            tab.append(place_note(note[0], prev, note_table, frets))
             prev = tab[-1]
-        elif(isinstance(note, list)):
+        else:
             tab.append(place_chord(note, note_table, strings_num, frets))
             prev = tab[-1][0]
     return tab
