@@ -1,21 +1,11 @@
 import music21
-from pychord import find_chords_from_notes
-
-doMayor = [60, 63, 67, 71]
-
-acorde = music21.chord.Chord(doMayor)
-#print(acorde.root())
-#print(acorde.commonName)
-print(acorde.pitchedCommonName)
-#print(acorde.pitches)
-print(acorde.pitchNames)
-#print(acorde.sortAscending())
+import json
 
 def chord_notation(chord):
     """Change the chord notation, p.e. from  C-major-third to C or from C-minor-third to Cm
 
     Args:
-        chord (string): Chord
+        chord (string): Chord(output de chord.pitchedCommonName)
 
     Returns:
         string: chord notation
@@ -41,6 +31,20 @@ def chord_notation(chord):
     #Faltan los suspendidos, que en music21 aparecen como quartal, falta averiguar
     #chord = chord.replace("quartal", "sus")
     
-    print(chord)
+    return chord
 
-chord_notation(acorde.pitchedCommonName)
+#diccionario de acordes, la clave es el nombre del acorde, p.e. Cm7
+#el valor es una lista con dos listas dentro, la primera con maneras de tocar el acorde usando cejillos, la segunda con maneras de tocar el acorde sin cejillos
+#las maneras de tocar los acordes se representan con una lista de strings, p.e. ["x", "1", "2", "3", "4", "0"] es un acorde donde la primera cuerda no se toca, la segunda cuerda se toca en el traste 1, la tercera cuerda se toca en el traste 2, etc.
+acordes = {}
+with open('backendPython/GeneracionDePartitura/acordes.json', 'r') as file:
+    acordes = json.loads(file.read())
+
+
+inp = input("Introduce las notas del acorde: ")
+
+acorde = music21.chord.Chord(inp.split())
+print(f'Acorde según music21: {acorde.pitchedCommonName}')
+print(f'Acorde según la función: {chord_notation(acorde.pitchedCommonName)}')
+print(f'Posible manera de tocar el acorde con cejillos: {acordes[chord_notation(acorde.pitchedCommonName)][0][0]}')
+print(f'Posible manera de tocar el acorde sin cejillos: {acordes[chord_notation(acorde.pitchedCommonName)][1][0]}')
