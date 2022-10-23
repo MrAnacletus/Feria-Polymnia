@@ -242,6 +242,11 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
         2D int array: array with information of the placed notes in the format of [string,fret]
     """
     global acordes
+    
+    acorde = music21.chord.Chord(chord)
+    if(len(set(acorde.pitchNames)) <= 2):
+        chord = chord[:2]
+    
     result = [] 
     if len(chord)==2:
         # Strings that can play the note, and the fret where it is played(p.e. [[[0,3],[1,5]], [[0,5],[1,7]]])
@@ -297,6 +302,7 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
         if custom in acordes:
             logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
             logging.info(f'Posible manera de tocar el acorde sin cejillos: {acordes[custom][1][0]}')
+            logging.info(f"Acorde: {custom} a partir de {m21}")
             if cejillo:
                 r = acordes[custom][0][0]
             else:
