@@ -1,5 +1,6 @@
 # Script for generating tablatures from MIDI files
 import numpy as np, pretty_midi, json, logging, music21
+import mingus.core.chords as chords
 logging.basicConfig(level=logging.INFO, format='%(levelname)-8s: %(message)s')
 np.set_printoptions(linewidth=np.inf)
 from itertools import product
@@ -205,26 +206,11 @@ def chord_notation(chord):
     Returns:
         string: chord notation
     """    
-    #words to delete
-    ban = ["major", "-", "triad", " ", "tetrachord", "chord"]
-    
-    chord = chord.replace("dominant seventh", "7")
-    chord = chord.replace("major seventh", "maj7")
-    chord = chord.replace("seventh", "7")
-    chord = chord.replace("minor", "m")
-    chord = chord.replace("third", "3")
-    chord = chord.replace("fifth", "5")
-    chord = chord.replace("ninth", "9")
-    chord = chord.replace("eleventh", "11")
-    chord = chord.replace("thirteenth", "13")
-    chord = chord.replace("diminished", "dim")
-    chord = chord.replace("augmented", "aug")
-    
-    for b in ban:
-        chord = chord.replace(b, "")
-    
-    #Faltan los suspendidos, que en music21 aparecen como quartal, falta averiguar
-    #chord = chord.replace("quartal", "sus")
+    if chord[-1] == "M":
+        chord = chord[:-1]
+    chord = chord.replace("m/M", "mmaj")
+    chord = chord.replace("M6", "6")
+    chord = chord.replace("M", "maj")
     
     return chord
 
@@ -294,10 +280,15 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
     else:
         acorde = music21.chord.Chord(chord)
         m21 = acorde.pitchedCommonName
-        custom = chord_notation(m21)
+        n_list = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+        aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
+        n =  sorted(aux, key=lambda x: n_list.index(x))
+        custom = chord_notation(chords.determine(n, True)[0])
         logging.info(f'Notas: {acorde.pitchNames}')
-        logging.debug(f'Acorde según music21: {m21}')
-        logging.debug(f'Acorde según la función: {custom}')
+        logging.info(f'Notas filtradas: {n}')
+        logging.info(f'Acorde según amingus: {chords.determine(n, True)}')
+        logging.info(f'Acorde según la función: {custom}')
+        logging.info(f'Acorde según music21: {m21}')
 
         if custom in acordes:
             logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
