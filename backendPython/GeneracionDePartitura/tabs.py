@@ -278,33 +278,52 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
                     result=temp
                 temp=[]
     else:
+        #Acorde de 3+ notas
         acorde = music21.chord.Chord(chord)
         m21 = acorde.pitchedCommonName
+        #Se quita el numero de la octava de las notas y se ordenan segun la lista n_list
         n_list = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
         aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
         n =  sorted(aux, key=lambda x: n_list.index(x))
         custom = chord_notation(chords.determine(n, True)[0])
+        
         logging.info(f'Notas: {acorde.pitchNames}')
         logging.info(f'Notas filtradas: {n}')
         logging.info(f'Acorde según amingus: {chords.determine(n, True)}')
         logging.info(f'Acorde según la función: {custom}')
-        logging.info(f'Acorde según music21: {m21}')
+        logging.debug(f'Acorde según music21: {m21}')
 
         if custom in acordes:
-            logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
-            logging.info(f'Posible manera de tocar el acorde sin cejillos: {acordes[custom][1][0]}')
-            logging.info(f"Acorde: {custom} a partir de {m21}")
+            #Se encontró el nombre del acorde en la base de datos
             if cejillo:
-                r = acordes[custom][0][0]
-            else:
-                r = acordes[custom][1][0]
+                if len(acordes[custom][0])>0:
+                    #Hay una manera de tocar el acorde con cejillos
+                    logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
+                    r = acordes[custom][0][0]
+                else:
+                    logging.info(f"No hay forma de tocar {custom} con cejillo, cambiando a sin cejillo")
+                    cejillo = False
+            if not cejillo:
+                if len(acordes[custom][1])>0:
+                    #Hay una manera de tocar el acorde sin cejillos
+                    logging.info(f'Posible manera de tocar el acorde sin cejillos: {acordes[custom][1][0]}')
+                    r = acordes[custom][1][0]
+                else:
+                    logging.info(f"No hay forma de tocar {custom} sin cejillo, cambiando a la otra cosa que no se que es")
+                    if len(acordes[custom][2])>0:
+                        #Hay una manera de tocar el acorde
+                        logging.info(f'Posible manera de tocar el acorde alternativa: {acordes[custom][2][0]}')
+                        r = acordes[custom][2][0]
+                    else:
+                        logging.error(f"No se encontró cómo tocar {custom}")
+                        r = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
             for i, fret in enumerate(reversed(r)):
                 if fret != 'x':
                     result.append([i, int(fret)])
         else:
             logging.debug(f"Diccionario en place chord: {list(acordes.keys())[:5]}")
             logging.error(f"Acorde no encontrado: {custom} a partir de {m21}")
-            result=[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+            result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
     
     logging.debug(f'result: {result}')
     return result
@@ -356,7 +375,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
             strings=["A3","E4","C4","G4"]
             
     global acordes
-    with open('backendPython/GeneracionDePartitura/acordes.json', 'r') as file:
+    with open('backendPython/GeneracionDePartitura/acordes_v2.json', 'r') as file:
         acordes = json.loads(file.read())
     logging.debug(f"Diccionario en get tab: {list(acordes.keys())[:5]}")
 
