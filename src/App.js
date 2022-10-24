@@ -94,14 +94,20 @@ class App extends Component{
 						{this.RenderPage()}
 					</div>	
 				</div>
-				<footer className="Footer">
-					<img className="logoFooter" src={logoFooter} alt="logoFooter"></img>
-					<div className="Redes">
-						<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB} alt="logoFacebook"></img></a>
-						<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG} alt="logoInstagram"></img></a>
-						<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT} alt="logoTwitter"></img></a>
-						{/* <a href="https://www.youtube.com/channel/UChzWYYawHWMG3Q11WhYcAqA" target="_blank" rel="noopener noreferrer"><img className="yt" src={logoYT}></img></a> */}
+				<footer className="footer container-fluid position-relative bg-dark bg-light-radial text-white-50 py-6 px-5 h-100 Footer ">
+					<div className="row d-flex flex-space-between">
+						<div className="col-sm flex-start p-2">
+							<img className="logoFooter" src={logoFooter} alt="logoFooter"></img>
+						</div>
+						<div className="col-sm flex-end p-2">
+							<a href="https://www.facebook.com/Polymnia-103142859200736" target="_blank" rel="noopener noreferrer" ><img className="fb" src={logoFB} alt="logoFacebook"></img></a>
+							<a href="https://www.instagram.com/polymnia_fsw/" target="_blank" rel="noopener noreferrer"><img className="ig" src={logoIG} alt="logoInstagram"></img></a>
+							<a href="https://twitter.com/Partitas_fdsw" target="_blank" rel="noopener noreferrer"><img className="twt" src={logoTWT} alt="logoTwitter"></img></a>
+							{/* <a href="https://www.youtube.com/channel/UChzWYYawHWMG3Q11WhYcAqA" target="_blank" rel="noopener noreferrer"><img className="yt" src={logoYT}></img></a> */}
+						</div>
 					</div>
+					
+					
 				</footer>
 			</body>
 		)

@@ -11,4 +11,8 @@
     --color-hover: #cfdbd5;
     --grad-1: linear-gradient(to right, #9e5e86, #af7a39 );
     --grad-2: linear-gradient(to right,#df86bd,#df9c49);
+    --primary: #FD5D14;
+    --secondary: #FDBE33;
+    --light: #F4F6F8;
+    --dark: #040F28;
 }

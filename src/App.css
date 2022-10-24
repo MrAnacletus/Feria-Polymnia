@@ -3,11 +3,10 @@
 
 .App {
   text-align: center;
-  font-family: 'MuliRegular';
+  font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-style: normal; 
   height: 100%;
-  min-height: 100vh;
   width: 100%;
   position: relative;
   background: var(--color-6);
@@ -19,32 +18,14 @@
   color: var(--color-4);
   background-size: 100%;
   flex-direction: column;
-  height: 80vh;
 }
-
 
 .colorBg{
   overflow-x: hidden;
 }
 
-
-.Footer {
-  width: 100%;
-  height: 10vh;
-  background: var(--color-7);
-  margin-top: auto;
-  display: flex;
-  font-family: 'MuliRegular';
-  font-weight: normal;
-  font-style: normal;
-  align-items: center;
-  justify-content: space-between;
-  background-image: var(--grad-1);
-}
-
 .logoFooter {
-	float: left;
-	margin-left: 5vw;
+  height: 10vh;
 }
 
 .Redes {
