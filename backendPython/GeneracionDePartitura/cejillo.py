@@ -1,3 +1,5 @@
+#Script para probar reconocimiento de acordes y output de busqueda de los acordes en el json
+
 import music21, json, logging
 import mingus.core.chords as chords
 logging.basicConfig(level=logging.INFO, format='%(levelname)-8s: %(message)s')
@@ -23,7 +25,7 @@ def chord_notation(chord):
 #el valor es una lista con dos listas dentro, la primera con maneras de tocar el acorde usando cejillos, la segunda con maneras de tocar el acorde sin cejillos
 #las maneras de tocar los acordes se representan con una lista de strings, p.e. ["x", "1", "2", "3", "4", "0"] es un acorde donde la primera cuerda no se toca, la segunda cuerda se toca en el traste 1, la tercera cuerda se toca en el traste 2, etc.
 acordes = {}
-with open('backendPython/GeneracionDePartitura/acordes.json', 'r') as file:
+with open('backendPython/GeneracionDePartitura/acordes_v2.json', 'r') as file:
     acordes = json.loads(file.read())
 
 inp = input("Introduce las notas del acorde: ")
