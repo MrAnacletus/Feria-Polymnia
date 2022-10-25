@@ -13,13 +13,6 @@
   background-image: var(--grad-2);
 }
 
-.RenderContainer {
-  display: flex;
-  color: var(--color-4);
-  background-size: 100%;
-  flex-direction: column;
-}
-
 .colorBg{
   overflow-x: hidden;
 }

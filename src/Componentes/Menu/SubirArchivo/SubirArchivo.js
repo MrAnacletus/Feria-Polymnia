@@ -103,7 +103,9 @@ class SubirArchivo extends Component{
                     {this.state.selectedFile.name}
                     <input id="file-upload" type="file" onChange={this.onFileChange} accept="/wav, .mp3, .ogg, .flac"/>
                 </label>
-                <h5>Solo es posible procesar archivos en formato WAV, MP3, OGG y FLAC</h5> 
+                <h5>
+                    Partitas admite archivos tipo WAV, MP3, OGG y FLAC
+                </h5> 
                 
                 <form>
                 <label htmlFor="namedInput" >Nombre Canción:</label>
@@ -124,7 +126,7 @@ class SubirArchivo extends Component{
                     Seleccionar Archivo
                     <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
                 </label>
-                <h5>Solo es posible procesar archivos en formato WAV, MP3, OGG y FLAC</h5>                 
+                <h5>Partitas admite archivos tipo WAV, MP3, OGG y FLAC</h5>                 
                 <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={()=>this.changePage("EleccionInicial",true)} disabled={true}> 
                 Procesar el audio
                 </button>          
