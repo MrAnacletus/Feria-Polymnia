@@ -16,6 +16,9 @@ class Menu extends Component {
     render() {
 		return (
             <div className="container-fluid d-md-flex flex-md-row justify-content-around mt-5 mb-5 ">
+                <div className="col-md-5">
+                    <SubirArchivo sendData={this.changePage}/>
+                </div>
                 <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start">
                     <h1 className="tituloMenu">Bienvenido a Partitas</h1>
                     <div className="d-flex justify-content-start">
@@ -23,7 +26,7 @@ class Menu extends Component {
                             Partitas generará una partitura a partir de un archivo de audio. Puedes subir un archivo de audio tipo WAV, MP3, OGG o FLAC, a partir de el cual Partitas generará una partitura.
                         </p>
                     </div>
-                    <h3 className="text-left col-12 ">1. ¿Cómo Partitas genera una partitura?</h3>
+                    <h3 className="text-left col-12">1. ¿Cómo Partitas genera una partitura?</h3>
                     <ul>
                         <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce nota a nota los diferentes instrumentos presentes en la pieza musical, si estos instrumentos son soportados por Partitas
                             podrás generar una partitura o tablatura para ellos.</p></li>
@@ -37,9 +40,6 @@ class Menu extends Component {
                         <li><p className="d-block text-start">Al momento de generar tu partitura tienes la opción de simplificarla con los métodos otorgados, puedes simplificar los acordes, reducir las notas, tocar una sola mano si toca piano,
                             e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
                     </ul>
-                </div>
-                <div className="col-md-5">
-                    <SubirArchivo sendData={this.changePage}/>
                 </div>
             </div>
         )   
