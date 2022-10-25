@@ -8,6 +8,7 @@
   font-style: normal; 
   height: 100%;
   width: 100%;
+  min-height: 100vh;
   position: relative;
   background: var(--color-6);
   background-image: var(--grad-2);
@@ -18,7 +19,7 @@
 }
 
 .logoFooter {
-  height: 10vh;
+  height: 100px;
 }
 
 .Redes {
@@ -40,6 +41,10 @@
   width: 32px;
   color: white;
 }
+
+/* .RenderContainer{
+  height: 789px;
+} */
 
 /* 
 ::-webkit-scrollbar {

@@ -15,24 +15,30 @@ class Menu extends Component {
 
     render() {
 		return (
-            <div className="container-fluid d-flex flex-row justify-content-around">
-                <div className="col-7 d-flex flex-column justify-content-start">
-                    <h1 className="tituloMenu">¡Sube tu archivo!</h1>
+            <div className="container-fluid d-md-flex flex-md-row justify-content-around mt-5 mb-5 ">
+                <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start">
+                    <h1 className="tituloMenu">Bienvenido a Partitas</h1>
                     <div className="d-flex justify-content-start">
-                        <p className="text-left">
+                        <p className="d-block text-start">
                             Partitas generará una partitura a partir de un archivo de audio. Puedes subir un archivo de audio tipo WAV, MP3, OGG o FLAC, a partir de el cual Partitas generará una partitura.
                         </p>
                     </div>
-                    <div className="container-fluid d-flex justify-content-start ">
-                        <h3>¿Cómo se generará mi partitura?</h3>
-                        <ul>
-                            <li>
-                                <p>Mediante inteligencia artificial y aprendizaje automático, Partitas analizará tu archivo de audio y generará una partitura a partir de él.</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <h3 className="text-left col-12 ">1. ¿Cómo Partitas genera una partitura?</h3>
+                    <ul>
+                        <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce nota a nota los diferentes instrumentos presentes en la pieza musical, si estos instrumentos son soportados por Partitas
+                            podrás generar una partitura o tablatura para ellos.</p></li>
+                    </ul>
+                    <h3 className="text-left col-12">2. ¿Puede ser de cualquier instrumento que yo quiera?</h3>
+                    <ul>
+                        <li><p className="d-block text-start">No exactamente de cualquiera, pero tenemos una larga lista de instrumentos soportados que seguirá creciendo mientras adaptemos nuestro sistema a ellos.</p></li>
+                    </ul>
+                    <h3 className="text-left col-12">3. Luego de generar mi partitura, ¿Qué pasa si es muy dificil?</h3>
+                    <ul>
+                        <li><p className="d-block text-start">Al momento de generar tu partitura tienes la opción de simplificarla con los métodos otorgados, puedes simplificar los acordes, reducir las notas, tocar una sola mano si toca piano,
+                            e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
+                    </ul>
                 </div>
-                <div className="col-3">
+                <div className="col-md-5">
                     <SubirArchivo sendData={this.changePage}/>
                 </div>
             </div>

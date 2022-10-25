@@ -98,39 +98,59 @@ class SubirArchivo extends Component{
     render() {
         if (this.state.selectedFile !== undefined){
             return (
-                <div className='conteinerInputs'>
-                <label for="file-upload" class="custom-file-upload">
-                    {this.state.selectedFile.name}
-                    <input id="file-upload" type="file" onChange={this.onFileChange} accept="/wav, .mp3, .ogg, .flac"/>
-                </label>
-                <h5>
-                    Partitas admite archivos tipo WAV, MP3, OGG y FLAC
-                </h5> 
-                
-                <form>
-                <label htmlFor="namedInput" >Nombre Canción:</label>
-                <input id="namedInput" name="nombre" type="text" defaultValue={"Untitled"} placeholder={"Untitled"} onChange={this.changeHandlerNombre}/>
-                <label htmlFor="namedInput" >Autor</label>
-                <input id="namedInput" name="autor" type="text" defaultValue={"Unknown"} placeholder={"Unknown"} onChange={this.changeHandlerAutor} on/>
-                </form>
-                
-                <button className='SubirBoton' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={false}> 
-                Procesar el audio
-                </button>          
-            </div>
+                <div>
+                    <div>
+                        <h1 className='tituloMenu'>Paso2: Ponle nombre y autor</h1>
+                        <p className='text-start'>
+                            Quizá quieras uilizar un nombre para lo que generarás, o quizá no. En cualquier caso, ¡el momento es ahora!
+                        </p>
+                    </div>
+                    <div className='conteinerInputs mt-md-5'>
+                        <label for="file-upload" className="custom-file-upload p-2">
+                            {this.state.selectedFile.name}
+                            <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
+                        </label>
+                        <h5 className='m-md-3'>Partitas admite archivos tipo WAV, MP3, OGG y FLAC</h5> 
+                        <form className='container-fluid d-md-flex flex-md-row mb-md-3'>
+                            <div className='col-md-6'>
+                                <label htmlFor="namedInput" >Nombre Canción:</label>
+                                <input id="namedInput" name="nombre" type="text" defaultValue={"Untitled"} placeholder={"Untitled"} onChange={this.changeHandlerNombre}/>
+                            </div>
+                            <div className='col-md-6'>
+                                <label htmlFor="namedInput" >Autor</label>
+                                <input id="namedInput" name="autor" type="text" defaultValue={"Unknown"} placeholder={"Unknown"} onChange={this.changeHandlerAutor} on/>
+                            </div>
+                        
+                        </form>
+                        
+                        <button className='SubirBoton p-2' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={false}> 
+                        Procesar el audio
+                        </button>          
+                    </div>
+                </div>
             )
         }
-        return ( 
-            <div className='conteinerInputs'>
-                <label for="file-upload" class="custom-file-upload">
-                    Seleccionar Archivo
-                    <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
-                </label>
-                <h5>Partitas admite archivos tipo WAV, MP3, OGG y FLAC</h5>                 
-                <button className='SubirBoton-disabled' id='botonSubir' type="submit" onClick={()=>this.changePage("EleccionInicial",true)} disabled={true}> 
-                Procesar el audio
-                </button>          
+        return (
+            <div>
+                <div>
+                    <h1 className='tituloMenu'>¡Paso 1: Sube tu archivo!</h1>
+                    <p className='text-start'>
+                        Lo primero que debes hacer es subir un archivo, procura que este sea tenga buen audio, que sea limpio y en general de la mejor calidad posible.
+                        Esto aumentará la precisión de la aplicación y la experiencia de usuario.
+                    </p>
+                </div>
+                <div className='conteinerInputs mt-md-5'>
+                    <label for="file-upload" className="custom-file-upload p-2">
+                        Seleccionar archivo
+                        <input id="file-upload" type="file" onChange={this.onFileChange} accept=".wav, .mp3, .ogg, .flac"/>
+                    </label>
+                    <h5 className='m-md-3'>Partitas admite archivos tipo WAV, MP3, OGG y FLAC</h5>                 
+                    <button className='SubirBoton-disabled p-2 ' id='botonSubir' type="submit" onClick={()=>this.changePage("EleccionInicial",true)} disabled={true}> 
+                    Procesar el audio
+                    </button>          
+                </div>
             </div>
+            
         );
     
     }
