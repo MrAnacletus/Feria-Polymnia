@@ -31,8 +31,8 @@ class Navbar extends Component {
                     <a href="index.html" className="navbar-brand flex flex-row">
                         <h1 className="m-0 text-uppercase text-white"><i class="gg-home-alt"></i>Partitas</h1>
                     </a>
-                    <button className="navbar-toggler" type="button" onClick={this.handleClick}>
-                        <span className="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
@@ -46,3 +46,7 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+
+
+                

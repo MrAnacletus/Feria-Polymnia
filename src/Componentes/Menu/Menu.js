@@ -16,10 +16,8 @@ class Menu extends Component {
     render() {
 		return (
             <div className="container-fluid d-md-flex flex-md-row justify-content-around mt-5 mb-5 ">
-                <div className="col-md-5">
-                    <SubirArchivo sendData={this.changePage}/>
-                </div>
-                <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start">
+                
+                <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-last">
                     <h1 className="tituloMenu">Bienvenido a Partitas</h1>
                     <div className="d-flex justify-content-start">
                         <p className="d-block text-start">
@@ -40,6 +38,9 @@ class Menu extends Component {
                         <li><p className="d-block text-start">Al momento de generar tu partitura tienes la opción de simplificarla con los métodos otorgados, puedes simplificar los acordes, reducir las notas, tocar una sola mano si toca piano,
                             e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
                     </ul>
+                </div>
+                <div className="col-md-5 order-first order-sm-first order-md-first order-lg-last">
+                    <SubirArchivo sendData={this.changePage}/>
                 </div>
             </div>
         )   
