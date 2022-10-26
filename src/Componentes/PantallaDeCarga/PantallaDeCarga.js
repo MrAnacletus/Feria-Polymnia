@@ -25,12 +25,15 @@ class PantallaDeCarga extends Component {
 
     render(){
         return (
-            <div className="PantallaDeCarga">
-                <div className="containerTituloCarga">
-                    <h2 className="tituloCarga">Procesando, por favor espere</h2>
-                    <img className="cat" src={carga}></img>
+            <div className="PantallaDeCarga container-fluid d-flex flex-column align-items-center justify-content-center">
+                <div className="container d-flex">
+                    <div className="containerTituloCarga">
+                        <h2 className="tituloCarga">Procesando, por favor espere</h2>
+                        <img className="cat" src={carga}></img>
+                    </div>
                 </div>
             </div>
+            
         )
     }
 }
