@@ -29,7 +29,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <PantallaDeCarga sendData={this.changePage} boolean={false}></PantallaDeCarga>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
