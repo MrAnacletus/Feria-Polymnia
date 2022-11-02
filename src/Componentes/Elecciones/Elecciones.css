@@ -24,6 +24,23 @@
     color: black;
 }
 
+.tituloMenu {
+	text-align: center;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+}
+.tituloMenu:after {
+	width: 100%;
+	height: 3px;
+	display: block;
+	content: "";
+	position: relative;
+	margin-top: 25px;
+	background-color: black;
+}
+
 .containerBotones{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

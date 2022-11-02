@@ -15,7 +15,7 @@ import instrumentos from './Componentes/Elecciones/instrumentos';
 
 
 var fileName;
-var boolean;
+var boolean = true;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
 var tipoDocumento;
@@ -29,7 +29,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <Menu sendData={this.changePage}></Menu>;
+		render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInstrumentos>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;

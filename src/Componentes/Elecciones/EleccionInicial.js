@@ -73,13 +73,30 @@ class EleccionInicial extends Component {
         console.log(this.props, "props de eleccion inicial");
         if (this.state.toRender === "EleccionInicial"){
             return (
-                <div className="container">
-                    <div className="container">
-                        <h2 className="tituloEleccion">¿Qué quieres hacer?</h2>
+                <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
+                    <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1">
+                        <h1 className="tituloMenu">Paso3: Elegir entre melodia o instrumentos</h1>
+                        <div className="d-flex justify-content-start">
+                            <p className="d-block text-start">
+                                Partitas analizará la canción que le entregaste en busca de una voz y uno o varios instrumentos, tu siguiente decición es si quieres que Partitas te entregue una melodía o una selección de instrumentos.
+                            </p>
+                        </div>
+                        <h3 className="text-left col-12">1. ¿Cómo Partitas generará la melodía?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce la voz presente en la cacnión, a partir de esta se generará la melodía siguiento las notas
+                            de la voz.</p></li>
+                        </ul>
+                        <h3 className="text-left col-12">2. ¿Si elijo una u otra, puedo volver atrás si cambio de opinión?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
+                        </ul>
                     </div>
-                    <div className="containerBotones">
-                        <button className="btnEleccion" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                        <button className="btnEleccion" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                    <div className="flex-column col-md-5 order-sm-1">
+                        <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
+                        <div className="containerBotones">
+                            <button className="btnEleccion" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
+                            <button className="btnEleccion" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                        </div>
                     </div>
                 </div>
             );
