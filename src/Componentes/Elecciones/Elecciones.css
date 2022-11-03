@@ -41,7 +41,7 @@
 	background-color: black;
 }
 
-.containerBotones{
+/* .containerBotones{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: minmax(100px, auto);
@@ -92,7 +92,7 @@
     font-family: 'Roboto', sans-serif;
     color: black;
     border: none;
-}
+} */
 
 .dropdown{
     position: relative;
@@ -127,24 +127,6 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover  .dropbtn  {background-color: #3e8e41;}
-
-
-.containerBotonIntrumento{
-    /* grid de 2x2 */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(100px, auto);
-    justify-content: space-between;
-    height: auto;
-    width: auto;
-    padding: 5px;
-    background-color: white;
-    border-radius: 10px;
-    font-size: 45px;
-    transition: border 2s, background-color 2s;
-    font-family: 'Roboto', sans-serif;
-    color: black;
-}
 
 .imagenBotonEleccion{
     height: 40px;
