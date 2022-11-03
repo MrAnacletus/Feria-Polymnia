@@ -18,7 +18,7 @@ var fileName;
 var boolean = true;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
-var tipoDocumento;
+var tipoDocumento= "partitura";
 
 class App extends Component{
 	constructor(){
@@ -29,7 +29,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInstrumentos>;
+		render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
