@@ -18,25 +18,23 @@ class BotonPartitura extends Component {
         console.log(this.props, "props de boton partitura");
         if (this.state.partitura === "si"){
             return (
-                <button className="btnInstrumentoPequeño" disabled={!this.state.habilitado} onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre, this.state.partitura,"a")}>
-                    <h3 className="textoBotonEleccion">
-                        Partitura
-                    </h3>
+                <button type="button" className="btn btn-light" disabled={!this.state.habilitado} onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre, this.state.partitura,"a")}>
+                    Partitura
                 </button>
             );
         }else if (this.state.partitura === "no"){
             if (this.state.habilitado == "si" && this.props.melodia === "no"){
                 if (this.state.instrumento.compatibles.length == 0){
                     return(
-                        <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
-                            <h3 className="textoBotonEleccion">Tablatura</h3>
+                        <button type="button" className="btn btn-light" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
+                            Tablatura
                         </button>
                     );
                 }else{
                 return (
                     <div className="dropdown">
-                         <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
-                             <h3 className="textoBotonEleccion">Tablatura<b class="caret dropdown-toggle"/></h3>
+                         <button type="button" className="btn btn-light" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
+                            Tablatura<b class="caret dropdown-toggle"/>
                          </button>
                          <div className="dropdown-content">
                              {this.state.instrumento.compatibles.map((instrumento, index) => {
@@ -49,15 +47,15 @@ class BotonPartitura extends Component {
                 );}
             }else if(this.state.habilitado == "si" && this.props.melodia === "si"){
                 return (
-                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
-                        <h3 className="textoBotonEleccion">Tablatura</h3>
+                    <button type="button" className="btn btn-light" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")}>
+                        Tablatura
                     </button>
                 );
             }
             else{
                 return (
-                    <button className="btnInstrumentoPequeño" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")} disabled={true}>
-                        <h3 className="textoBotonEleccion">Tablatura</h3>
+                    <button type="button" className="btn btn-light" onClick={() => this.props.elegirEsteInstrumento(this.state.instrumento.nombre,"no","a")} disabled={true}>
+                        Tablatura
                     </button>
                 )
             }

@@ -70,9 +70,11 @@ class EleccionInstrumentos extends Component {
                             <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
                         </ul>
                     </div>
-                    <div className="container col-md-5 order-sm-1">
-                        <h2 className="tituloMenu">Elige que deseas hacer</h2>
-                        <div className="container row">
+                    <div className="container-fluid d-flex flex-row col-md-5 order-sm-1 p-2">
+                        <div className="container-fluid">
+                            <h1 className="tituloMenu">Elige que deseas hacer</h1>
+                        </div>
+                        <div className="container p-2">
                             {
                                 this.props.instrumentos.map((instrumento, index) => {
                                     for (let i = 0; i < this.props.instrumentos.length; i++) {
@@ -97,7 +99,8 @@ class EleccionInstrumentos extends Component {
                                 )
                             }
                         </div>
-                        <button className="btnEleccion" onClick={() => this.changePage()}>Regresar</button>
+                        <button onClick={() => this.changePage()}>Regresar</button>
+                        
                     </div>
                     
                 </div>
@@ -128,18 +131,18 @@ class EleccionInstrumentos extends Component {
                     </div>
                     <div className="container col-md-5 order-sm-1">
                         <h2 className="tituloMenu">Elige que deseas hacer</h2>
-                        <div className="container row">
+                        <div className="container row mt-2">
                             {
                                 instrumentos.map((instrumento, index) => {
                                     return (
-                                        <div className="container col-lg-3 col-md-5 col-sm-6 col-12 form-group-inline">
+                                        <div className="container col-lg-3 col-md-5 col-sm-6 col-12 form-group-inline mt-2">
                                             <div className="container">
                                                 <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                 <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                             </div>
                                             <div className="container-fluid">
-                                                <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
-                                                <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
+                                                <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
+                                                <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
                                             </div>
                                         </div>
                                         )
@@ -147,9 +150,12 @@ class EleccionInstrumentos extends Component {
                                 )
                             }
                         </div>
-                        <button className="btnInstrumentoPequeño" onClick={() => this.changePage()}>
-                            <h3 className="textoBotonEleccion">Volver</h3>
-                        </button>
+                        <div className="d-inherit m-2">
+                            <button type="button" className="btn btn-light" onClick={() => this.changePage()}>
+                                Volver
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
             );
