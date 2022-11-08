@@ -2,6 +2,8 @@ import axios from "axios";
 import React, {Component} from "react";
 import './ExportarPartitura.css';
 import 'html-midi-player';
+import archivoMIDI from './voz.mid';
+import archivoPDF from './voz.pdf';
 
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 class ExportarPartitura extends Component {
@@ -119,7 +121,7 @@ class ExportarPartitura extends Component {
             <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-sm-6 p-3">
-                        <iframe src="" width="100%" height="100%"></iframe>
+                        <iframe src={archivoPDF} width="100%" height="100%"></iframe>
                     </div>
                     <div className="col-sm-6 p-3">
                         <div className="row">
@@ -128,7 +130,7 @@ class ExportarPartitura extends Component {
                                     <h2 className="tituloExportar">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
                                 </div>
                                 <div className="p-1">
-                                    <midi-player src=""></midi-player>
+                                    <midi-player src={archivoMIDI}></midi-player>
                                 </div>
                                 
                             </div>
