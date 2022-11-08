@@ -10,14 +10,22 @@ class EleccionInstrumentos extends Component {
     constructor(){
         super();
         this.state = {
-            toRender: "EleccionInicial"
+            toRender: "EleccionInicial",
+            showSidebar: true,
         }
         this.changePage = this.changePage.bind(this);
         this.elegirEsteInstrumento = this.elegirEsteInstrumento.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
     changePage(val,val2){
         this.props.sendData(val,val2);
+    }
+
+    toggleSidebar() {
+        this.setState({
+            showSidebar: !this.state.showSidebar
+        });
     }
 
     elegirEsteInstrumento(instrumento, tipo, instrumento2){
@@ -108,6 +116,7 @@ class EleccionInstrumentos extends Component {
         }else{
             return (
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
+                    {this.state.showSidebar &&
                     <div className="container col-md-5 text-start">
                         <h1 className="tituloMenu">Paso4: Elegir instrumento</h1>
                         <div className="d-flex justify-content-start">
@@ -128,15 +137,23 @@ class EleccionInstrumentos extends Component {
                         <ul>
                             <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
                         </ul>
-                    </div>
+                        <div className="container-fluid">
+                            <a class="btn btn-light" onClick={this.toggleSidebar} role="button">Cerrar ayuda</a>
+                        </div>
+                    </div>}
+                    {!this.state.showSidebar &&
+                        <div className="verticaltext">
+                            <a class="verticaltext_content btn btn-light" onClick={this.toggleSidebar} role="button">Ayuda</a>
+                        </div>
+                    }
                     <div className="container col-md-5 order-sm-1">
                         <h2 className="tituloMenu">Elige que deseas hacer</h2>
                         <div className="container row mt-2">
                             {
                                 instrumentos.map((instrumento, index) => {
                                     return (
-                                        <div className="container col-lg-3 col-md-5 col-sm-6 col-12 form-group-inline mt-2">
-                                            <div className="container">
+                                        <div className="container col-lg-3 col-md-5 col-sm-6 col-12 mt-2">
+                                            <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
                                                 <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                 <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                             </div>
@@ -160,7 +177,6 @@ class EleccionInstrumentos extends Component {
                 </div>
             );
         }
-        
     }
 }
 

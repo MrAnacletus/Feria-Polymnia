@@ -81,16 +81,19 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    /* min-width: 160px;     */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border: black;
   }
   
   /* Links inside the dropdown */
   .dropdown-content a {
     color: black;
     cursor: pointer;
-    padding: 12px 16px;
+    
+
+    /* padding: 12px 16px; */
     text-decoration: none;
     display: block;
     font-family: 'Roboto', sans-serif;
@@ -116,4 +119,51 @@
     font-family: 'Roboto', sans-serif;
     color: black;
 } */
+
+.verticaltext {
+    position: relative;
+    margin: 1em 0;
+    min-height: 120px;
+    left: -30px;
+    margin-right: -100px;
+}
+
+.verticaltext2{
+    position: relative;
+    margin: 1em 0;
+    min-height: 120px;
+    left: -30px;
+    margin-left: -30px;
+}
+
+@media screen and (max-width: 770px) {
+    .verticaltext {
+        left: auto;
+    }
+}
+
+.verticaltext_content {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 770px) {
+    .verticaltext_content {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+        font-size: 16px;
+        text-align: center;
+    }
+}
 
