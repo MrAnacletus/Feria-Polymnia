@@ -5,6 +5,7 @@ import 'html-midi-player';
 import archivoMIDI from './voz.mid';
 import archivoPDF from './voz.pdf';
 
+
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 class ExportarPartitura extends Component {
     constructor(){
@@ -117,6 +118,7 @@ class ExportarPartitura extends Component {
 
     render() {
         console.log(this.props)
+        this.load();
         return (
             <div className="container-fluid mt-3">
                 <div className="row">
@@ -132,7 +134,6 @@ class ExportarPartitura extends Component {
                                 <div className="p-1">
                                     <midi-player src={archivoMIDI}></midi-player>
                                 </div>
-                                
                             </div>
                             <div className="row">
                                 <div className="col-lg-2"></div>
