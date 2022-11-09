@@ -117,8 +117,7 @@ class ExportarPartitura extends Component {
     }
 
     render() {
-        console.log(this.props)
-        this.load();
+        console.log(this.props);
         return (
             <div className="container-fluid mt-3">
                 <div className="row">
