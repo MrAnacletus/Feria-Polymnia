@@ -10,11 +10,20 @@ class EleccionInicial extends Component {
     constructor(){
         super();
         this.state = {
-            toRender: "EleccionInicial"
+            toRender: "EleccionInicial",
+            showSideBar: false,
         }
         this.changePage = this.changePage.bind(this);
         this.toRender = this.toRender.bind(this);
+        this.toggleSideBar = this.toggleSideBar.bind(this);
     }
+
+    toggleSideBar () {
+        this.setState({
+            showSideBar: !this.state.showSideBar
+        });
+    }
+
 
     changePage(val,val2){
         this.props.sendData(val,val2);
@@ -74,7 +83,8 @@ class EleccionInicial extends Component {
         if (this.state.toRender === "EleccionInicial"){
             return (
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
-                    <div className="col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1">
+                    {this.state.showSideBar &&
+                    <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1">
                         <h1 className="tituloMenu">Paso3: Elegir entre melodia o instrumentos</h1>
                         <div className="d-flex justify-content-start">
                             <p className="d-block text-start">
@@ -90,12 +100,21 @@ class EleccionInicial extends Component {
                         <ul>
                             <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
                         </ul>
+                        <div className="container-fluid">
+                            <button class="btn btn-light" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
+                        </div>
                     </div>
-                    <div className="flex-column col-md-5 order-sm-1">
+                    }
+                    {!this.state.showSideBar &&
+                    <div className="verticaltext">
+                        <button class="verticaltext_content btn btn-light" onClick={this.toggleSideBar} role="button">Ayuda</button>
+                    </div>
+                    }
+                    <div className="container flex-column col-md-5 order-sm-1">
                         <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
                         <div className="containerBotones">
-                            <button className="btnEleccion" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                            <button className="btnEleccion" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                            <button className="btn btn-light" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
+                            <button className="btn btn-light" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ class EleccionInstrumentos extends Component {
         super();
         this.state = {
             toRender: "EleccionInicial",
-            showSidebar: true,
+            showSidebar: false,
         }
         this.changePage = this.changePage.bind(this);
         this.elegirEsteInstrumento = this.elegirEsteInstrumento.bind(this);

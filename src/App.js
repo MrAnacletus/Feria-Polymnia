@@ -29,7 +29,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInstrumentos sendData={this.changePage} instrumentos={respuestaInstrumentos} boolean={boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInstrumentos>;
+		render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
