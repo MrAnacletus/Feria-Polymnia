@@ -17,6 +17,7 @@ import Transc.transcripcion as tc
 import os
 import instrumentos
 import tabs
+import simplificacion
 
 class ItemSubirArchivo(BaseModel):
     path: str
@@ -37,6 +38,13 @@ class ItemSimplificar(BaseModel):
     tono: int
     acordes: str
     derecha: str
+    izquierda: str
+    teclas: str
+    cejillos: str
+
+class ItemPrevisualizacion(BaseModel):
+  pdf: str
+  midi: str
 
 app = FastAPI()
 
@@ -173,9 +181,25 @@ async def create_item(item: ItemSimplificar):
     #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
     #f.writelines(lineas)
     #f.close()
+  if item.izquierda == "si":
+    separacion_manos.izquierda_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid", 60)
+    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid"
+  if item.teclas == "si":
+    corte = 0 
+    if lineas[5].strip() == "Piano":
+      corte = 60
+    simplificacion.simplificar(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid", corte)
+    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid"
+  if item.cejillos = "si":
+    pass #necesitamos al dani
   d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
   print(d_pdf)
-  return {d_pdf}
+  return {d_pdf, pathtemp} #pdf y midi para descargar
+
+@app.post("/previsualizacion")
+
+async def create_item(item: ItemPrevisualizacion):
+  #no sé si es necesario
 
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):
