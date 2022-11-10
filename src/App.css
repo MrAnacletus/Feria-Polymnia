@@ -10,8 +10,8 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background: var(--color-6);
-  background-image: var(--grad-2);
+  /* background: var(--color-6);
+  background-image: var(--grad-2); */
 }
 
 .colorBg{

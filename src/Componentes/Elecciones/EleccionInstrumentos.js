@@ -88,17 +88,19 @@ class EleccionInstrumentos extends Component {
                                     for (let i = 0; i < this.props.instrumentos.length; i++) {
                                         if (this.props.instrumentos[i] === instrumento.nombre) {
                                             return (
-                                                <div className="containerBotonInstrumento">
+                                                <div className="card">
                                                     <div className="InstrumentoGrande">
                                                         <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                                        <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                                                        <h3 className="card-title textoBotonEleccion">{instrumento.nombre}</h3>
                                                     </div>
-                                                    <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"si")}>
-                                                        <h3 className="textoBotonEleccion">Partitura</h3>
-                                                    </button>
-                                                    <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"no")} disabled={instrumento.tablatura === "no"}>
-                                                        <h3 className="textoBotonEleccion">Tablatura</h3>
-                                                    </button>
+                                                    <div className="card-body">
+                                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"si")}>
+                                                            <h3 className="textoBotonEleccion">Partitura</h3>
+                                                        </button>
+                                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"no")} disabled={instrumento.tablatura === "no"}>
+                                                            <h3 className="textoBotonEleccion">Tablatura</h3>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             )
                                             }
@@ -117,9 +119,9 @@ class EleccionInstrumentos extends Component {
             return (
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
                     {this.state.showSidebar &&
-                    <div className="container col-md-5 text-start">
+                    <div className="container col-md-5 text-start text-white">
                         <h1 className="tituloMenu">Paso4: Elegir instrumento</h1>
-                        <div className="d-flex justify-content-start">
+                        <div className="d-flex justify-content-start ">
                             <p className="d-block text-start">
                                 Partitas ha analizado la canción y ha encontrado los siguientes instrumentos, elige el que desees para generar la partitura o tablatura.
                             </p>
@@ -152,12 +154,12 @@ class EleccionInstrumentos extends Component {
                             {
                                 instrumentos.map((instrumento, index) => {
                                     return (
-                                        <div className="container col-lg-3 col-md-5 col-sm-6 col-12 mt-2">
+                                        <div className="card bg-light col-lg-3 col-md-5 col-sm-6 col-12 mt-2">
                                             <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
                                                 <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
                                                 <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
                                             </div>
-                                            <div className="container-fluid">
+                                            <div className="card-body">
                                                 <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
                                                 <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
                                             </div>
@@ -168,7 +170,7 @@ class EleccionInstrumentos extends Component {
                             }
                         </div>
                         <div className="d-inherit m-2">
-                            <button type="button" className="btn btn-light" onClick={() => this.changePage()}>
+                            <button type="button" className="btn" Style="border-color: #86c232; !important; color: #86c232; " onClick={() => this.changePage()}>
                                 Volver
                             </button>
                         </div>

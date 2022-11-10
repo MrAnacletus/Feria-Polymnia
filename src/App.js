@@ -87,10 +87,10 @@ class App extends Component{
 
 	render(){
 		return(
-			<body className="App">
+			<body className="App" Style="background-color: #222629;">
 				<Navbar sendData={this.changePage}/>
-				<div className="RenderContainer">
-					<div className="colorBg">
+				<div className="">
+					<div>
 						{this.RenderPage()}
 					</div>	
 				</div>
