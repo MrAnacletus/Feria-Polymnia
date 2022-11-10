@@ -87,7 +87,7 @@ class App extends Component{
 
 	render(){
 		return(
-			<body className="App" Style="background-color: #222629;">
+			<body className="App" Style="background-color: #1A1A1D;">
 				<Navbar sendData={this.changePage}/>
 				<div className="">
 					<div>

@@ -154,10 +154,10 @@ class EleccionInstrumentos extends Component {
                             {
                                 instrumentos.map((instrumento, index) => {
                                     return (
-                                        <div className="card bg-light col-lg-3 col-md-5 col-sm-6 col-12 mt-2">
+                                        <div className="card col-lg-3 col-md-5 col-sm-6 col-12 mt-2" Style="background-color: #212125 !important; border-color: #C3073F !important;">
                                             <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
-                                                <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                                <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                                                <img className="card-img-top" Style="width: 60%; height: 70%; margin-top: 15px; margin-bottom: 15px; filter: invert(90);" src={instrumento.imagen} alt={instrumento.nombre}/>
+                                                <h3 className="textoBotonEleccion" Style="color: #ffffff !important; font-size: 95%;">{instrumento.nombre}</h3>
                                             </div>
                                             <div className="card-body">
                                                 <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
@@ -170,7 +170,7 @@ class EleccionInstrumentos extends Component {
                             }
                         </div>
                         <div className="d-inherit m-2">
-                            <button type="button" className="btn" Style="border-color: #86c232; !important; color: #86c232; " onClick={() => this.changePage()}>
+                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #C3073F; " onClick={() => this.changePage()}>
                                 Volver
                             </button>
                         </div>
