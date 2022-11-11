@@ -46,5 +46,13 @@ app.get('/single',function(req,res) {
   })
 })
 
+app.get('/imagen',function(req,res) {
+  // get the image file named in the params of the get request to the response
+  let page = req.query.path;
+  console.log(page);
+  const folderPath = __dirname+'/temp/';
+  res.sendFile(folderPath+page);
+});
+
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6

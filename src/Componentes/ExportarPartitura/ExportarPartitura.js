@@ -118,11 +118,13 @@ class ExportarPartitura extends Component {
 
     render() {
         console.log(this.props);
+        let nombrePDF = "Untitled.pdf";
+        let nombreMIDI = "Untitled.mid";
         return (
             <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-sm-6 p-3">
-                        <iframe src={archivoPDF} width="100%" height="100%"></iframe>
+                        <iframe src={"http://localhost:8000/imagen?path="+nombrePDF} width="100%" height="100%"></iframe>
                     </div>
                     <div className="col-sm-6 p-3">
                         <div className="row">
@@ -131,7 +133,7 @@ class ExportarPartitura extends Component {
                                     <h2 className="tituloExportar">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
                                 </div>
                                 <div className="p-1">
-                                    <midi-player src={archivoMIDI}></midi-player>
+                                    <midi-player src={"http://localhost:8000/imagen?path=" + nombreMIDI}></midi-player>
                                 </div>
                             </div>
                             <div className="row">
