@@ -9,14 +9,15 @@ import acordes
 #try1.generar_partitura(
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 from pydantic import BaseModel
 import try1
-import Transc.transcripcion as tc
+#import Transc.transcripcion as tc
 import os
-import instrumentos
-import tabs
+#import instrumentos
+#import tabs
 
 class ItemSubirArchivo(BaseModel):
     path: str
@@ -176,6 +177,23 @@ async def create_item(item: ItemSimplificar):
   d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
   print(d_pdf)
   return {d_pdf}
+
+@app.get("/previsualizar", response_class=FileResponse)
+
+async def read_item(path: str):
+  file_path = "backendPython/GeneracionDePartitura/"
+  some_file_path = file_path + path
+  return some_file_path
+
+"""@app.get("/streaming")
+def main():
+    def iterfile():  # 
+        some_file_path = "backendPython/GeneracionDePartitura/Sparkle.pdf"
+        with open(some_file_path, mode="rb") as file_like:  # 
+            yield from file_like  # 
+
+    return StreamingResponse(iterfile(), media_type="document/pdf")"""
+
 
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):
