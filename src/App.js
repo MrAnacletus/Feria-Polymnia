@@ -17,8 +17,8 @@ import instrumentos from './Componentes/Elecciones/instrumentos';
 var fileName;
 var boolean = true;
 var respuestaInstrumentos;
-var instrumentoSeleccionado="Piano";
-var tipoDocumento= "partitura";
+var instrumentoSeleccionado;
+var tipoDocumento= "tablatura";
 
 class App extends Component{
 	constructor(){

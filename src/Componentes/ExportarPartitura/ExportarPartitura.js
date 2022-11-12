@@ -2,8 +2,6 @@ import axios from "axios";
 import React, {Component} from "react";
 import './ExportarPartitura.css';
 import 'html-midi-player';
-import archivoMIDI from './voz.mid';
-import archivoPDF from './voz.pdf';
 
 
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -14,7 +12,9 @@ class ExportarPartitura extends Component {
             Tono: 0,
             acordes: '',
             manoIzq: '',
-
+            notas: '',
+            manoDer: '',
+            cejillos: '',
         }
         this.changePage = this.changePage.bind(this);
         this.exportarPartitura = this.exportarPartitura.bind(this);
@@ -44,6 +44,9 @@ class ExportarPartitura extends Component {
         let tono = parseInt(this.state.Tono);
         let acordes = "";
         let derecha = "";
+        let izquierda = "";
+        let notas = "";
+        let cejillos = "";
         if (this.state.acordes === "si"){
             acordes = "si"
         }else{
@@ -54,15 +57,29 @@ class ExportarPartitura extends Component {
         }
         else{
             derecha = "no"
+        }if (this.state.manoDer === "si"){
+            izquierda = "si"
+        }else{
+            izquierda = "no"  
+        }if (this.state.notas === "si"){
+            notas = "si"
+        }else{
+            notas = "no"
+        }if (this.state.cejillos){
+            cejillos = "si"
+        }else{
+            cejillos = "no"
         }
-        console.log(tono);
-        console.log(acordes);
-        console.log(derecha);
+
+        console.log("Cambios aplicados: " + tono + " " + acordes + " " + derecha + " " + izquierda + " " + notas);
         this.changePage("PantallaDeCarga", false);
         axios.post('http://34.139.161.175:3001/simplificar', {
             tono: tono,
             acordes: acordes,
             derecha: derecha,
+            izquierda: izquierda,
+            teclas: notas,
+            cejillos: cejillos,
         })
             .then(response => {
                 //response contiene un json con los instrumentos
@@ -114,6 +131,15 @@ class ExportarPartitura extends Component {
         if (parte === "manoIzq"){
             this.setState({manoIzq: event.target.value});
         }
+        if (parte === "manoDer"){
+            this.setState({manoDer: event.target.value});
+        }
+        if (parte === "notas"){
+            this.setState({Tono: event.target.value});
+        }
+        if (parte === "cejillos"){
+            this.setState({cejillos: event.target.value});
+        }
     }
 
     render() {
@@ -149,46 +175,53 @@ class ExportarPartitura extends Component {
                             <div className="container">
                                 {
                                     this.props.tipoDocumento === "partitura"?
-                                    <div>
+                                    <>
                                         <div className="row">
                                             <div className="container p-2" Style="width: 75%">
-                                                <a href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">Simplificar</a>
+                                                <a href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Muy dificil? Simpifícala</a>
                                             </div>
-                                            <div id="simplify" className="collapse">
-                                                <div className="containerTituloExportar">
-                                                    <h4 className="tituloExportarChico">¿Muy dificil? ¡Simplificala!</h4>
-                                                </div>
+                                            <div id="simplify" className="collapse container" Style="width: 75%">
                                                 <form>
                                                     <div className="form-group">
                                                         <div className="input-group justify-content-center">
-                                                            <div className="form-check">
+                                                            <div className="form-check  m-2">
                                                                 <input className="form-check-input" type="checkbox" id="simpAcordes" onChange={e => this.handleChange("acordes",e)} value="si"></input>
                                                                 <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
                                                                     <p>Simplificar acordes</p>
                                                                 </label>
                                                             </div>
-                                                        </div>
+                                                            <div className="form-check  m-2">
+                                                                <input className="form-check-input" type="checkbox" id="simpNotas" onChange={e => this.handleChange("notas",e)} value="si"></input>
+                                                                <label className="form-check-label text-dark checkbox-inline" for="simpnNotas">
+                                                                    <p>Simplificar quitando notas</p>
+                                                                </label>
+                                                            </div>
                                                         {
                                                             this.props.instrumento == "Piano"?
-                                                                <div className="input-group justify-content-center">
-                                                                    <div className="form-check">
-                                                                        <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)} value="si"></input>
-                                                                        <label className="form-check-label text-dark" for="elimManoIzquierda">
-                                                                            <p>Eliminar mano izquierda</p>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>:null
+                                                                <>
+                                                                <div className="form-check  m-2">
+                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)} value="si"></input>
+                                                                    <label className="form-check-label text-dark" for="elimManoIzquierda">
+                                                                        <p>Eliminar mano izquierda</p>
+                                                                    </label>
+                                                                </div>
+                                                                <div className="form-check  m-2">
+                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoDerecha" onChange={e => this.handleChange("manoDer",e)} value="si"></input>
+                                                                    <label className="form-check-label text-dark" for="elimManoDerecha">
+                                                                        <p>Eliminar mano derecha</p>
+                                                                    </label>
+                                                                </div>
+                                                                </>:null
                                                         }
+                                                        
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div className="container p-2" Style="width: 75%">
-                                                <a href="#tone" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">Cambiar tono</a>
+                                                <a href="#tone" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Quieres cambiar el tono?</a>
                                             </div>
-                                            <div id="tone" className="collapse">
-                                                <div className="containerTituloExportar">
-                                                    <h4 className="tituloExportarChico">¿Quieres cambiar el tono?</h4>
-                                                </div>
+                                            <div id="tone" className="collapse container" Style="width: 75%">
                                                 <form className="form">
                                                     <div className="form-group row justify-content-center">
                                                         {/* Dos botones y un numero central que sumar y bajan el mismo numero  */}
@@ -212,8 +245,29 @@ class ExportarPartitura extends Component {
                                                 Aplicar cambios
                                             </button>
                                         </div>
+                                    </>
+                                    :
+                                    <>
+                                    <div className="row">
+                                        <div className="container p-2" Style="width: 75%">
+                                            <a href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Muy dificil? Simpifícala</a>
+                                        </div>
+                                        <div id="simplify" className="collapse container" Style="width: 75%">
+                                            <form>
+                                                <div className="form-group">
+                                                    <div className="input-group justify-content-center">
+                                                        <div className="form-check  m-2">
+                                                            <input className="form-check-input" type="checkbox" id="cejillos" onChange={e => this.handleChange("cejillos",e)} value="si"></input>
+                                                            <label className="form-check-label text-dark checkbox-inline" for="cejillos">
+                                                                <p>Simplificar eliminando cejillos</p>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                    :null}
+                                    </>}
                             </div>
                         </div>
                     </div>
