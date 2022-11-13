@@ -285,6 +285,12 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
         n_list = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
         aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
         n =  sorted(aux, key=lambda x: n_list.index(x))
+        det = chords.determine(n, True)
+        if len(det) == 0:
+            logging.error(f"No se reconoció ningún acorde :(, notas: {n}")
+            result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+            logging.debug(f'result: {result}')
+            return result
         custom = chord_notation(chords.determine(n, True)[0])
         
         logging.info(f'Notas: {acorde.pitchNames}')
