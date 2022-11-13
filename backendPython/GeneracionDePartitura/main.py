@@ -4,6 +4,7 @@ import melodia
 import tono
 import separacion_manos
 import acordes
+import archivos
 
 #filepath = "pistas/hb.wav"
 #try1.generar_partitura(
@@ -42,10 +43,6 @@ class ItemSimplificar(BaseModel):
     teclas: str
     cejillos: str
 
-class ItemPrevisualizacion(BaseModel):
-  pdf: str
-  midi: str
-
 app = FastAPI()
 
 app.add_middleware(
@@ -74,6 +71,7 @@ async def create_item(item: ItemSubirArchivo):
   # return {d_pdf}
   # return {d_pdf}"""
 
+  borrar(folder) #folder es placeholder
   open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
   f.write(item.path + "\n")
@@ -119,6 +117,7 @@ async def create_item(item: ItemEleccionInstrumentos):
   path = "./backendPython/GeneracionDePartitura/Generados"
   pathname = lineas[3].strip()
   d_pdf=""
+  d_midi = ""
   if item.melodia == "no":
     instrumentos.limpiar_midi(pathname+"/no_vocals", item.instrumento)
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
@@ -126,6 +125,7 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.write(item.instrumento+"\n")
     f.close()
     if item.partitura == "no":
+      d_midi = "no_vocals_new.mid"
       if item.instrumento2 == "Guitarra acústica" or item.instrumento2 == "Guitarra eléctrica":
         tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento2, max_lenght=70)
         d_pdf = lineas[1].strip() + '.pdf'
@@ -137,7 +137,10 @@ async def create_item(item: ItemEleccionInstrumentos):
         d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
+      copiar(pathname+'/no_vocals_new.mid', destination) #destination es placeholder
+      
   else:
+    d_midi = "vocals_basic_pitch.mid"
     f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
     f.write(pathname+"/vocals_basic_pitch.mid\n")
     f.write(item.instrumento+"\n")
@@ -147,13 +150,15 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
+      copiar(pathname+'/vocals_basic_pitch.mid', destination) #destination es placeholder
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-  return {d_pdf}
+  return {d_pdf, d_midi}
 
 @app.post("/simplificar")
 
 async def create_item(item: ItemSimplificar):
   d_pdf = ""
+  d_midi = ""
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "r")
   lineas = f.readlines()
   f.close()
@@ -162,7 +167,8 @@ async def create_item(item: ItemSimplificar):
   pathtemp = lineas[4].strip()
   if item.tono != 0:
     tono.cambiar_tono(pathtemp, item.tono, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid")
-    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid"
+    d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_tono.mid"
+    pathtemp = pathname+"/"+d_midi
     #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
     #f.writelines(lineas)
     #f.close()
@@ -171,35 +177,37 @@ async def create_item(item: ItemSimplificar):
     if lineas[5].strip() == "Piano":
       val_acorde = 60
     acordes.simplificar_acordes(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid", val_acorde)
-    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid"
+    d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_acordes.mid"
+    pathtemp = pathname+"/"+d_midi
     #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
     #f.writelines(lineas)
     #f.close()
   if item.derecha == "si":
     separacion_manos.derecha_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_derecha.mid", 60)
-    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_derecha.mid"
+    d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_derecha.mid"
+    pathtemp = pathname+"/"+d_midi
     #f = open("./backendPython/GeneracionDePartitura/flujo.txt", "w")
     #f.writelines(lineas)
     #f.close()
   if item.izquierda == "si":
     separacion_manos.izquierda_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid", 60)
-    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid"
+    d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid"
+    pathtemp = pathname+"/"+d_midi
   if item.teclas == "si":
     corte = 0 
     if lineas[5].strip() == "Piano":
       corte = 60
     simplificacion.simplificar(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid", corte)
-    pathtemp = pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid"
+    d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid"
+    pathtemp = pathname+"/"+d_midi
   if item.cejillos = "si":
-    pass #necesitamos al dani
-  d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
-  print(d_pdf)
-  return {d_pdf, pathtemp} #pdf y midi para descargar
-
-@app.post("/previsualizacion")
-
-async def create_item(item: ItemPrevisualizacion):
-  #no sé si es necesario
+    tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70, cejillo = False)
+    d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
+  else:
+    d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
+    copiar(pathtemp, destination) #destination es placeholder
+    print(d_pdf)
+  return {d_pdf, d_midi} #pdf y midi para descargar
 
 
 """async def read_item(path_to_midi: str, q: Union[str, None] = None):

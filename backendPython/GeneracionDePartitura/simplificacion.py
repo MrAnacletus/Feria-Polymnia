@@ -65,7 +65,7 @@ def simplificar(midi_path, output, nota_corte = 60, threshold = 0.05):
         maximo = "corchea"
         #agrupar notas de misma figura musical(segun lista duraciones y diccionario figuras), contiguas(segun start y end en aux_notas) de igual o menor duracion que la variable maximo
         i = 0
-        while i < len(aux_notas):
+        while i < len(aux_notas) - 1:
             #print(f'nota {i}, {len(duraciones)} duraciones, {len(aux_notas)} notas')
             if figuras[duraciones[i]] > figuras[maximo]:
                 i+=1
