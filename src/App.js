@@ -18,7 +18,7 @@ var fileName;
 var boolean = true;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
-var tipoDocumento= "tablatura";
+var tipoDocumento= "partitura";
 
 class App extends Component{
 	constructor(){
@@ -87,10 +87,10 @@ class App extends Component{
 
 	render(){
 		return(
-			<body className="App">
+			<body className="App" Style="background-color: #1A1A1D;">
 				<Navbar sendData={this.changePage}/>
 				<div className="RenderContainer">
-					<div className="colorBg">
+					<div className="colorBg" Style="background-color: #1A1A1D;">
 						{this.RenderPage()}
 					</div>	
 				</div>

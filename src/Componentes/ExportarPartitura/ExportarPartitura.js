@@ -156,7 +156,7 @@ class ExportarPartitura extends Component {
                         <div className="row">
                             <div className="container">
                                 <div className="containerTituloExportar">
-                                    <h2 className="tituloExportar">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
+                                    <h2 className="tituloExportar" Style="color: white;">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
                                 </div>
                                 <div className="p-1">
                                     <midi-player src={"http://localhost:8000/imagen?path=" + nombreMIDI}></midi-player>
@@ -165,10 +165,10 @@ class ExportarPartitura extends Component {
                             <div className="row">
                                 <div className="col-lg-2"></div>
                                 <div className="col-lg-4 p-1">
-                                    <button className="btn btn-primary btn-lg" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
+                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
                                 </div>    
                                 <div className="col-lg-4 p-1">    
-                                    <button className="btn btn-secondary btn-lg" onClick={() => this.exportarPartitura()}>Descargar Midi</button>
+                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura()}>Descargar Midi</button>
                                 </div>
                                 <div className="col-lg-2 "></div>
                             </div>
@@ -178,70 +178,93 @@ class ExportarPartitura extends Component {
                                     <>
                                         <div className="row">
                                             <div className="container p-2" Style="width: 75%">
-                                                <a href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Muy dificil? Simpifícala</a>
-                                            </div>
-                                            <div id="simplify" className="collapse container" Style="width: 75%">
-                                                <form>
-                                                    <div className="form-group">
-                                                        <div className="input-group justify-content-center">
-                                                            <div className="form-check  m-2">
-                                                                <input className="form-check-input" type="checkbox" id="simpAcordes" onChange={e => this.handleChange("acordes",e)} value="si"></input>
-                                                                <label className="form-check-label text-dark checkbox-inline" for="simpAcordes">
-                                                                    <p>Simplificar acordes</p>
-                                                                </label>
-                                                            </div>
-                                                            <div className="form-check  m-2">
-                                                                <input className="form-check-input" type="checkbox" id="simpNotas" onChange={e => this.handleChange("notas",e)} value="si"></input>
-                                                                <label className="form-check-label text-dark checkbox-inline" for="simpnNotas">
-                                                                    <p>Simplificar quitando notas</p>
-                                                                </label>
-                                                            </div>
-                                                        {
-                                                            this.props.instrumento == "Piano"?
-                                                                <>
-                                                                <div className="form-check  m-2">
-                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)} value="si"></input>
-                                                                    <label className="form-check-label text-dark" for="elimManoIzquierda">
-                                                                        <p>Eliminar mano izquierda</p>
-                                                                    </label>
-                                                                </div>
-                                                                <div className="form-check  m-2">
-                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoDerecha" onChange={e => this.handleChange("manoDer",e)} value="si"></input>
-                                                                    <label className="form-check-label text-dark" for="elimManoDerecha">
-                                                                        <p>Eliminar mano derecha</p>
-                                                                    </label>
-                                                                </div>
-                                                                </>:null
-                                                        }
-                                                        
+                                                <div className="accordion" id="accordionExample">
+                                                    <div className="accordion-item" Style="border-color: #950740;">
+                                                        <h2 className="accordion-header"  id="headingTwo">
+                                                        <button href="#simplify" className="btn accordion-button collapsed bg-dark" type="button" Style="width: 100%; background-color: #212125 !important; color: #ffffff !important; outline-color: #950740; !important;" data-bs-toggle="collapse" data-bs-target="#simplify" aria-expanded="false" aria-controls="simplify">Simplificar</button>
+                                                        </h2>
+                                                        <div id="simplify" className="accordion-collapse collapse bg-dark" Style="width: 100%" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                            <div className="accordion-body bg-dark">
+                                                                <form>
+                                                                    <div className="form-group">
+                                                                        <div className="input-group justify-content-center">
+                                                                            <div className="form-check col-6 m-2">
+                                                                                <input className="form-check-input" type="checkbox" id="simpAcordes" onChange={e => this.handleChange("acordes",e)} value="si"></input>
+                                                                                <label className="form-check-label checkbox-inline" for="simpAcordes">
+                                                                                    <p>Simplificar acordes</p>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div className="form-check col-6 m-2">
+                                                                                <input className="form-check-input" type="checkbox" id="simpNotas" onChange={e => this.handleChange("notas",e)} value="si"></input>
+                                                                                <label className="form-check-label checkbox-inline" for="simpnNotas">
+                                                                                    <p>Simplificar quitando notas</p>
+                                                                                </label>
+                                                                            </div>
+                                                                        {
+                                                                            this.props.instrumento == "Piano"?
+                                                                                <>
+                                                                                <div className="form-check col-6 m-2">
+                                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoIzquierda" onChange={e => this.handleChange("manoIzq",e)} value="si"></input>
+                                                                                    <label className="form-check-label" for="elimManoIzquierda">
+                                                                                        <p>Eliminar mano izquierda</p>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div className="form-check col-6 m-2">
+                                                                                    <input className="form-check-input" type="checkbox" name="elimMano" id="elimManoDerecha" onChange={e => this.handleChange("manoDer",e)} value="si"></input>
+                                                                                    <label className="form-check-label" for="elimManoDerecha">
+                                                                                        <p>Eliminar mano derecha</p>
+                                                                                    </label>
+                                                                                </div>
+                                                                                </>:null
+                                                                        }
+                                                                        
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div> 
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
+                                           
                                             <div className="container p-2" Style="width: 75%">
-                                                <a href="#tone" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Quieres cambiar el tono?</a>
-                                            </div>
-                                            <div id="tone" className="collapse container" Style="width: 75%">
-                                                <form className="form">
-                                                    <div className="form-group row justify-content-center">
-                                                        {/* Dos botones y un numero central que sumar y bajan el mismo numero  */}
-                                                        <button className="btn btn-light col-1 text-dark" type="button" id="button-addon1" onClick={()=>this.sumarTono(-1)}>-</button>
-                                                        <h2 className="col-1 text-dark">{this.state.Tono}</h2>
-                                                        <button className="btn btn-light col-1 text-dark" type="button" id="button-addon1" onClick={()=>this.sumarTono(1)}>+</button>
+                                                <div className="accordion" >
+                                                    <div className="accordion-item" Style="border-color: #950740;">
+                                                        <h2 className="accordion-header">
+                                                        <button href="#tone" className="btn accordion-button collapsed bg-dark" Style="width: 100%; color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Cambiar el tono</button>
+                                                        </h2>
+                                                        <div id="tone" className="accordion-collapse collapse bg-dark" Style="width: 100%">
+                                                            <div className="accordion-body bg-dark">
+                                                                <form className="form">
+                                                                    <div className="form-group row justify-content-center">
+                                                                        {/* Dos botones y un numero central que sumar y bajan el mismo numero  */}
+                                                                        <button className="btn btn-dark col-2 text-white px-2" Style="width: 10%; height: 5%; background-color: #950740;" type="button" id="button-addon1" onClick={()=>this.sumarTono(-1)}>-</button>
+                                                                        <h2 className="col-2 text-white px-2">{this.state.Tono}</h2>
+                                                                        <button className="btn btn-dark col-2 text-white px-2" Style="width: 10%; height: 5%; background-color: #950740;"  type="button" id="button-addon1" onClick={()=>this.sumarTono(1)}>+</button>
+                                                                    </div>
+                                                                    <p>*Indíque el número de semitonos.</p>
+                                                                    {/* Pequeña descripción del tono */}
+                                                                    <p className="pt-2">
+                                                                    <button class="btn btn-sm btn-dark" Style="width: 30%; border-color: #950740;" type="button" data-bs-toggle="collapse" data-bs-target="#collExample" aria-expanded="false" aria-controls="collExample">
+                                                                        ¿Qué es el tono?
+                                                                    </button>
+                                                                    </p>
+                                                                    <div className="collapse" id="collExample">
+                                                                        <div className="card card-body bg-dark" Style="color: white;">
+                                                                                El tono es la distancia entre la nota original y la nota que quieres tocar.
+                                                                                Por ejemplo, si quieres tocar una canción en la tonalidad de Do mayor, pero la canción está en la tonalidad de Sol mayor, el tono es de 5.
+                                                                                Si quieres tocar una canción en la tonalidad de Sol mayor, pero la canción está en la tonalidad de Do mayor, el tono es de -5.
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    {/* Pequeña descripción del tono */}
-                                                    <div className="container">
-                                                        <p className="text-dark">
-                                                            El tono es la distancia entre la nota original y la nota que quieres tocar.
-                                                            Por ejemplo, si quieres tocar una canción en la tonalidad de Do mayor, pero la canción está en la tonalidad de Sol mayor, el tono es de 5.
-                                                            Si quieres tocar una canción en la tonalidad de Sol mayor, pero la canción está en la tonalidad de Do mayor, el tono es de -5.
-                                                        </p>
-                                                    </div>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="container">
-                                            <button className="btn btn-primary btn-large" Style="width: 50%" onClick={() => this.aplicarCambios()}>
+                                            <button className="btn btn-dark btn-large" Style="width: 30%; border-color: #950740;" onClick={() => this.aplicarCambios()}>
                                                 Aplicar cambios
                                             </button>
                                         </div>
@@ -250,23 +273,37 @@ class ExportarPartitura extends Component {
                                     <>
                                     <div className="row">
                                         <div className="container p-2" Style="width: 75%">
-                                            <a href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;" data-bs-toggle="collapse">¿Muy dificil? Simpifícala</a>
-                                        </div>
-                                        <div id="simplify" className="collapse container" Style="width: 75%">
-                                            <form>
-                                                <div className="form-group">
-                                                    <div className="input-group justify-content-center">
-                                                        <div className="form-check  m-2">
-                                                            <input className="form-check-input" type="checkbox" id="cejillos" onChange={e => this.handleChange("cejillos",e)} value="si"></input>
-                                                            <label className="form-check-label text-dark checkbox-inline" for="cejillos">
-                                                                <p>Simplificar eliminando cejillos</p>
-                                                            </label>
+                                            <div className="accordion">
+                                                <div className="accordion-item bg-dark" Style="border-color: #950740;">
+                                                    <h2 className="accordion-header">
+                                                        <button href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;  color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Simpificar</button>
+                                                    </h2>
+                                                    <div id="simplify" className="accordion-collapse collapse bg-dark " Style="width: 100%;" >
+                                                        <div className="accordion-body bg-dark">
+                                                            <form>
+                                                                <div className="form-group">
+                                                                    <div className="input-group justify-content-center">
+                                                                        <div className="form-check col-6 m-2">
+                                                                            <input className="form-check-input" type="checkbox" id="cejillos" onChange={e => this.handleChange("cejillos",e)} value="si"></input>
+                                                                            <label className="form-check-label text-dark checkbox-inline" for="cejillos">
+                                                                                <p>Simplificar eliminando cejillos</p>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div className="container">
+                                            <button className="btn btn-dark btn-large" Style="width: 30%; border-color: #950740;" onClick={() => this.aplicarCambios()}>
+                                                Aplicar cambios
+                                            </button>
+                                        </div>
                                     </>}
                             </div>
                         </div>
