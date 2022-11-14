@@ -1,7 +1,8 @@
 # Script for generating tablatures from MIDI files
 import numpy as np, pretty_midi, json, logging, music21
 import mingus.core.chords as chords
-logging.basicConfig(level=logging.INFO, format='%(levelname)-8s: %(message)s')
+from itertools import combinations
+logging.basicConfig(level=logging.ERROR, format='%(levelname)-8s: %(message)s')
 np.set_printoptions(linewidth=np.inf)
 from itertools import product
 from fpdf import FPDF
@@ -286,11 +287,31 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
         aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
         n =  sorted(aux, key=lambda x: n_list.index(x))
         det = chords.determine(n, True)
+        #Si no se determinó un acorde
         if len(det) == 0:
-            logging.error(f"No se reconoció ningún acorde :(, notas: {n}")
-            result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
-            logging.debug(f'result: {result}')
-            return result
+            logging.error(f"No se reconoció ningún acorde con las notas: {n}")
+            #probar eliminando una de las notas del acorde si es que el acorde tiene mas de 3 notas
+            if len(n) > 3:
+                intentos = []
+                for num in reversed(range(3, len(n))):
+                    intentos += map(list, list(combinations(n, num)))
+                for intento in intentos:
+                    logging.debug(f'-Intentando con notas: {intento}')
+                    det = chords.determine(intento, True)
+                    if len(det) > 0:
+                        logging.info(f"-Se reconoció el acorde {det[0]} con las notas {intento}")
+                        n = intento
+                        break
+                else:
+                    logging.error(f"-No se logró encontrar un acorde")
+                    result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+                    logging.debug(f'result: {result}')
+                    return result
+            else:
+                logging.error(f"-El acorde tiene 3 notas, no se puede eliminar ninguna")
+                result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+                logging.debug(f'result: {result}')
+                return result
         custom = chord_notation(chords.determine(n, True)[0])
         
         logging.info(f'Notas: {acorde.pitchNames}')
@@ -328,7 +349,7 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True):
                     result.append([i, int(fret)])
         else:
             logging.debug(f"Diccionario en place chord: {list(acordes.keys())[:5]}")
-            logging.error(f"Acorde no encontrado: {custom} a partir de {m21}")
+            logging.error(f"Acorde no encontrado: {custom} a partir de {m21}, notas: {n}")
             result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
     
     logging.debug(f'result: {result}')
@@ -442,4 +463,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         for line in p:
             print(line)
 
-#get_tab("backendPython/GeneracionDePartitura/test/sparkle_new.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
+get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=False, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/wonderwall.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/wonderwall.mid", generate_file=False, instrument = "guitarra", cejillo=False, max_lenght=140)
