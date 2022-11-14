@@ -6,7 +6,7 @@
 	text-transform: uppercase;
 	padding-bottom: 5px;
 	font-family: 'Roboto', sans-serif;
-	color: black;
+	color: #ffffff;
 }
 .tituloMenu:after {
 	width: 100%;
@@ -15,7 +15,7 @@
 	content: "";
 	position: relative;
 	margin-top: 25px;
-	background-color: black;
+	background-color: rgb(255, 255, 255);
 }
 
 /* .containerBotones{
@@ -74,6 +74,7 @@
 .dropdown{
     position: relative;
     display: inline-block;
+    width: 100%;
 }
 
 /* Dropdown Content (Hidden by Default) */

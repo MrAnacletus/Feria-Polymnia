@@ -7,8 +7,8 @@
 .infoMenu{
 	overflow: hidden;
 	background-color: var(--color-5);
-	border-bottom: 5px solid black;
-	color: black;
+	border-bottom: 5px solid rgb(255, 255, 255);
+	color: white;
 	height: 20%;
 }
 
@@ -39,22 +39,6 @@
 .ident2{
 	text-align: left;
 	text-indent: 8em; 
-}
-.tituloMenu {
-	text-align: center;
-	text-transform: uppercase;
-	padding-bottom: 5px;
-	font-family: 'Roboto', sans-serif;
-	color: black;
-}
-.tituloMenu:after {
-	width: 100%;
-	height: 3px;
-	display: block;
-	content: "";
-	position: relative;
-	margin-top: 25px;
-	background-color: black;
 }
 
 .verticaltext {

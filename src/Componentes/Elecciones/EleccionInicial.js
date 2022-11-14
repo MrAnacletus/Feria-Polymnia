@@ -84,7 +84,7 @@ class EleccionInicial extends Component {
             return (
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
                     {this.state.showSideBar &&
-                    <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1">
+                    <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1 text-white">
                         <h1 className="tituloMenu">Paso3: Elegir entre melodia o instrumentos</h1>
                         <div className="d-flex justify-content-start">
                             <p className="d-block text-start">
@@ -101,20 +101,20 @@ class EleccionInicial extends Component {
                             <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
                         </ul>
                         <div className="container-fluid">
-                            <button class="btn btn-light" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
+                            <button class="btn btn-light btn-estilo" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
                         </div>
                     </div>
                     }
                     {!this.state.showSideBar &&
                     <div className="verticaltext">
-                        <button class="verticaltext_content btn btn-light" onClick={this.toggleSideBar} role="button">Ayuda</button>
+                        <button class="verticaltext_content btn btn-light btn-estilo" onClick={this.toggleSideBar} role="button">Ayuda</button>
                     </div>
                     }
                     <div className="container flex-column col-md-5 order-sm-1">
                         <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
-                        <div className="containerBotones">
-                            <button className="btn btn-light" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                            <button className="btn btn-light" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                        <div className="containerBotones p-2">
+                            <button className="btn btn-light btn-estilo" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
+                            <button className="btn btn-light btn-estilo" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
                         </div>
                     </div>
                 </div>

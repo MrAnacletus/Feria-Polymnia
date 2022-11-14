@@ -140,12 +140,12 @@ class EleccionInstrumentos extends Component {
                             <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
                         </ul>
                         <div className="container-fluid">
-                            <a class="btn btn-light" onClick={this.toggleSidebar} role="button">Cerrar ayuda</a>
+                            <a class="btn btn-light btn-estilo" onClick={this.toggleSidebar} role="button">Cerrar ayuda</a>
                         </div>
                     </div>}
                     {!this.state.showSidebar &&
                         <div className="verticaltext">
-                            <a class="verticaltext_content btn btn-light" onClick={this.toggleSidebar} role="button">Ayuda</a>
+                            <a class="verticaltext_content btn btn-light btn-estilo" onClick={this.toggleSidebar} role="button">Ayuda</a>
                         </div>
                     }
                     <div className="container col-md-5 order-sm-1">
@@ -170,7 +170,7 @@ class EleccionInstrumentos extends Component {
                             }
                         </div>
                         <div className="d-inherit m-2">
-                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #C3073F; " onClick={() => this.changePage()}>
+                            <button type="button" className="btn btn-estilo" onClick={() => this.changePage()}>
                                 Volver
                             </button>
                         </div>

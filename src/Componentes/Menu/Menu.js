@@ -25,7 +25,7 @@ class Menu extends Component {
 
     render() {
 		return (
-            <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
+            <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5 text-white">
                 {this.state.showSideBar &&
                     <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1">
                         <h1 className="tituloMenu">Bienvenido a Partitas</h1>
@@ -49,13 +49,13 @@ class Menu extends Component {
                                 e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
                         </ul>
                         <div className="container-fluid">
-                            <button class="btn btn-light" onClick={this.toggleSideBar()} role="button">Cerrar ayuda</button>
+                            <button class="btn btn-light bg-dark btn-estilo" onClick={() => this.toggleSideBar()}  role="button">Cerrar ayuda</button>
                         </div>
                     </div>
                 }
                 {!this.state.showSideBar &&
                     <div className="verticaltext">
-                        <button class="verticaltext_content btn btn-light" onClick={this.toggleSideBar()} role="button">Ayuda</button>
+                        <button class="verticaltext_content btn btn-light btn-estilo"  onClick={() => this.toggleSideBar()} role="button">Ayuda</button>
                     </div>
                 }
                 <div className="container col-md-5 order-sm-1">
