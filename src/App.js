@@ -56,8 +56,8 @@ class App extends Component{
 		console.log(val,val2);
 		this.setState({toRender: val})
 		if (val === "ExportarPartitura"){
-			fileName = val2[1];
-			fileName2 = val2[0];
+			fileName = val2[0];
+			fileName2 = val2[1];
 			console.log(fileName + " recibí este nombre de archivo");
 		}else if (val === "PantallaDeCarga" || val === "EleccionInicial"){
 			boolean = val2;

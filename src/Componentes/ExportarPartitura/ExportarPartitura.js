@@ -92,9 +92,15 @@ class ExportarPartitura extends Component {
             });
     }
 
-    exportarPartitura = () => { 
-        console.log(this.props.nombreArchivo + " nombre archivo a exportar");
-        let path_a_exportar = this.props.nombreArchivo;
+    exportarPartitura (tipo) {
+        let path_a_exportar = ''
+        if (tipo === "midi"){
+            path_a_exportar = this.props.rutaMidi;
+        }
+        if (tipo === "pdf"){
+            path_a_exportar = this.props.nombreArchivo;
+        }
+        console.log(path_a_exportar + " nombre archivo a exportar");
         // axios({
         //     url: 'http://localhost:8000/single',
         //     method: 'GET',
@@ -165,10 +171,10 @@ class ExportarPartitura extends Component {
                             <div className="row">
                                 <div className="col-lg-2"></div>
                                 <div className="col-lg-4 p-1">
-                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura()}>Descargar PDF</button>
+                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura("pdf")}>Descargar PDF</button>
                                 </div>    
                                 <div className="col-lg-4 p-1">    
-                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura()}>Descargar Midi</button>
+                                    <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura("midi")}>Descargar Midi</button>
                                 </div>
                                 <div className="col-lg-2 "></div>
                             </div>
