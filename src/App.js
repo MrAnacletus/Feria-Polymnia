@@ -16,10 +16,11 @@ import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
 
 
 var fileName;
-var boolean = true;
+var fileName2;
+var boolean;
 var respuestaInstrumentos;
-var instrumentoSeleccionado = "Piano";
-var tipoDocumento= "tablatura";
+var instrumentoSeleccionado;
+var tipoDocumento;
 var respuestaInstrumentos = [];
 
 class App extends Component{
@@ -31,7 +32,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -40,7 +41,7 @@ class App extends Component{
 				render = <PantallaDeCarga sendData={this.changePage} boolean ={boolean}></PantallaDeCarga>;
 			}
 			if (this.state.toRender === "ExportarPartitura"){
-				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
+				render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} nombreMidi={fileName2} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
 			}
 			if (this.state.toRender === "EleccionInicial"){
 				render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
@@ -55,7 +56,8 @@ class App extends Component{
 		console.log(val,val2);
 		this.setState({toRender: val})
 		if (val === "ExportarPartitura"){
-			fileName = val2;
+			fileName = val2[0];
+			fileName2 = val2[1];
 			console.log(fileName + " recibí este nombre de archivo");
 		}else if (val === "PantallaDeCarga" || val === "EleccionInicial"){
 			boolean = val2;

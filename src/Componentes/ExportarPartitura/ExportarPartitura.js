@@ -144,8 +144,8 @@ class ExportarPartitura extends Component {
 
     render() {
         console.log(this.props);
-        let nombrePDF = "Untitled.pdf";
-        let nombreMIDI = "Untitled.mid";
+        let nombrePDF = this.props.nombreArchivo;
+        let nombreMIDI = this.props.nombreMidi;
         return (
             <div className="container-fluid mt-3">
                 <div className="row">

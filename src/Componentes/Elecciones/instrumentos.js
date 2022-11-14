@@ -7,6 +7,7 @@ import violonchelo from "../../logos/violonchelo.png";
 import viola from "../../logos/viola.png";
 import contrabajo from "../../logos/contrabajo.png";
 import bateria from "../../logos/bateria.png";
+import flautaTraversa from "../../logos/traversa.png";
 
 let instrumentos = [
     {
@@ -81,7 +82,14 @@ let instrumentos = [
         "tablatura": "no",
         "melodia": "no",
         "compatibles": []
-    }   
+    },{
+        "nombre": "Flauta traversa",
+        "familia": "viento-madera",
+        "imagen": flautaTraversa,
+        "tablatura": "no",
+        "melodia": "si",
+        "compatibles": []
+    }
 ]
 
 export default instrumentos;

@@ -72,7 +72,7 @@ async def create_item(item: ItemSubirArchivo):
   # return {d_pdf}
   # return {d_pdf}"""
 
-  borrar(folder) #folder es placeholder
+  #borrar(folder) #folder es placeholder
   open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   f = open("./backendPython/GeneracionDePartitura/flujo.txt", "a")
   f.write(item.path + "\n")
@@ -138,7 +138,7 @@ async def create_item(item: ItemEleccionInstrumentos):
         d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new.mid') #destination es placeholder
+      copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new' + lineas[1].strip() + '.mid') #destination es placeholder
       
   else:
     d_midi = "vocals_basic_pitch.mid"
@@ -151,7 +151,7 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch.mid') #destination es placeholder
+      copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch' + lineas[1].strip() + '.mid') #destination es placeholder
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf, d_midi}
 
@@ -201,7 +201,7 @@ async def create_item(item: ItemSimplificar):
     simplificacion.simplificar(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid", corte)
     d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid"
     pathtemp = pathname+"/"+d_midi
-  if item.cejillos = "si":
+  if item.cejillos == "si":
     tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70, cejillo = False)
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
   else:
