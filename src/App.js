@@ -29,7 +29,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
+		render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -89,8 +89,8 @@ class App extends Component{
 		return(
 			<body className="App" Style="background-color: #1A1A1D;">
 				<Navbar sendData={this.changePage}/>
-				<div className="">
-					<div>
+				<div className="RenderContainer">
+					<div className="colorBg" Style="background-color: #1A1A1D;">
 						{this.RenderPage()}
 					</div>	
 				</div>

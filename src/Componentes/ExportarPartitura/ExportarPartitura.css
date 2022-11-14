@@ -25,7 +25,7 @@
 	content: "";
 	position: relative;
 	margin-top: 25px;
-	background-color: black;
+	background-color: #950740;
 }
 
 .containerBoton{
@@ -79,5 +79,6 @@
 
 p{
 	font-family: 'Roboto', sans-serif;
-	color: black;
+	color: white;
 }
+
