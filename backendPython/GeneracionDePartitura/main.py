@@ -138,7 +138,7 @@ async def create_item(item: ItemEleccionInstrumentos):
         d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new' + lineas[1].strip() + '.mid') #destination es placeholder
+      archivos.copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new' + lineas[1].strip() + '.mid') #destination es placeholder
       
   else:
     d_midi = "vocals_basic_pitch.mid"
@@ -151,7 +151,7 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch' + lineas[1].strip() + '.mid') #destination es placeholder
+      archivos.copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch' + lineas[1].strip() + '.mid') #destination es placeholder
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf, d_midi}
 
@@ -206,7 +206,7 @@ async def create_item(item: ItemSimplificar):
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
   else:
     d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
-    copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder
+    archivos.copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder
     print(d_pdf)
   return {d_pdf, d_midi} #pdf y midi para descargar
 
