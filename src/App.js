@@ -11,6 +11,7 @@ import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
 import instrumentos from './Componentes/Elecciones/instrumentos';
+import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
 // import logoYT from "./logos/youtube.svg"
 
 
@@ -18,7 +19,8 @@ var fileName;
 var boolean = true;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
-var tipoDocumento= "partitura";
+var tipoDocumento= "tablatura";
+var respuestaInstrumentos = [];
 
 class App extends Component{
 	constructor(){

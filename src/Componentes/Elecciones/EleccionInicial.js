@@ -121,15 +121,47 @@ class EleccionInicial extends Component {
             );
         }else if (this.state.toRender === "EleccionMelodia"){
             return (
-                <div className="container">
-                    <div className="container">
-                        <h2 className="tituloEleccion">¿Qué quieres hacer?</h2>
+                <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
+                    {this.state.showSideBar &&
+                    <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1 text-white">
+                        <h1 className="tituloMenu">Paso 4: Elige como quieres tu melodía</h1>
+                        <div className="d-flex justify-content-start">
+                            <p className="d-block text-start">
+                                Partitas analizará la canción que le entregaste en busca de una voz y uno o varios instrumentos, tu siguiente decición es si quieres que Partitas te entregue una melodía o una selección de instrumentos.
+                            </p>
+                        </div>
+                        <h3 className="text-left col-12">1. ¿Cuál es la diferencia?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Las partituras son una forma universal te entender el como tocar un instrumento mientras que las tablaturas son solo para instrumentos de cuerdas.</p></li>
+                        </ul>
+                        <h3 className="text-left col-12">2. ¿Si elijo una u otra, puedo volver atrás si cambio de opinión?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
+                        </ul>
+                        <div className="col-12" Style="width: 100%; text-align: center;">
+                            <button className="btn btn-dark btn-md col-12" Style="border-color: #950740; width:55%" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
+                        </div>
                     </div>
-                    <div className="containerBotones">
-                        <button className="btnEleccion" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >Generar partitura de la melodía</button>
-                        <button className="btnEleccion" onClick={() => this.toRender("EleccionMelodiaGenerada tablatura")} >Generar tablatura de la melodía</button>
-                        {/* boton de  volver */}
-                        <button className="btnEleccion" onClick={() => this.toRender("EleccionInicial")}>Volver</button>
+                    }
+                    {!this.state.showSideBar &&
+                    <div className="verticaltext">
+                        <button class="verticaltext_content btn btn-dark btn-md" Style="border-color: #950740;" onClick={this.toggleSideBar} role="button">Ayuda</button>
+                    </div>
+                    }
+                    <div className="container flex-column col-md-5 order-sm-1">
+                        <h1 className="tituloMenu">¿Como la deseas?</h1>
+                        <div className="row" Style="height: 100%;">
+                            <div className="col-lg-6 p-1">
+                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 55%;" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >En partitura</button>
+                            </div>    
+                            <div className="col-lg-6 p-1">    
+                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 55%;" onClick={() => this.toRender("EleccionMelodiaGenerada tablatura")} >En tablatura</button>
+                            </div>
+                            
+                            <div className="col-12" Style="width: 100%;">
+                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 45%;" onClick={() => this.toRender("EleccionInicial")}>Volver</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             );
