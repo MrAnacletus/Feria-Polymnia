@@ -201,7 +201,7 @@ async def create_item(item: ItemSimplificar):
     simplificacion.simplificar(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid", corte)
     d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_simplificado.mid"
     pathtemp = pathname+"/"+d_midi
-  if item.cejillos == "si":
+  if item.cejillos = "si":
     tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70, cejillo = False)
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
   else:
