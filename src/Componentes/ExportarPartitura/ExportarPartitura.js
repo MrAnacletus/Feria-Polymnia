@@ -150,7 +150,7 @@ class ExportarPartitura extends Component {
             <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-sm-6 p-3">
-                        <iframe src={"http://localhost:8000/imagen?path="+nombrePDF} width="100%" height="100%"></iframe>
+                        <iframe src={"http://34.139.161.175:8000/imagen?path="+nombrePDF} width="100%" height="100%"></iframe>
                     </div>
                     <div className="col-sm-6 p-3">
                         <div className="row">
@@ -159,7 +159,7 @@ class ExportarPartitura extends Component {
                                     <h2 className="tituloExportar" Style="color: white;">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
                                 </div>
                                 <div className="p-1">
-                                    <midi-player src={"http://localhost:8000/imagen?path=" + nombreMIDI}></midi-player>
+                                    <midi-player src={"http://34.139.161.175:8000/imagen?path=" + nombreMIDI}></midi-player>
                                 </div>
                             </div>
                             <div className="row">
