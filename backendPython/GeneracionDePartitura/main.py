@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 from pydantic import BaseModel
 import try1
-#import Transc.transcripcion as tc
+import Transc.transcripcion as tc
 import os
 import instrumentos
 import tabs
@@ -138,7 +138,7 @@ async def create_item(item: ItemEleccionInstrumentos):
         d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/no_vocals_new.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/no_vocals_new.mid', destination) #destination es placeholder
+      copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new.mid') #destination es placeholder
       
   else:
     d_midi = "vocals_basic_pitch.mid"
@@ -151,7 +151,7 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
-      copiar(pathname+'/vocals_basic_pitch.mid', destination) #destination es placeholder
+      copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch.mid') #destination es placeholder
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
   return {d_pdf, d_midi}
 
@@ -206,7 +206,7 @@ async def create_item(item: ItemSimplificar):
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
   else:
     d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
-    copiar(pathtemp, destination) #destination es placeholder
+    copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder
     print(d_pdf)
   return {d_pdf, d_midi} #pdf y midi para descargar
 
