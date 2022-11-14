@@ -1,11 +1,17 @@
 # Script for generating tablatures from MIDI files
-import numpy as np
+import numpy as np, pretty_midi, json, logging, music21
+import mingus.core.chords as chords
+from itertools import combinations
+logging.basicConfig(level=logging.ERROR, format='%(levelname)-8s: %(message)s')
 np.set_printoptions(linewidth=np.inf)
-import music21
 from itertools import product
-import numpy as np
-# sudo pip3 install fpdf
 from fpdf import FPDF
+
+#diccionario de acordes, la clave es el nombre del acorde, p.e. Cm7
+#el valor es una lista con dos listas dentro, la primera con maneras de tocar el acorde usando cejillos, la segunda con maneras de tocar el acorde sin cejillos
+#las maneras de tocar los acordes se representan con una lista de strings, p.e. ["x", "1", "2", "3", "4", "0"] es un acorde donde la primera cuerda no se toca, la segunda cuerda se toca en el traste 1, la tercera cuerda se toca en el traste 2, etc.
+global acordes
+acordes = {}
 
 def unique_product(*l, repeat=1):
     """Cartesian product of input iterables, ignoring repeated elements"""
@@ -16,17 +22,9 @@ def unique_product(*l, repeat=1):
     return prod
 
 def open_midi(midi_path):
-    """Open MIDI file"""
-    """ mf = music21.midi.MidiFile()
-    mf.open(midi_path)
-    mf.read()
-    mf.close()
-    if (remove_drums):
-        for i in range(len(mf.tracks)):
-            mf.tracks[i].events = [ev for ev in mf.tracks[i].events if ev.channel != 10]   
-    s = music21.midi.translate.midiFileToStream(mf)"""  
+    """Open MIDI file""" 
 
-    s = music21.converter.parse(midi_path)
+    s = pretty_midi.PrettyMIDI(midi_path)
         
     return s
 
@@ -136,18 +134,30 @@ def format_tablature(tablature, strings, max_length=100):
     #print(to_print)
     return to_print
 
-def get_notes(midi):
+def get_notes(midi, threshold=0.05, notas_por_acorde=6):
     """Get notes from MIDI"""
-    notes = []
+    lista = []
 
-    for note in midi.recurse().notes:
+    """ for note in midi.recurse().notes:
         if(isinstance(note, music21.note.Note)):
             notes.append(note_to_num(note.nameWithOctave))
         elif(isinstance(note, music21.chord.Chord)):
-            notes.append([note_to_num(n.nameWithOctave) for n in note])
-   
+            notes.append([note_to_num(n.nameWithOctave) for n in note]) """
+            
+    notas = sorted(midi.instruments[0].notes, key=lambda x: (x.start, -x.pitch))
+    notas_en_acorde = 0
+    ultimo_tiempo = -1
+    for no in notas:
+        if(no.start - ultimo_tiempo <= threshold):
+            notas_en_acorde += 1
+            if(notas_en_acorde<=notas_por_acorde):
+                lista[-1].append(no.pitch)
+        else:
+            lista.append([no.pitch])
+            notas_en_acorde=1
+        ultimo_tiempo=no.start
     # print(notes)
-    return notes
+    return lista
 
 def place_note(note, prev, note_table, frets):
     """Place a note in the tablature in relation to the previous note, so it is easier to play
@@ -188,7 +198,24 @@ def place_note(note, prev, note_table, frets):
         position=[3,5]
     return position
 
-def place_chord(chord, note_table, strings_num, frets):
+def chord_notation(chord):
+    """Change the chord notation, p.e. from  C-major-third to C or from C-minor-third to Cm
+
+    Args:
+        chord (string): Chord(output de chord.pitchedCommonName)
+
+    Returns:
+        string: chord notation
+    """    
+    if chord[-1] == "M":
+        chord = chord[:-1]
+    chord = chord.replace("m/M", "mmaj")
+    chord = chord.replace("M6", "6")
+    chord = chord.replace("M", "maj")
+    
+    return chord
+
+def place_chord(chord, note_table, strings_num, frets, cejillo=True, brute_force=False):
     """Place a chord in the tablature
     
     Args:
@@ -196,58 +223,149 @@ def place_chord(chord, note_table, strings_num, frets):
         note_table (2D int array): array with information of the notes in the format of [string,fret]
         strings_num (int array): array with MIDI note numbers of the strings
         frets (int): number of frets of the instrument
+        cejillo (bool, optional): If the chord is played with a cejillo. Defaults to True.
+        brute_force (bool, optional): If the chord is placed with brute force. Defaults to False.
 
     Returns:
         2D int array: array with information of the placed notes in the format of [string,fret]
     """
-    # Strings that can play the note, and the fret where it is played(p.e. [[[0,3],[1,5]], [[0,5],[1,7]]])
-    candidates = []
-    # Strings that can play the notes(p.e. [[0, 1, 2, 4], [0, 1, 2, 3]])
-    l=[]
-    for note in chord:
-        candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
-        if len(candidate_positions)==0:
-            # If the note is not in the instrument range, change its value to be in range
-            max_note = max([max(x) for x in note_table])
-            min_note = min([min(x) for x in note_table])
-            while note>max_note:
-                note -= 12
-            while note<min_note:
-                note += 12
+    global acordes
+    
+    acorde = music21.chord.Chord(chord)
+    if(len(set(acorde.pitchNames)) <= 2):
+        chord = chord[:2]
+    
+    result = [] 
+    if len(chord)==2 or brute_force:
+        # Strings that can play the note, and the fret where it is played(p.e. [[[0,3],[1,5]], [[0,5],[1,7]]])
+        candidates = []
+        # Strings that can play the notes(p.e. [[0, 1, 2, 4], [0, 1, 2, 3]])
+        l=[]
+        for note in chord:
             candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
-        # print(candidate_positions)
-        candidates.append(candidate_positions)
-        l.append([x[0] for x in candidate_positions])
-        
-    # print("l: "+str(l))
-        
-    result = []  
-    dist=1000
-    temp=[]    
-    uni = unique_product(*l)
-    # print("uni: "+str(uni))
-    while(len(uni)==0):
-        # drop the last note
-        chord = chord[:-1]
-        l = l[:-1]
+            if len(candidate_positions)==0:
+                # If the note is not in the instrument range, change its value to be in range
+                max_note = max([max(x) for x in note_table])
+                min_note = min([min(x) for x in note_table])
+                while note>max_note:
+                    note -= 12
+                while note<min_note:
+                    note += 12
+                candidate_positions = [[note_table.index(x), x.index(note)] for x in note_table if note in x]
+            # print(candidate_positions)
+            candidates.append(candidate_positions)
+            l.append([x[0] for x in candidate_positions])
+            
+        # print("l: "+str(l)) 
+        dist=1000
+        temp=[]    
         uni = unique_product(*l)
+        # print("uni: "+str(uni))
+        while(len(uni)==0):
+            # drop the last note
+            chord = chord[:-1]
+            l = l[:-1]
+            uni = unique_product(*l)
 
+        else:
+            for u in uni:
+                for r in range(len(u)):
+                    for i in candidates[r]:
+                        if(i[0]==u[r]):
+                            temp.append(i)
+                            break
+                # print([x[1] for x in temp])
+                if(np.std([x[1] for x in temp])<dist):
+                    dist=np.std([x[1] for x in temp])
+                    result=temp
+                temp=[]
     else:
-        for u in uni:
-            for r in range(len(u)):
-                for i in candidates[r]:
-                    if(i[0]==u[r]):
-                        temp.append(i)
+        #Acorde de 3+ notas
+        acorde = music21.chord.Chord(chord)
+        m21 = acorde.pitchedCommonName
+        #Se quita el numero de la octava de las notas y se ordenan segun la lista n_list
+        n_list = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+        aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
+        n =  sorted(aux, key=lambda x: n_list.index(x))
+        det = chords.determine(n, True)
+        #Si no se determinó un acorde o si se determinó pero no está en la base de datos
+        if len(det) == 0 or chord_notation(chords.determine(n, True)[0]) not in acordes:
+            if len(det) == 0:
+                logging.error(f"No se reconoció ningún acorde con las notas: {n}, probando combinatoria...")
+            else:
+                logging.error(f"Acorde no encontrado: {chord_notation(chords.determine(n, True)[0])} a partir de {m21}, notas: {n}, probando combinatorias...")
+            #probar eliminando una de las notas del acorde si es que el acorde tiene mas de 3 notas
+            if len(n) > 3:
+                intentos = []
+                
+                for num in reversed(range(3, len(n))):
+                    intentos += map(list, list(combinations(n, num)))
+                for intento in intentos:
+                    logging.debug(f'-Intentando con notas: {intento}...')
+                    det = chords.determine(intento, True)
+                    #Si se determinó un acorde y está en la base de datos
+                    if len(det) > 0 and chord_notation(chords.determine(intento, True)[0]) in acordes:
+                        logging.info(f"-Se reconoció el acorde {det[0]} con las notas {intento}")
+                        n = intento
                         break
-            # print([x[1] for x in temp])
-            if(np.std([x[1] for x in temp])<dist):
-                dist=np.std([x[1] for x in temp])
-                result=temp
-            temp=[]
-    # print("Res: "+str(result))
+                else:
+                    logging.error(f"-No se logró encontrar un acorde, se usará fuerza bruta")
+                    #result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+                    result = place_chord(chord, note_table, strings_num, frets, cejillo, brute_force=True)
+                    logging.debug(f'result: {result}')
+                    return result
+            else:
+                logging.error(f"-El acorde tiene 3 notas, no se puede eliminar ninguna, fuerza bruta moment")
+                #result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+                result = place_chord(chord, note_table, strings_num, frets, cejillo, brute_force=True)
+                logging.debug(f'result: {result}')
+                return result
+        custom = chord_notation(chords.determine(n, True)[0])
+        
+        logging.info(f'Notas: {acorde.pitchNames}')
+        logging.info(f'Notas filtradas: {n}')
+        logging.info(f'Acorde según amingus: {chords.determine(n, True)}')
+        logging.info(f'Acorde según la función: {custom}')
+        logging.debug(f'Acorde según music21: {m21}')
+
+        if custom in acordes:
+            #Se encontró el nombre del acorde en la base de datos
+            if cejillo:
+                if len(acordes[custom][0])>0:
+                    #Hay una manera de tocar el acorde con cejillos
+                    logging.info(f'Posible manera de tocar el acorde con cejillos: {acordes[custom][0][0]}')
+                    r = acordes[custom][0][0]
+                else:
+                    logging.info(f"No hay forma de tocar {custom} con cejillo, cambiando a sin cejillo")
+                    cejillo = False
+            if not cejillo:
+                if len(acordes[custom][1])>0:
+                    #Hay una manera de tocar el acorde sin cejillos
+                    logging.info(f'Posible manera de tocar el acorde sin cejillos: {acordes[custom][1][0]}')
+                    r = acordes[custom][1][0]
+                else:
+                    logging.info(f"No hay forma de tocar {custom} sin cejillo, cambiando a la otra cosa que no se que es")
+                    if len(acordes[custom][2])>0:
+                        #Hay una manera de tocar el acorde
+                        logging.info(f'Posible manera de tocar el acorde alternativa: {acordes[custom][2][0]}')
+                        r = acordes[custom][2][0]
+                    else:
+                        logging.error(f"No se encontró cómo tocar {custom}, se usará fuerza bruta")
+                        #r = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+                        r = place_chord(chord, note_table, strings_num, frets, cejillo, brute_force=True)
+            for i, fret in enumerate(reversed(r)):
+                if fret != 'x':
+                    result.append([i, int(fret)])
+        else:
+            logging.debug(f"Diccionario en place chord: {list(acordes.keys())[:5]}")
+            logging.error(f"Acorde no encontrado: {custom} a partir de {m21}, notas: {n}, se usará fuerza bruta")
+            #result = [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0]]
+            result = place_chord(chord, note_table, strings_num, frets, cejillo, brute_force=True)
+    
+    logging.debug(f'result: {result}')
     return result
 
-def create_tab_array(notes, note_table, strings_num, frets):
+def create_tab_array(notes, note_table, strings_num, frets, cejillo=True):
     """Create a tablature from a list of notes
 
     Args:
@@ -262,15 +380,15 @@ def create_tab_array(notes, note_table, strings_num, frets):
     tab = []
     prev = -1
     for note in notes:
-        if(isinstance(note, int)):
-            tab.append(place_note(note, prev, note_table, frets))
+        if(len(note)==1):
+            tab.append(place_note(note[0], prev, note_table, frets))
             prev = tab[-1]
-        elif(isinstance(note, list)):
-            tab.append(place_chord(note, note_table, strings_num, frets))
+        else:
+            tab.append(place_chord(note, note_table, strings_num, frets, cejillo))
             prev = tab[-1][0]
     return tab
 
-def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_lenght=77, generate_file=False, file_path="", title="", author="", instrument=""):
+def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_lenght=77, generate_file=False, file_path="", title="", author="", instrument="", cejillo=True):
     """Generate a tablature from a MIDI file and print it on the console or generate a pdf file with the tablature
 
     Args:
@@ -283,6 +401,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         title (str, optional): Title of the tablature. Defaults to "".
         author (str, optional): Author of the tablature. Defaults to "".
         instrument (str, optional): Instrument of the tablature. Defaults to "".
+        cejillo (bool, optional): Use cejillos or not. Defaults to True.
     """       
     if isinstance(strings, str):
         if strings.lower() == "guitar":
@@ -291,6 +410,11 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
             strings=["G2","D2","A1","E1"]
         elif strings.lower() == "ukulele":
             strings=["A3","E4","C4","G4"]
+            
+    global acordes
+    with open('backendPython/GeneracionDePartitura/acordes_v2.json', 'r') as file:
+        acordes = json.loads(file.read())
+    logging.debug(f"Diccionario en get tab: {list(acordes.keys())[:5]}")
 
     base_midi = open_midi(midi_path)
     notes = get_notes(base_midi)
@@ -313,7 +437,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
     ] 
     """
     # print(np.array([list(map(num_to_note, x)) for x in note_table]))
-    tabs = create_tab_array(notes, note_table, strings_num, frets)
+    tabs = create_tab_array(notes, note_table, strings_num, frets, cejillo)
     p = format_tablature(tabs, strings, max_length=max_lenght)
     if(generate_file):
         pdf = FPDF()
@@ -349,5 +473,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         for line in p:
             print(line)
 
-#get_tab("happy_guitar_new.mid", generate_file=True, file_path = "./emi2.pdf", title = "don", author = "emi", instrument = "guitarra")
-
+#get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=False, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/wonderwall.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
+#get_tab("backendPython/GeneracionDePartitura/test/wonderwall.mid", generate_file=False, instrument = "guitarra", cejillo=False, max_lenght=140)

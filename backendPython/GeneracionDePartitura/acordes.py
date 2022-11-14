@@ -1,3 +1,5 @@
+#Simplificación de acordes a acordes mas sencillos
+
 import pretty_midi
 
 def simplificar_acordes(midi_path, output, nota_corte = 60, notas_por_acorde = 2, threshold = 0.05):
