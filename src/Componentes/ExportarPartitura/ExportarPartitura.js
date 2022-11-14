@@ -95,7 +95,7 @@ class ExportarPartitura extends Component {
     exportarPartitura (tipo) {
         let path_a_exportar = ''
         if (tipo === "midi"){
-            path_a_exportar = this.props.rutaMidi;
+            path_a_exportar = this.props.nombreMidi;
         }
         if (tipo === "pdf"){
             path_a_exportar = this.props.nombreArchivo;

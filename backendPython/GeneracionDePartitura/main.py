@@ -127,6 +127,7 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.close()
     if item.partitura == "no":
       d_midi = "no_vocals_new_" + lineas[1].strip() + ".mid"
+      archivos.copiar(pathname+'/no_vocals_new.mid', './backend-js/temp/no_vocals_new_' + lineas[1].strip() + '.mid')
       if item.instrumento2 == "Guitarra acústica" or item.instrumento2 == "Guitarra eléctrica":
         tabs.get_tab(pathname+"/no_vocals_new.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento2, max_lenght=70)
         d_pdf = lineas[1].strip() + '.pdf'
@@ -149,6 +150,7 @@ async def create_item(item: ItemEleccionInstrumentos):
     f.close()
     if item.partitura == "no":
       tabs.get_tab(pathname+"/vocals_basic_pitch.mid", file_path='./backend-js/temp/' + lineas[1].strip() + '.pdf',generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70)
+      archivos.copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch_' + lineas[1].strip() + '.mid')
       d_pdf = lineas[1].strip() + '.pdf'
     else:
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
