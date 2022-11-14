@@ -11,6 +11,7 @@ import logoFB from "./logos/fb.png"
 import logoIG from "./logos/ig.png"
 import logoTWT from "./logos/twt.png"
 import instrumentos from './Componentes/Elecciones/instrumentos';
+import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
 // import logoYT from "./logos/youtube.svg"
 
 
@@ -18,7 +19,8 @@ var fileName;
 var boolean = true;
 var respuestaInstrumentos;
 var instrumentoSeleccionado;
-var tipoDocumento= "partitura";
+var tipoDocumento= "tablatura";
+var respuestaInstrumentos = [];
 
 class App extends Component{
 	constructor(){
@@ -29,7 +31,8 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <ExportarPartitura sendData={this.changePage} nombreArchivo={fileName} instrumento = {instrumentoSeleccionado} tipoDocumento={tipoDocumento}></ExportarPartitura>;
+		render = <EleccionMelodia boolean = {this.props.boolean} toRender={this.toRender} sendData={this.props.sendData} partitura="si" seleccionarInstrumento={this.props.seleccionarInstrumento}/>
+		render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;

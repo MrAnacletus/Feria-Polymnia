@@ -10,14 +10,22 @@ class EleccionInstrumentos extends Component {
     constructor(){
         super();
         this.state = {
-            toRender: "EleccionInicial"
+            toRender: "EleccionInicial",
+            showSidebar: false,
         }
         this.changePage = this.changePage.bind(this);
         this.elegirEsteInstrumento = this.elegirEsteInstrumento.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
     changePage(val,val2){
         this.props.sendData(val,val2);
+    }
+
+    toggleSidebar() {
+        this.setState({
+            showSidebar: !this.state.showSidebar
+        });
     }
 
     elegirEsteInstrumento(instrumento, tipo, instrumento2){
@@ -49,89 +57,128 @@ class EleccionInstrumentos extends Component {
         if (this.props.boolean === false){
             return (
                 <div className="container">
-                    <div className="containerTituloEleccion">
-                        <h2 className="tituloEleccion">Elige que deseas hacer</h2>
+                    <div className="container col-md-5 text-start">
+                        <h1 className="tituloMenu">Paso4: Elegir instrumento</h1>
+                        <div className="d-flex justify-content-start">
+                            <p className="d-block text-start">
+                                Partitas ha analizado la canción y ha encontrado los siguientes instrumentos, elige el que desees para generar la partitura o tablatura.
+                            </p>
+                        </div>
+                        <h3 className="text-left col-12">1. ¿Porqué mi instrumento no aparece?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce una cierta cantidad de instrumentos, la lista incluye batería, guitarra electrica y acustica,
+                            piano, violín y violonchelo, entre muchos otros. Sin embargo, Partitas no es perfecto y no puede reconocer todos y cada uno de los instrumentos existentes.</p></li>
+                        </ul>
+                        <h3 className="text-left col-12">2. Puedo generar tanto partitura y tablatura, pero, ¿Puedo simplificar ambas?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">No exactamente de cualquiera, pero tenemos una larga lista de instrumentos soportados que seguirá creciendo mientras adaptemos nuestro sistema a ellos.</p></li>
+                        </ul>
+                        <h3 className="text-left col-12">3. Si genero tablatura, ¿Puedo simplificarla?</h3>
+                        <ul>
+                            <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
+                        </ul>
                     </div>
-                    <div className="container row">
-                        {
-                            this.props.instrumentos.map((instrumento, index) => {
-                                for (let i = 0; i < this.props.instrumentos.length; i++) {
-                                    if (this.props.instrumentos[i] === instrumento.nombre) {
-                                        return (
-                                            <div className="containerBotonInstrumento">
-                                                <div className="InstrumentoGrande">
-                                                    <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                                    <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                    <div className="container-fluid d-flex flex-row col-md-5 order-sm-1 p-2">
+                        <div className="container-fluid">
+                            <h1 className="tituloMenu">Elige que deseas hacer</h1>
+                        </div>
+                        <div className="container p-2">
+                            {
+                                this.props.instrumentos.map((instrumento, index) => {
+                                    for (let i = 0; i < this.props.instrumentos.length; i++) {
+                                        if (this.props.instrumentos[i] === instrumento.nombre) {
+                                            return (
+                                                <div className="card">
+                                                    <div className="InstrumentoGrande">
+                                                        <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
+                                                        <h3 className="card-title textoBotonEleccion">{instrumento.nombre}</h3>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"si")}>
+                                                            <h3 className="textoBotonEleccion">Partitura</h3>
+                                                        </button>
+                                                        <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"no")} disabled={instrumento.tablatura === "no"}>
+                                                            <h3 className="textoBotonEleccion">Tablatura</h3>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"si")}>
-                                                    <h3 className="textoBotonEleccion">Partitura</h3>
-                                                </button>
-                                                <button className="btnInstrumentoPequeño" onClick={() => this.elegirEsteInstrumento(instrumento.nombre,"no")} disabled={instrumento.tablatura === "no"}>
-                                                    <h3 className="textoBotonEleccion">Tablatura</h3>
-                                                </button>
-                                            </div>
-                                        )
+                                            )
+                                            }
                                         }
                                     }
-                                }
-                            )
-                        }
+                                )
+                            }
+                        </div>
+                        <button onClick={() => this.changePage()}>Regresar</button>
+                        
                     </div>
-                    <button className="btnEleccion" onClick={() => this.changePage()}>Regresar</button>
+                    
                 </div>
             );
         }else{
             return (
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
-                    <div className="container col-md-5 text-start">
-                        <h1 className="tituloMenu">Bienvenido a Partitas</h1>
-                        <div className="d-flex justify-content-start">
+                    {this.state.showSidebar &&
+                    <div className="container col-md-5 text-start text-white">
+                        <h1 className="tituloMenu">Paso4: Elegir instrumento</h1>
+                        <div className="d-flex justify-content-start ">
                             <p className="d-block text-start">
-                                Partitas generará una partitura a partir de un archivo de audio. Puedes subir un archivo de audio tipo WAV, MP3, OGG o FLAC, a partir de el cual Partitas generará una partitura.
+                                Partitas ha analizado la canción y ha encontrado los siguientes instrumentos, elige el que desees para generar la partitura o tablatura.
                             </p>
                         </div>
-                        <h3 className="text-left col-12">1. ¿Cómo Partitas genera una partitura?</h3>
+                        <h3 className="text-left col-12">1. ¿Porqué mi instrumento no aparece?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce nota a nota los diferentes instrumentos presentes en la pieza musical, si estos instrumentos son soportados por Partitas
-                                podrás generar una partitura o tablatura para ellos.</p></li>
+                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce una cierta cantidad de instrumentos, la lista incluye batería, guitarra electrica y acustica,
+                            piano, violín y violonchelo, entre muchos otros. Sin embargo, Partitas no es perfecto y no puede reconocer todos y cada uno de los instrumentos existentes.</p></li>
                         </ul>
-                        <h3 className="text-left col-12">2. ¿Puede ser de cualquier instrumento que yo quiera?</h3>
+                        <h3 className="text-left col-12">2. Puedo generar tanto partitura y tablatura, pero, ¿Puedo simplificar ambas?</h3>
                         <ul>
                             <li><p className="d-block text-start">No exactamente de cualquiera, pero tenemos una larga lista de instrumentos soportados que seguirá creciendo mientras adaptemos nuestro sistema a ellos.</p></li>
                         </ul>
-                        <h3 className="text-left col-12">3. Luego de generar mi partitura, ¿Qué pasa si es muy dificil?</h3>
+                        <h3 className="text-left col-12">3. Si genero tablatura, ¿Puedo simplificarla?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Al momento de generar tu partitura tienes la opción de simplificarla con los métodos otorgados, puedes simplificar los acordes, reducir las notas, tocar una sola mano si toca piano,
-                                e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
+                            <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
                         </ul>
-                    </div>
+                        <div className="container-fluid">
+                            <a class="btn btn-light" onClick={this.toggleSidebar} role="button">Cerrar ayuda</a>
+                        </div>
+                    </div>}
+                    {!this.state.showSidebar &&
+                        <div className="verticaltext">
+                            <a class="verticaltext_content btn btn-light" onClick={this.toggleSidebar} role="button">Ayuda</a>
+                        </div>
+                    }
                     <div className="container col-md-5 order-sm-1">
                         <h2 className="tituloMenu">Elige que deseas hacer</h2>
-                        <div className="container row">
+                        <div className="container row mt-2">
                             {
                                 instrumentos.map((instrumento, index) => {
                                     return (
-                                        <div className="container col-4 form-group-inline">
-                                            <div className="InstrumentoGrande">
-                                                <img className="imagenBotonEleccion" src={instrumento.imagen} alt={instrumento.nombre}/>
-                                                <h3 className="textoBotonEleccion">{instrumento.nombre}</h3>
+                                        <div className="card col-lg-3 col-md-5 col-sm-6 col-12 mt-2" Style="background-color: #212125 !important; border-color: #C3073F !important;">
+                                            <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
+                                                <img className="card-img-top" Style="width: 60%; height: 70%; margin-top: 15px; margin-bottom: 15px; filter: invert(90);" src={instrumento.imagen} alt={instrumento.nombre}/>
+                                                <h3 className="textoBotonEleccion" Style="color: #ffffff !important; font-size: 95%;">{instrumento.nombre}</h3>
                                             </div>
-                                            <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
-                                            <BotonPartitura instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
+                                            <div className="card-body">
+                                                <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"si"} melodia="no"/>
+                                                <BotonPartitura className="d-block" instrumento={instrumento} elegirEsteInstrumento={this.elegirEsteInstrumento} habilitado={instrumento.tablatura} partitura={"no"} melodia="no"/>
+                                            </div>
                                         </div>
                                         )
                                     }
                                 )
                             }
                         </div>
-                        <button className="btnInstrumentoPequeño" onClick={() => this.changePage()}>
-                            <h3 className="textoBotonEleccion">Volver</h3>
-                        </button>
+                        <div className="d-inherit m-2">
+                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #C3073F; " onClick={() => this.changePage()}>
+                                Volver
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
             );
         }
-        
     }
 }
 
