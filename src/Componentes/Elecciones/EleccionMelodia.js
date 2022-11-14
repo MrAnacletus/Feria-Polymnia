@@ -16,6 +16,7 @@ class EleccionMelodia extends Component {
         this.changePage = this.changePage.bind(this);
         this.elegirEsteInstrumento = this.elegirEsteInstrumento.bind(this);
         this.toggleSideBar = this.toggleSideBar.bind(this);
+        this.toRender = this.toRender.bind(this);
     }
 
     toggleSideBar() {
@@ -25,6 +26,9 @@ class EleccionMelodia extends Component {
     }
     changePage(val,val2){
         this.props.sendData(val,val2);
+    }
+    toRender(value){
+        this.props.toRender(value);
     }
 
     elegirEsteInstrumento(instrumento, tipo, instrumento2){
@@ -81,7 +85,7 @@ class EleccionMelodia extends Component {
                     </div>}
                     {!this.state.showSideBar &&
                         <div className="verticaltext">
-                            <a class="verticaltext_content btn btn-dark btn-md" Style="border-color: #950740;" onClick={this.toggleSideBar} role="button">Ayuda</a>
+                            <a class="verticaltext_content btn btn-dark btn-md dropdown-toggle" Style="border-color: #950740;" onClick={this.toggleSideBar} role="button">Ayuda</a>
                         </div>
                     }
                     <div className="container col-md-5 order-sm-1">
@@ -105,7 +109,7 @@ class EleccionMelodia extends Component {
                             }
                         </div>
                         <div className="d-inherit m-2">
-                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #FFFFFF; width: 30%;" onClick={() => this.changePage()}>
+                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #FFFFFF; width: 30%;" onClick={() => this.toRender("EleccionMelodia")}>
                                 Volver
                             </button>
                         </div>

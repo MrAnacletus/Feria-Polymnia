@@ -18,7 +18,7 @@ import EleccionMelodia from './Componentes/Elecciones/EleccionMelodia';
 var fileName;
 var boolean = true;
 var respuestaInstrumentos;
-var instrumentoSeleccionado;
+var instrumentoSeleccionado = "Piano";
 var tipoDocumento= "tablatura";
 var respuestaInstrumentos = [];
 
@@ -31,7 +31,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <EleccionInicial sendData={this.changePage} boolean = {boolean} seleccionarInstrumento={this.seleccionarInstrumento}></EleccionInicial>;
+		render = <Menu sendData={this.changePage}></Menu>;
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;

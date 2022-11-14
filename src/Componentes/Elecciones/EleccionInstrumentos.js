@@ -145,7 +145,7 @@ class EleccionInstrumentos extends Component {
                     </div>}
                     {!this.state.showSidebar &&
                         <div className="verticaltext">
-                            <a class="verticaltext_content btn btn-light btn-estilo" onClick={this.toggleSidebar} role="button">Ayuda</a>
+                            <a class="verticaltext_content btn btn-light btn-estilo dropdown-toggle" onClick={this.toggleSidebar} role="button">Ayuda</a>
                         </div>
                     }
                     <div className="container col-md-5 order-sm-1">

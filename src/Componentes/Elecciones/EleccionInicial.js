@@ -145,7 +145,7 @@ class EleccionInicial extends Component {
                     }
                     {!this.state.showSideBar &&
                     <div className="verticaltext">
-                        <button class="verticaltext_content btn btn-dark btn-md" Style="border-color: #950740;" onClick={this.toggleSideBar} role="button">Ayuda</button>
+                        <button class="verticaltext_content btn btn-dark btn-md dropdown-toggle" Style="border-color: #950740;" onClick={this.toggleSideBar} role="button">Ayuda</button>
                     </div>
                     }
                     <div className="container flex-column col-md-5 order-sm-1">

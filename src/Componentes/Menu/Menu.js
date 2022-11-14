@@ -7,7 +7,7 @@ class Menu extends Component {
     constructor(){
         super();
         this.state ={
-            showSideBar: true,
+            showSideBar: false,
         }
         this.changePage = this.changePage.bind(this);
         this.toggleSideBar = this.toggleSideBar.bind(this);
@@ -55,7 +55,7 @@ class Menu extends Component {
                 }
                 {!this.state.showSideBar &&
                     <div className="verticaltext">
-                        <button class="verticaltext_content btn btn-light btn-estilo"  onClick={() => this.toggleSideBar()} role="button">Ayuda</button>
+                        <button class="verticaltext_content btn btn-light btn-estilo dropdown-toggle"  onClick={() => this.toggleSideBar()} role="button">Ayuda</button>
                     </div>
                 }
                 <div className="container col-md-5 order-sm-1">
