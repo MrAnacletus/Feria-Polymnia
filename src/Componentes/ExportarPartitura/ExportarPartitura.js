@@ -242,7 +242,7 @@ class ExportarPartitura extends Component {
                                                                         <h2 className="col-2 text-white px-2">{this.state.Tono}</h2>
                                                                         <button className="btn btn-dark col-2 text-white px-2" Style="width: 10%; height: 5%; background-color: #950740;"  type="button" id="button-addon1" onClick={()=>this.sumarTono(1)}>+</button>
                                                                     </div>
-                                                                    <p>*Indíque el número de semitonos.</p>
+                                                                    <p>*Indique el número de semitonos.</p>
                                                                     {/* Pequeña descripción del tono */}
                                                                     <p className="pt-2">
                                                                     <button class="btn btn-sm btn-dark" Style="width: 30%; border-color: #950740;" type="button" data-bs-toggle="collapse" data-bs-target="#collExample" aria-expanded="false" aria-controls="collExample">
