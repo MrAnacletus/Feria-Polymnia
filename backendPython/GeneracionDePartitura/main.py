@@ -154,7 +154,7 @@ async def create_item(item: ItemEleccionInstrumentos):
       d_pdf = try1.generar_partitura(pathname+'/vocals_basic_pitch.mid', lineas[1].strip(), lineas[2].strip(),item.instrumento)
       archivos.copiar(pathname+'/vocals_basic_pitch.mid', './backend-js/temp/vocals_basic_pitch_' + lineas[1].strip() + '.mid') #destination es placeholder
   #open("./backendPython/GeneracionDePartitura/flujo.txt", "w").close()
-  return {d_pdf, d_midi}
+  return [d_pdf, d_midi]
 
 @app.post("/simplificar")
 
@@ -209,7 +209,7 @@ async def create_item(item: ItemSimplificar):
     d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
     archivos.copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder
     print(d_pdf)
-  return {d_pdf, d_midi} #pdf y midi para descargar
+  return [d_pdf, d_midi] #pdf y midi para descargar
 
 @app.get("/previsualizar", response_class=FileResponse)
 
