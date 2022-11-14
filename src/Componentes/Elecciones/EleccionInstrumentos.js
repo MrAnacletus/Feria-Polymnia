@@ -152,7 +152,7 @@ class EleccionInstrumentos extends Component {
                         <h2 className="tituloMenu">Elige que deseas hacer</h2>
                         <div className="container row mt-2">
                             {
-                                instrumentos.map((instrumento, index) => {
+                                this.props.instrumentos.map((instrumento) => {
                                     return (
                                         <div className="card col-lg-3 col-md-5 col-sm-6 col-12 mt-2" Style="background-color: #212125 !important; border-color: #C3073F !important;">
                                             <div className="container-fluid d-flex justify-content-center flex-column align-items-center">
