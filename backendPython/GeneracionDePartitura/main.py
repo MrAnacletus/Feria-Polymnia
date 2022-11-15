@@ -210,6 +210,7 @@ async def create_item(item: ItemSimplificar):
     else:
       tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=lineas[5].strip(), max_lenght=70, cejillo = False)
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
+    d_midi = pathtemp.strip().split("/")[-1]
   else:
     d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
     archivos.copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder
