@@ -48,7 +48,7 @@ class Menu extends Component {
                             <li><p className="d-block text-start">Al momento de generar tu partitura tienes la opción de simplificarla con los métodos otorgados, puedes simplificar los acordes, reducir las notas, tocar una sola mano si toca piano,
                                 e incluso ¡puedes eliminar cejillos si utilizas un instrumento de cuerdas!</p></li>
                         </ul>
-                        <div className="container-fluid">
+                        <div className="container-fluid text-center">
                             <button class="btn btn-light bg-dark btn-estilo" onClick={() => this.toggleSideBar()}  role="button">Cerrar ayuda</button>
                         </div>
                     </div>

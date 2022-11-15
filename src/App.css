@@ -71,6 +71,7 @@
 }  */
 
 .btn-estilo{
+  width: 55%;
   background-color: #212125 !important;
   color: #ffffff !important;
   outline-color: #950740 !important;
