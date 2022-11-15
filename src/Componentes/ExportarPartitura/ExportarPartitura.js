@@ -187,7 +187,7 @@ class ExportarPartitura extends Component {
                                                 <div className="accordion" id="accordionExample">
                                                     <div className="accordion-item" Style="border-color: #950740;">
                                                         <h2 className="accordion-header"  id="headingTwo">
-                                                        <button href="#simplify" className="btn accordion-button collapsed bg-dark" type="button" Style="width: 100%; background-color: #212125 !important; color: #ffffff !important; outline-color: #950740; !important;" data-bs-toggle="collapse" data-bs-target="#simplify" aria-expanded="false" aria-controls="simplify">Simplificar</button>
+                                                        <button href="#simplify" className="btn accordion-button collapsed bg-dark text-center" type="button" Style="width: 100%; background-color: #212125 !important; color: #ffffff !important; outline-color: #950740; !important;" data-bs-toggle="collapse" data-bs-target="#simplify" aria-expanded="false" aria-controls="simplify">Simplificar</button>
                                                         </h2>
                                                         <div id="simplify" className="accordion-collapse collapse bg-dark" Style="width: 100%" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                             <div className="accordion-body bg-dark">
@@ -237,7 +237,7 @@ class ExportarPartitura extends Component {
                                                 <div className="accordion" >
                                                     <div className="accordion-item" Style="border-color: #950740;">
                                                         <h2 className="accordion-header">
-                                                        <button href="#tone" className="btn accordion-button collapsed bg-dark" Style="width: 100%; color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Cambiar el tono</button>
+                                                        <button href="#tone" className="btn accordion-button collapsed bg-dark text-center" Style="width: 100%; color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Cambiar el tono</button>
                                                         </h2>
                                                         <div id="tone" className="accordion-collapse collapse bg-dark" Style="width: 100%">
                                                             <div className="accordion-body bg-dark">
@@ -282,7 +282,7 @@ class ExportarPartitura extends Component {
                                             <div className="accordion">
                                                 <div className="accordion-item bg-dark" Style="border-color: #950740;">
                                                     <h2 className="accordion-header">
-                                                        <button href="#simplify" className="btn accordion-button collapsed" Style="width: 100%;  color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Simpificar</button>
+                                                        <button href="#simplify" className="btn accordion-button collapsed text-center" Style="width: 100%;  color: white; background-color: #212125 !important;" data-bs-toggle="collapse">Simpificar</button>
                                                     </h2>
                                                     <div id="simplify" className="accordion-collapse collapse bg-dark " Style="width: 100%;" >
                                                         <div className="accordion-body bg-dark">

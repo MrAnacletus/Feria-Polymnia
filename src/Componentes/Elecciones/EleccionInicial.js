@@ -100,7 +100,7 @@ class EleccionInicial extends Component {
                         <ul>
                             <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
                         </ul>
-                        <div className="container-fluid">
+                        <div className="container-fluid text-center">
                             <button class="btn btn-light btn-estilo" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ class EleccionInicial extends Component {
                         <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
                         <div className="containerBotones p-2">
                             <button className="btn btn-light btn-estilo" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                            <button className="btn btn-light btn-estilo mt-2" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                            <button className="btn btn-light btn-estilo" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
                         </div>
                     </div>
                 </div>

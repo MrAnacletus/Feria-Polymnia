@@ -139,7 +139,7 @@ class EleccionInstrumentos extends Component {
                         <ul>
                             <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
                         </ul>
-                        <div className="container-fluid">
+                        <div className="container-fluid text-center">
                             <a class="btn btn-light btn-estilo" onClick={this.toggleSidebar} role="button">Cerrar ayuda</a>
                         </div>
                     </div>}
