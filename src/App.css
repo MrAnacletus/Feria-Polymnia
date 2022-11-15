@@ -71,9 +71,57 @@
 }  */
 
 .btn-estilo{
-  width: 55%;
+  width: 50%;
   background-color: #212125 !important;
   color: #ffffff !important;
   outline-color: #950740 !important;
   border-color: #950740 !important;
+}
+
+.verticaltext {
+  position: relative;
+  margin: 1em 0;
+  min-height: 120px;
+  left: -30px;
+  margin-right: -100px;
+}
+
+.verticaltext2{
+  position: relative;
+  margin: 1em 0;
+  min-height: 120px;
+  left: -30px;
+  margin-left: -30px;
+}
+
+@media screen and (max-width: 770px) {
+  .verticaltext {
+      left: auto;
+  }
+}
+
+.verticaltext_content {
+  width:fit-content !important;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 770px) {
+  .verticaltext_content {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+      font-size: 16px;
+      text-align: center;
+  }
 }
