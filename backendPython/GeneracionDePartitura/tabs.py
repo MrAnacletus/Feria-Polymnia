@@ -284,7 +284,7 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True, brute_force
         acorde = music21.chord.Chord(chord)
         m21 = acorde.pitchedCommonName
         #Se quita el numero de la octava de las notas y se ordenan segun la lista n_list
-        n_list = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+        n_list = ["Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
         aux = [x.replace("-", "b") for x in list(set(acorde.pitchNames))]
         n =  sorted(aux, key=lambda x: n_list.index(x))
         det = chords.determine(n, True)
