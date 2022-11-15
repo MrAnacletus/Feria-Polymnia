@@ -17,9 +17,9 @@ instrumentos = {
     "41": "Viola",
     "42": "Violoncello",
     "43": "Contrabajo",
-    "73": "Flauta",
-    "74": "Flauta",
-    "76": "Flauta"
+    "73": "Flauta traversa",
+    "74": "Flauta traversa",
+    "76": "Flauta traversa"
     }
 
 traducción = {"Piano": "Piano",
