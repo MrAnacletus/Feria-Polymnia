@@ -17,6 +17,7 @@ instrumentos = {
     "41": "Viola",
     "42": "Violoncello",
     "43": "Contrabajo",
+    "73": "Flauta",
     "74": "Flauta",
     "76": "Flauta"
     }
@@ -129,7 +130,7 @@ def limpiar_midi(midi, instrumento):
     midi_limpio.write(midi+'_new'+'.mid')
 
 #limpiar_midi("aleluya", "0")
-
+reconocer_instrumentos("caribe")
 
     
 
