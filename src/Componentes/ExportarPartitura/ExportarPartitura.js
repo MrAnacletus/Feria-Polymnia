@@ -69,7 +69,7 @@ class ExportarPartitura extends Component {
             cejillos = "no"
         }
 
-        console.log("Cambios aplicados: " + tono + " " + acordes + " " + derecha + " " + izquierda + " " + notas);
+        console.log("Cambios aplicados: Tono:" + tono + " acordes:" + acordes + " derecha:" + derecha + " izquierda:" + izquierda + " notas:" + notas + " cejillos:" + cejillos);
         this.changePage("PantallaDeCarga", false);
         axios.post('http://34.139.161.175:3001/simplificar', {
             tono: tono,
