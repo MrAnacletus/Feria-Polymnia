@@ -236,7 +236,7 @@ def place_chord(chord, note_table, strings_num, frets, cejillo=True, brute_force
         chord = chord[:2]
     
     result = [] 
-    if len(chord)==2 or brute_force:
+    if len(chord)==2 or brute_force or not acordes:
         # Strings that can play the note, and the fret where it is played(p.e. [[[0,3],[1,5]], [[0,5],[1,7]]])
         candidates = []
         # Strings that can play the notes(p.e. [[0, 1, 2, 4], [0, 1, 2, 3]])
@@ -393,7 +393,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
 
     Args:
         midi_path (string): path to the MIDI file
-        strings (list, optional): The notes of the strings of the instrument. Also supports writing "guitar", "bass" and "ukelele". Defaults to "guitar": ["E4","B3","G3","D3","A2","E2"].
+        strings (list, optional): The notes of the strings of the instrument. Also supports writing "guitarra", "bajo" and "ukelele". Defaults to "guitarra": ["E4","B3","G3","D3","A2","E2"].
         frets (int, optional): Number of notes per string. Defaults to 21.
         max_lenght (int, optional): Max length of the strings to print(to adjust for page width) . Defaults to 100.
         generate_file (bool, optional): Generate a pdf file with the tablature, prints on console if false. Defaults to False.
@@ -404,17 +404,26 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         cejillo (bool, optional): Use cejillos or not. Defaults to True.
     """       
     if isinstance(strings, str):
-        if strings.lower() == "guitar":
+        if strings.lower() == "guitarra":
             strings=["E4","B3","G3","D3","A2","E2"]
-        elif strings.lower() == "bass":
+        elif strings.lower() == "bajo":
             strings=["G2","D2","A1","E1"]
-        elif strings.lower() == "ukulele":
+        elif strings.lower() == "ukelele":
             strings=["A3","E4","C4","G4"]
             
     global acordes
-    with open('backendPython/GeneracionDePartitura/acordes_v2.json', 'r') as file:
-        acordes = json.loads(file.read())
-    logging.debug(f"Diccionario en get tab: {list(acordes.keys())[:5]}")
+    if strings == "guitarra" or strings == ["E4","B3","G3","D3","A2","E2"]:
+        logging.critical("Cargando acordes de guitarra")
+        with open('backendPython/GeneracionDePartitura/acordes_v2.json', 'r') as file:
+            acordes = json.loads(file.read())
+    elif strings == "ukelele" or strings == ["A3","E4","C4","G4"]:
+        logging.critical("Cargando acordes de ukelele")
+        with open('backendPython/GeneracionDePartitura/acordes_ukelele.json', 'r') as file:
+            acordes = json.loads(file.read())
+    else:
+        acordes = False
+    if acordes:
+        logging.debug(f"Diccionario en get tab: {list(acordes.keys())[:5]}")
 
     base_midi = open_midi(midi_path)
     notes = get_notes(base_midi)
@@ -473,6 +482,7 @@ def get_tab(midi_path, strings=["E4","B3","G3","D3","A2","E2"], frets=21, max_le
         for line in p:
             print(line)
 
+#get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", strings="ukelele", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
 #get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
 #get_tab("backendPython/GeneracionDePartitura/test/mi_guitarra.mid", generate_file=False, instrument = "guitarra", cejillo=False, max_lenght=140)
 #get_tab("backendPython/GeneracionDePartitura/test/wonderwall.mid", generate_file=False, instrument = "guitarra", cejillo=True, max_lenght=140)
