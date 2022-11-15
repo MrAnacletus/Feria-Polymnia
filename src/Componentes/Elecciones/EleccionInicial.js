@@ -151,13 +151,10 @@ class EleccionInicial extends Component {
                     <div className="container flex-column col-md-5 order-sm-1">
                         <h1 className="tituloMenu">¿Como la deseas?</h1>
                         <div className="row" Style="height: 100%;">
-                            <div className="col-lg-6 p-1">
-                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 55%;" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >En partitura</button>
-                            </div>    
-                            <div className="col-lg-6 p-1">    
-                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 55%;" onClick={() => this.toRender("EleccionMelodiaGenerada tablatura")} >En tablatura</button>
-                            </div>
-                            
+                            <div className="col-12">
+                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 50%;" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >En partitura</button>
+                                <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 50%;" onClick={() => this.toRender("EleccionMelodiaGenerada tablatura")} >En tablatura</button>
+                            </div>                            
                             <div className="col-12" Style="width: 100%;">
                                 <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 45%;" onClick={() => this.toRender("EleccionInicial")}>Volver</button>
                             </div>
