@@ -195,7 +195,7 @@ async def create_item(item: ItemSimplificar):
     #f.writelines(lineas)
     #f.close()
   if item.izquierda == "si":
-    separacion_manos.izquierda_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid", 60)
+    separacion_manos.izquierda_piano(pathtemp, pathname+"/"+lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid", 50)
     d_midi = lineas[1].strip()+"_"+lineas[5].strip()+"_izquierda.mid"
     pathtemp = pathname+"/"+d_midi
   if item.teclas == "si":
