@@ -109,7 +109,7 @@ class EleccionMelodia extends Component {
                             }
                         </div>
                         <div className="d-inherit m-2">
-                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #FFFFFF; width: 30%;" onClick={() => this.toRender("EleccionMelodia")}>
+                            <button type="button" className="btn" Style="border-color: #C3073F !important; color: #FFFFFF; width: 50%;" onClick={() => this.toRender("EleccionMelodia")}>
                                 Volver
                             </button>
                         </div>
