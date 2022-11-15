@@ -139,7 +139,7 @@ class ExportarPartitura extends Component {
             this.setState({manoDer: event.target.value});
         }
         if (parte === "notas"){
-            this.setState({Tono: event.target.value});
+            this.setState({notas: event.target.value});
         }
         if (parte === "cejillos"){
             this.setState({cejillos: event.target.value});
