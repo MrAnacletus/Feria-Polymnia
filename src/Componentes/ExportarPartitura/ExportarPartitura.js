@@ -63,7 +63,7 @@ class ExportarPartitura extends Component {
             notas = "si"
         }else{
             notas = "no"
-        }if (this.state.cejillos){
+        }if (this.state.cejillos === "si"){
             cejillos = "si"
         }else{
             cejillos = "no"
