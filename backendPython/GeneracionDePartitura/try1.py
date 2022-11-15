@@ -36,9 +36,11 @@ def generar_partitura(path_to_midi, title, composer, instrument):
     page = new_pdf.getPage(0)
     page.mergePage(existing_pdf.getPage(0))
     output.addPage(page)
-
-
-
+    
+    paginas=new_pdf.getNumPages()
+    if paginas>=2:
+        for i in range(1,paginas):
+            output.addPage(new_pdf.getPage(i))
 
     # finally, write "output" to a real file
     outputStream = open("./backend-js/temp/"+title+".pdf", "wb")
