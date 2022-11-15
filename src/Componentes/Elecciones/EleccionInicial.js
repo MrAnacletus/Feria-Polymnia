@@ -114,7 +114,7 @@ class EleccionInicial extends Component {
                         <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
                         <div className="containerBotones p-2">
                             <button className="btn btn-light btn-estilo" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
-                            <button className="btn btn-light btn-estilo" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
+                            <button className="btn btn-light btn-estilo mt-2" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
                         </div>
                     </div>
                 </div>
