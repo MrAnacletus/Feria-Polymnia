@@ -101,6 +101,7 @@ async def create_item(item: ItemEleccionInicial):
     f.write(pathname+"\n")
     f.close()
     intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
+    print(intrus)
     return intrus
   else:
     pathname = tc.transc_melodia(sep[1], sep[0], path)
@@ -206,10 +207,12 @@ async def create_item(item: ItemSimplificar):
     pathtemp = pathname+"/"+d_midi
   if item.cejillos == "si":
     if lineas[5].strip() == "Ukelele":
-      tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf", strings = 'ukulele', frets = 12, generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70, cejillo = False)
+      tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf", strings = 'ukulele', frets = 12, generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=lineas[5].strip(), max_lenght=70, cejillo = False)
     else:
-      tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=item.instrumento, max_lenght=70, cejillo = False)
+      tabs.get_tab(pathtemp, file_path='./backend-js/temp/' + lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf",generate_file=True,author=lineas[2].strip(),title=lineas[1].strip(),instrument=lineas[5].strip(), max_lenght=70, cejillo = False)
     d_pdf = lineas[1].strip()+"_"+lineas[5].strip()+"_cejillos.pdf"
+    d_midi = pathtemp.strip().split("/")[-1]
+    d_midi = d_midi.split(".")[0]+"_"+lineas[1].strip()+".mid"
   else:
     d_pdf = try1.generar_partitura(pathtemp, lineas[1].strip(), lineas[2].strip(), lineas[5].strip())
     archivos.copiar(pathtemp, './backend-js/temp/'+d_midi) #destination es placeholder

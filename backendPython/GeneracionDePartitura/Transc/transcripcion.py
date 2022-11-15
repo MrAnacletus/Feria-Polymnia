@@ -402,6 +402,9 @@ def transc_melodia(name,inp,outp):
     foldername=Path(name).with_suffix('')
     if not os.path.exists(f"{outp}/{foldername}"):
         os.makedirs(f"{outp}/{foldername}")
+    else:
+        if os.path.exists(f"{outp}/{foldername}/vocals_basic_pitch.mid"):
+            os.remove(f"{outp}/{foldername}/vocals_basic_pitch.mid")
     separate(name,inp,"backendPython/GeneracionDePartitura/Transc/audio_temp")
     t_dem=time()
     print('Demucs: {}:{}'.format(int(t_dem-t_ini)//60,int(t_dem-t_ini)%60))
