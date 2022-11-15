@@ -130,7 +130,7 @@ def limpiar_midi(midi, instrumento):
     midi_limpio.write(midi+'_new'+'.mid')
 
 #limpiar_midi("aleluya", "0")
-reconocer_instrumentos("caribe")
+#reconocer_instrumentos("caribe")
 
     
 
