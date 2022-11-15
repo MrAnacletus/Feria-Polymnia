@@ -10,11 +10,11 @@ class ExportarPartitura extends Component {
         super();
         this.state = {
             Tono: 0,
-            acordes: '',
-            manoIzq: '',
-            notas: '',
-            manoDer: '',
-            cejillos: '',
+            acordes: 'no',
+            manoIzq: 'no',
+            notas: 'no',
+            manoDer: 'no',
+            cejillos: 'no',
         }
         this.changePage = this.changePage.bind(this);
         this.exportarPartitura = this.exportarPartitura.bind(this);
@@ -51,11 +51,9 @@ class ExportarPartitura extends Component {
             acordes = "si"
         }else{
             acordes = "no"
-        }
-        if (this.state.manoIzq === "si"){
+        }if (this.state.manoIzq === "si"){
             derecha = "si"
-        }
-        else{
+        }else{
             derecha = "no"
         }if (this.state.manoDer === "si"){
             izquierda = "si"
@@ -202,7 +200,7 @@ class ExportarPartitura extends Component {
                                                                             </div>
                                                                             <div className="form-check col-6 m-2">
                                                                                 <input className="form-check-input" type="checkbox" id="simpNotas" onChange={e => this.handleChange("notas",e)} value="si"></input>
-                                                                                <label className="form-check-label checkbox-inline" for="simpnNotas">
+                                                                                <label className="form-check-label checkbox-inline" for="simpNotas">
                                                                                     <p>Simplificar quitando notas</p>
                                                                                 </label>
                                                                             </div>
