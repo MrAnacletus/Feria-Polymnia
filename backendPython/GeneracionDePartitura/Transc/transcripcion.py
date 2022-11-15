@@ -400,11 +400,13 @@ def transc_melodia(name,inp,outp):
     gc.collect()
     t_ini=time()
     foldername=Path(name).with_suffix('')
-    if os.path.exists(f"{outp}/{foldername}/vocals_basic_pitch.mid"):
-        os.remove(f"{outp}/{foldername}/vocals_basic_pitch.mid")
+    if not os.path.exists(f"{outp}/{foldername}"):
+        os.makedirs(f"{outp}/{foldername}")
+    else:
+        if os.path.exists(f"{outp}/{foldername}/vocals_basic_pitch.mid"):
+            os.remove(f"{outp}/{foldername}/vocals_basic_pitch.mid")
     separate(name,inp,"backendPython/GeneracionDePartitura/Transc/audio_temp")
     t_dem=time()
-    if(os.path.exists())
     print('Demucs: {}:{}'.format(int(t_dem-t_ini)//60,int(t_dem-t_ini)%60))
     gc.collect()
     bpproc=multiprocessing.Process(target=predict_and_save,args=([f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}/vocals.{suffix}"],f"{outp}/{foldername}",True,False,False,False),)
