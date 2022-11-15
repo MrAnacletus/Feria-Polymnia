@@ -101,6 +101,7 @@ async def create_item(item: ItemEleccionInicial):
     f.write(pathname+"\n")
     f.close()
     intrus = instrumentos.reconocer_instrumentos(pathname+"/no_vocals")
+    print(intrus)
     return intrus
   else:
     pathname = tc.transc_melodia(sep[1], sep[0], path)
