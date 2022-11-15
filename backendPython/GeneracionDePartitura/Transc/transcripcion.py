@@ -409,7 +409,7 @@ def transc_melodia(name,inp,outp):
     t_dem=time()
     print('Demucs: {}:{}'.format(int(t_dem-t_ini)//60,int(t_dem-t_ini)%60))
     gc.collect()
-    bpproc=multiprocessing.Process(target=predict_and_save,args=([f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}/vocals.{suffix}"],f"{outp}/{foldername}",True,False,False,False),)
+    bpproc=multiprocessing.Process(target=predict_and_save,args=([f"backendPython/GeneracionDePartitura/Transc/audio_temp/mdx_extra/{foldername}/vocals.{suffix}"],f"{outp}/{foldername}",True,False,False,False,minimum_frequency=72.0),)
     bpproc.start()
     bpproc.join()
     t_fin=time()
