@@ -32,7 +32,7 @@ class App extends Component{
 	}
 	RenderPage(){
 		let render;
-		render = <Menu sendData={this.changePage}></Menu>;
+		render = <Menu sendData={this.changePage}></Menu>;		
 		if (this.state){
 			if (this.state.toRender === "Menu"){
 				render = <Menu sendData={this.changePage}></Menu>;
@@ -94,11 +94,11 @@ class App extends Component{
 			<body className="App" Style="background-color: #1A1A1D;">
 				<Navbar sendData={this.changePage}/>
 				<div className="RenderContainer">
-					<div className="colorBg" Style="background-color: #1A1A1D;">
+					<div className="colorBg min-vh-100 d-flex flex-column" Style="background-color: #1A1A1D;">
 						{this.RenderPage()}
 					</div>	
 				</div>
-				<footer className="footer container-fluid position-relative bg-dark bg-light-radial text-white-50 py-6 px-5 h-100 Footer ">
+				<footer className="footer container-fluid position-fixed-bottom bg-dark bg-light-radial text-white-50 py-6 px-5 h-100 Footer ">
 					<div className="row d-flex flex-space-between">
 						<div className="col-sm flex-start">
 							<img className="logoFooter" src={logoFooter} alt="logoFooter"></img>

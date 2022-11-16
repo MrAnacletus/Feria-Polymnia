@@ -139,12 +139,12 @@ class ExportarPartitura extends Component {
         let nombreMIDI = this.props.nombreMidi;
         return (
             <div className="container-fluid mt-3">
-                <div className="row">
+                <div className="row flex-grow-1">
                     <div className="col-sm-6 p-3">
                         <iframe src={"http://34.139.161.175:8000/imagen?path="+nombrePDF} width="100%" height="100%"></iframe>
                     </div>
                     <div className="col-sm-6 p-3">
-                        <div className="row">
+                        <div className="row flex-grow-1">
                             <div className="container">
                                 <div className="containerTituloExportar">
                                     <h2 className="tituloExportar" Style="color: white;">{this.props.tipoDocumento === "partitura"?"Exportar Partitura":"Exportar Tablatura"}</h2>
@@ -153,7 +153,7 @@ class ExportarPartitura extends Component {
                                     <midi-player src={"http://34.139.161.175:8000/imagen?path=" + nombreMIDI}></midi-player>
                                 </div>
                             </div>
-                            <div className="row">
+                            <div className="row flex-grow-1">
                                 <div className="col-lg-2"></div>
                                 <div className="col-lg-4 p-1">
                                     <button className="btn btn-dark btn-md" Style="border-color: #950740;" onClick={() => this.exportarPartitura("pdf")}>Descargar PDF</button>
@@ -167,7 +167,7 @@ class ExportarPartitura extends Component {
                                 {
                                     this.props.tipoDocumento === "partitura"?
                                     <>
-                                        <div className="row">
+                                        <div className="row flex-grow-1">
                                             <div className="container p-2" Style="width: 75%">
                                                 <div className="accordion" id="accordionExample">
                                                     <div className="accordion-item" Style="border-color: #950740;">
@@ -262,7 +262,7 @@ class ExportarPartitura extends Component {
                                     </>
                                     :
                                     <>
-                                    <div className="row">
+                                    <div className="row flex-grow-1">
                                         <div className="container p-2" Style="width: 75%">
                                             <div className="accordion">
                                                 <div className="accordion-item bg-dark" Style="border-color: #950740;">
