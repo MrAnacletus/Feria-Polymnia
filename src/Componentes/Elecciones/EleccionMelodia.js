@@ -60,7 +60,7 @@ class EleccionMelodia extends Component {
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
                     {this.state.showSideBar &&
                     <div className="container col-md-5 text-start text-white">
-                        <h1 className="tituloMenu">Paso 5: Elige tu instrumento</h1>
+                        <h1 className="tituloMenu">Ayuda</h1>
                         <div className="d-flex justify-content-start ">
                             <p className="d-block text-start">
                                 Partitas es capaz de compatibilizar la melodía y el formato solicitado para los siguientes instrumentos, escoge el que prefieras.
@@ -73,11 +73,7 @@ class EleccionMelodia extends Component {
                         </ul>
                         <h3 className="text-left col-12">2. Puedo generar tanto partitura y tablatura, pero, ¿Puedo simplificar ambas?</h3>
                         <ul>
-                            <li><p className="d-block text-start">No exactamente de cualquiera, pero tenemos una larga lista de instrumentos soportados que seguirá creciendo mientras adaptemos nuestro sistema a ellos.</p></li>
-                        </ul>
-                        <h3 className="text-left col-12">3. Si genero tablatura, ¿Puedo simplificarla?</h3>
-                        <ul>
-                            <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
+                            <li><p className="d-block text-start">Si, ambas tienen métodos de simplificación, sin embargo, no las comparten.</p></li>
                         </ul>
                         <div className="col-12" Style="width: 100%; text-align: center;">
                             <button className="btn btn-dark btn-md col-12" Style="border-color: #950740; width:45%" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
@@ -89,7 +85,7 @@ class EleccionMelodia extends Component {
                         </div>
                     }
                     <div className="container col-md-5 order-sm-1">
-                        <h2 className="tituloMenu">Elija su instrumento</h2>
+                        <h2 className="tituloMenu">Paso 5: Eligir instrumento</h2>
                         <div className="container row mt-2">
                             {instrumentos.map((instrumento, index) => {
                                 if (instrumento.melodia === "si"&& !(instrumento.tablatura==="no"&&this.props.partitura==="no")){

@@ -58,7 +58,7 @@ class EleccionInstrumentos extends Component {
             return (
                 <div className="container">
                     <div className="container col-md-5 text-start">
-                        <h1 className="tituloMenu">Paso4: Elegir instrumento</h1>
+                        <h1 className="tituloMenu">Ayuda</h1>
                         <div className="d-flex justify-content-start">
                             <p className="d-block text-start">
                                 Partitas ha analizado la canción y ha encontrado los siguientes instrumentos, elige el que desees para generar la partitura o tablatura.
@@ -71,16 +71,12 @@ class EleccionInstrumentos extends Component {
                         </ul>
                         <h3 className="text-left col-12">2. Puedo generar tanto partitura y tablatura, pero, ¿Puedo simplificar ambas?</h3>
                         <ul>
-                            <li><p className="d-block text-start">No exactamente de cualquiera, pero tenemos una larga lista de instrumentos soportados que seguirá creciendo mientras adaptemos nuestro sistema a ellos.</p></li>
-                        </ul>
-                        <h3 className="text-left col-12">3. Si genero tablatura, ¿Puedo simplificarla?</h3>
-                        <ul>
-                            <li><p className="d-block text-start">Por ahora solo tenemos implementada la simplificación para partituras por lo tanto no podrás simplificar tus tablaturas, te invitamos a utilizar y probar la función en partituras.</p></li>
+                            <li><p className="d-block text-start">Si, ambas tienen métodos de simplificación, sin embargo, no las comparten.</p></li>
                         </ul>
                     </div>
                     <div className="container-fluid d-flex flex-row col-md-5 order-sm-1 p-2">
                         <div className="container-fluid">
-                            <h1 className="tituloMenu">Elige que deseas hacer</h1>
+                            <h1 className="tituloMenu">Paso 4: Elegir instrumento</h1>
                         </div>
                         <div className="container p-2">
                             {

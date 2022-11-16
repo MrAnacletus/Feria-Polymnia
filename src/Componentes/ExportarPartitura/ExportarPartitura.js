@@ -99,19 +99,6 @@ class ExportarPartitura extends Component {
             path_a_exportar = this.props.nombreArchivo;
         }
         console.log(path_a_exportar + " nombre archivo a exportar");
-        // axios({
-        //     url: 'http://localhost:8000/single',
-        //     method: 'GET',
-        //     responseType: 'blob', // important
-        //     path: path_a_exportar,
-        //   }).then((response) => {
-        //     const url = window.URL.createObjectURL(new Blob([response.data]));
-        //     const link = document.createElement('a');
-        //     link.href = url;
-        //     link.setAttribute('download', 'foto.jpg');
-        //     document.body.appendChild(link);
-        //     link.click();
-        //   });
         axios.get('http://34.139.161.175:8000/single?path='+path_a_exportar,{
             responseType:'blob',
             crossDomain: true,

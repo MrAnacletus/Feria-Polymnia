@@ -98,11 +98,11 @@ class SubirArchivo extends Component{
     render() {
         if (this.state.selectedFile !== undefined){
             return (
-                <div>
+                <>
                     <div>
                         <h1 className='tituloMenu'>Paso2: Ponle nombre y autor</h1>
                         <p className='text-start'>
-                            Quizá quieras uilizar un nombre para lo que generarás, o quizá no. En cualquier caso, ¡el momento es ahora!
+                            Quizá quieras utilizar un nombre para lo que generarás, o quizá no. En cualquier caso, ¡el momento es ahora!
                         </p>
                     </div>
                     <div className='conteinerInputs mt-md-5'>
@@ -124,18 +124,18 @@ class SubirArchivo extends Component{
                         </form>
                         
                         <button className='SubirBoton p-2 btn-estilo' id='botonSubir' type="submit" onClick={this.onFileUpload} disabled={false}> 
-                        Procesar el audio
+                        Siguiente
                         </button>          
                     </div>
-                </div>
+                </>
             )
         }
         return (
-            <div>
+            <>
                 <div>
-                    <h1 className='tituloMenu'>¡Paso 1: Sube tu archivo!</h1>
+                    <h1 className='tituloMenu'>Paso 1: ¡Sube tu archivo!</h1>
                     <p className='text-start'>
-                        Lo primero que debes hacer es subir un archivo, procura que este sea tenga buen audio, que sea limpio y en general de la mejor calidad posible.
+                        Lo primero que debes hacer es subir un archivo, procura que sea de la mejor calidad posible.
                         Esto aumentará la precisión de la aplicación y la experiencia de usuario.
                     </p>
                 </div>
@@ -146,10 +146,10 @@ class SubirArchivo extends Component{
                     </label>
                     <p className='m-3'>Partitas admite archivos tipo WAV, MP3, OGG y FLAC</p>
                     <button className='SubirBoton-disabled p-2 btn-estilo' id='botonSubir' type="submit" onClick={()=>this.changePage("EleccionInicial",true)} disabled={true}> 
-                    Procesar el audio
+                    Siguiente
                     </button>          
                 </div>
-            </div>
+            </>
             
         );
     

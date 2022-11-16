@@ -85,20 +85,20 @@ class EleccionInicial extends Component {
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
                     {this.state.showSideBar &&
                     <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1 text-white">
-                        <h1 className="tituloMenu">Paso3: Elegir entre melodia o instrumentos</h1>
+                        <h1 className="tituloMenu">Ayuda</h1>
                         <div className="d-flex justify-content-start">
                             <p className="d-block text-start">
                                 Partitas analizará la canción que le entregaste en busca de una voz y uno o varios instrumentos, tu siguiente decición es si quieres que Partitas te entregue una melodía o una selección de instrumentos.
                             </p>
                         </div>
-                        <h3 className="text-left col-12">1. ¿Cómo Partitas generará la melodía?</h3>
+                        <h3 className="text-left col-12">1. ¿Cómo se generará la melodía?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce la voz presente en la cacnión, a partir de esta se generará la melodía siguiento las notas
+                            <li><p className="d-block text-start">Mediante inteligencia artificial Partitas reconoce la voz presente en la canción, a partir de esta se generará la melodía siguiento las notas
                             de la voz.</p></li>
                         </ul>
                         <h3 className="text-left col-12">2. ¿Si elijo una u otra, puedo volver atrás si cambio de opinión?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
+                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de seleccionar que instrumento.</p></li>
                         </ul>
                         <div className="container-fluid text-center">
                             <button class="btn btn-light btn-estilo" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
@@ -111,7 +111,7 @@ class EleccionInicial extends Component {
                     </div>
                     }
                     <div className="container flex-column col-md-5 order-sm-1">
-                        <h1 className="tituloMenu">¿Qué quieres hacer?</h1>
+                        <h1 className="tituloMenu">Paso 3: Elegir entre melodia o instrumentos</h1>
                         <div className="containerBotones p-2">
                             <button className="btn btn-light btn-estilo" onClick={() => this.elegirInstrumentos()}>Elegir instrumentos</button>
                             <button className="btn btn-light btn-estilo" onClick={() => this.elegirMelodia()}>Elegir melodía</button>
@@ -124,19 +124,19 @@ class EleccionInicial extends Component {
                 <div className="container-fluid d-flex flex-md-row flex-sm-column flex-column justify-content-around mt-5 mb-5 flex-nowrap gap-5">
                     {this.state.showSideBar &&
                     <div className="container col-md-5 d-flex flex-column justify-content-start gap-3 text-start order-sm-2 order-md-2 order-lg-1 text-white">
-                        <h1 className="tituloMenu">Paso 4: Elige como quieres tu melodía</h1>
+                        <h1 className="tituloMenu">Ayuda</h1>
                         <div className="d-flex justify-content-start">
                             <p className="d-block text-start">
-                                Partitas analizará la canción que le entregaste en busca de una voz y uno o varios instrumentos, tu siguiente decición es si quieres que Partitas te entregue una melodía o una selección de instrumentos.
+                                Si tu canción contenía una voz, entonces tendrás la posibilidad de generar una partitura o tablatura de ella.
                             </p>
                         </div>
                         <h3 className="text-left col-12">1. ¿Cuál es la diferencia?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Las partituras son una forma universal te entender el como tocar un instrumento mientras que las tablaturas son solo para instrumentos de cuerdas.</p></li>
+                            <li><p className="d-block text-start">Las partituras son una forma universal de entender el como tocar un instrumento mientras que las tablaturas son solo para instrumentos de cuerdas.</p></li>
                         </ul>
-                        <h3 className="text-left col-12">2. ¿Si elijo una u otra, puedo volver atrás si cambio de opinión?</h3>
+                        <h3 className="text-left col-12">2. ¿Si elijo una u otra, puedo volver atrás?</h3>
                         <ul>
-                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de elegir que instrumento.</p></li>
+                            <li><p className="d-block text-start">Si eliges cualquiera de las 2 opciones puedes volver a esta pantalla, sientete libre de elegir hasta antes de seleccionar que instrumento.</p></li>
                         </ul>
                         <div className="col-12" Style="width: 100%; text-align: center;">
                             <button className="btn btn-dark btn-md col-12" Style="border-color: #950740; width:55%" onClick={this.toggleSideBar} role="button">Cerrar ayuda</button>
@@ -149,7 +149,7 @@ class EleccionInicial extends Component {
                     </div>
                     }
                     <div className="container flex-column col-md-5 order-sm-1">
-                        <h1 className="tituloMenu">¿Como la deseas?</h1>
+                        <h1 className="tituloMenu">Paso 4: Elige como quieres tu melodía</h1>
                         <div className="row" Style="height: 100%;">
                             <div className="col-12">
                                 <button className="btn btn-dark btn-md" Style="border-color: #950740; width: 50%;" onClick={() => this.toRender("EleccionMelodiaGenerada partitura")} >En partitura</button>
